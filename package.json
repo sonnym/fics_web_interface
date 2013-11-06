@@ -1,0 +1,19 @@
+{
+  "name": "nko4-temporary-team-name",
+  "version": "0.0.0",
+  "description": "Temporary Team Name",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:nko4/temporary-team-name.git"
+  },
+  "dependencies": {
+    "nko": "*"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
