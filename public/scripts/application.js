@@ -1,4 +1,4 @@
-angular.module("fics_client", ["ui.bootstrap", "proxy"]);
+angular.module("fics_client", ["ui.bootstrap", "proxy", "console"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
@@ -6,7 +6,16 @@ function LoginCtrl($scope, Proxy) {
   };
 };
 
-angular.module("proxy", []).factory("Proxy", function() {
+function ConsoleCtrl($scope, Console) {
+  $scope.output = "";
+
+  (function updateOutput() {
+    $scope.output = Console.get();
+    setTimeout(updateOutput, 1000);
+  })();
+};
+
+angular.module("proxy", []).factory("Proxy", function(Console) {
   var socket = this.socket = new SockJS("/socket");
   var socket_open = false;
 
@@ -27,7 +36,7 @@ angular.module("proxy", []).factory("Proxy", function() {
 
     switch(message.operation) {
     case "raw":
-      console.log(message.data)
+      Console.append(message.data);
     }
   };
 
@@ -53,4 +62,13 @@ angular.module("proxy", []).factory("Proxy", function() {
   }
 
   return this;
+});
+
+angular.module("console", []).factory("Console", function() {
+  var output = "";
+
+  return {
+    get: function() { return output },
+    append: function(data) { output += data }
+  };
 });

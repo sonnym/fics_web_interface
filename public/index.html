@@ -15,6 +15,12 @@
         </tab-heading>
         <input type="button" value="login as guest" ng-click="login_as_guest()" />
       </tab>
+
+      <tab ng-controller="ConsoleCtrl">
+        <tab-heading>
+          console
+        </tab-heading>
+        <pre>{{output}}</pre>
     </tabset>
   </body>
 </html>
