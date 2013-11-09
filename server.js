@@ -6,6 +6,8 @@ var http = require("http");
 var express = require("express");
 var sockjs = require("sockjs");
 
+var SocketHandler = require("./lib/socket_handler");
+
 var isProduction = (process.env.NODE_ENV === 'production');
 var port = (isProduction ? 80 : 8000);
 var sockjs_opts = { sockjs_url: "http://cdn.sockjs.org/sockjs-0.3.4.min.js" }
@@ -22,15 +24,7 @@ server.addListener("upgrade", function(req, res){
 });
 
 socket.on("connection", function(connection) {
-  console.log("connection: " + connection);
-
-  connection.on("data", function(message) {
-    console.log("message: " + message);
-  });
-
-  connection.on("close", function() {
-    console.log("close: " + connection);
-  });
+  new SocketHandler(connection);
 });
 
 socket.installHandlers(server, { prefix: "/socket" });
