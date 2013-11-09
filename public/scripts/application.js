@@ -2,7 +2,11 @@ angular.module("fics_client", ["ui.bootstrap", "proxy", "console"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
-    Proxy.login_as_guest();
+    Proxy.login({});
+  };
+
+  $scope.login_with_credentials = function(user_data) {
+    Proxy.login(user_data);
   };
 };
 
@@ -40,8 +44,8 @@ angular.module("proxy", []).factory("Proxy", function(Console) {
     }
   };
 
-  this.login_as_guest = function() {
-    send_message("login", {});
+  this.login = function(user_data) {
+    send_message("login", user_data);
   };
 
   function send_message(operation, params) {

@@ -14,6 +14,16 @@
           log in
         </tab-heading>
         <input type="button" value="login as guest" ng-click="login_as_guest()" />
+
+        <div>- or -</div>
+
+        <form ng-submit="login_with_credentials(user_data)">
+          <input type="text" ng-model="user_data.login" placeholder="login" />
+          <br>
+          <input type="password" ng-model="user_data.password" placeholder="password" />
+          <br>
+          <input type="submit" value="login with credentials" />
+        </form>
       </tab>
 
       <tab ng-controller="ConsoleCtrl">
