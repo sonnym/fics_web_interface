@@ -46,3 +46,5 @@ var fics_client = (function() {
 
   return this;
 })();
+
+angular.module("fics_client", ["ui.bootstrap"]);

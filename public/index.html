@@ -1,13 +1,20 @@
 <html>
   <head>
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
     <script src="//cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap.min.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+
     <script src="scripts/application.js"></script>
   </head>
-  <body>
-    <iframe src="http://nodeknockout.com/iframe/temporary-team-name" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>
-    <input type="button" value="login as guest" onclick="fics_client.login_as_guest()" />
+  <body ng-app="fics_client">
+    <tabset>
+      <tab>
+        <tab-heading>
+          log in
+        </tab-heading>
+        <input type="button" value="login as guest" onclick="fics_client.login_as_guest()" />
+      </tab>
+    </tabset>
   </body>
 </html>
