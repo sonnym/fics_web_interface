@@ -16,7 +16,9 @@
     "express": "*",
 
     "sockjs": "0.3.4",
-    "rbytes": "*"
+    "rbytes": "*",
+
+    "q": "*"
   },
   "engines": {
     "node": "0.10.x"
