@@ -1,4 +1,12 @@
-var fics_client = (function() {
+angular.module("fics_client", ["ui.bootstrap", "proxy"]);
+
+function LoginCtrl($scope, Proxy) {
+  $scope.login_as_guest = function() {
+    Proxy.login_as_guest();
+  };
+};
+
+angular.module("proxy", []).factory("Proxy", function() {
   var socket = this.socket = new SockJS("/socket");
   var socket_open = false;
 
@@ -45,6 +53,4 @@ var fics_client = (function() {
   }
 
   return this;
-})();
-
-angular.module("fics_client", ["ui.bootstrap"]);
+});

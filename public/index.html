@@ -9,11 +9,11 @@
   </head>
   <body ng-app="fics_client">
     <tabset>
-      <tab>
+      <tab ng-controller="LoginCtrl">
         <tab-heading>
           log in
         </tab-heading>
-        <input type="button" value="login as guest" onclick="fics_client.login_as_guest()" />
+        <input type="button" value="login as guest" ng-click="login_as_guest()" />
       </tab>
     </tabset>
   </body>
