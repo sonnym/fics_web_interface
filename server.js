@@ -1,26 +1,38 @@
 // https://github.com/nko4/website/blob/master/module/README.md#nodejs-knockout-deploy-check-ins
 require('nko')('JW34roQoNViCvrXp');
 
+var http = require("http");
+
+var express = require("express");
+var sockjs = require("sockjs");
+
 var isProduction = (process.env.NODE_ENV === 'production');
-var http = require('http');
 var port = (isProduction ? 80 : 8000);
+var sockjs_opts = { sockjs_url: "http://cdn.sockjs.org/sockjs-0.3.4.min.js" }
 
-http.createServer(function (req, res) {
-  // http://blog.nodeknockout.com/post/35364532732/protip-add-the-vote-ko-badge-to-your-app
-  var voteko = '<iframe src="http://nodeknockout.com/iframe/temporary-team-name" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe>';
+var app = express();
+var socket = sockjs.createServer(sockjs_opts);
 
-  res.writeHead(200, {'Content-Type': 'text/html'});
-  res.end('<html><body>' + voteko + '</body></html>\n');
-}).listen(port, function(err) {
-  if (err) { console.error(err); process.exit(-1); }
+app.use(express.static(__dirname + '/public'));
 
-  // if run as root, downgrade to the owner of this file
-  if (process.getuid() === 0) {
-    require('fs').stat(__filename, function(err, stats) {
-      if (err) { return console.error(err); }
-      process.setuid(stats.uid);
-    });
-  }
+var server = http.createServer(app);
 
-  console.log('Server running at http://0.0.0.0:' + port + '/');
+server.addListener("upgrade", function(req, res){
+  res.end();
 });
+
+socket.on("connection", function(connection) {
+  console.log("connection: " + connection);
+
+  connection.on("data", function(message) {
+    console.log("message: " + message);
+  });
+
+  connection.on("close", function() {
+    console.log("close: " + connection);
+  });
+});
+
+socket.installHandlers(server, { prefix: "/socket" });
+
+server.listen(port, "0.0.0.0");
