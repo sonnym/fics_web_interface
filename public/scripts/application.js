@@ -19,7 +19,7 @@ function ConsoleCtrl($scope, Console) {
   })();
 };
 
-function GlobalChatCtrl($scope, Chat) {
+function ChatCtrl($scope, Chat) {
   $scope.channels = function() {
     return Chat.channels();
   };
