@@ -20,12 +20,9 @@ function ConsoleCtrl($scope, Console) {
 };
 
 function GlobalChatCtrl($scope, Chat) {
-  $scope.channels = {};
-
-  (function updateChannels() {
-    $scope.channels = Chat.channels();
-    setTimeout(updateChannels, 1000);
-  })();
+  $scope.channels = function() {
+    return Chat.channels();
+  };
 }
 
 angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
@@ -48,6 +45,9 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
     var message = JSON.parse(e.data);
 
     switch(message.operation) {
+    case "login":
+      channel_list();
+      break;
     case "raw":
       Console.append(message.data);
       break;
@@ -77,6 +77,10 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
       else setTimeout(wait, 50);
     })();
   }
+
+  function channel_list() {
+    send_message("channel_list", {});
+  };
 
   return this;
 });
