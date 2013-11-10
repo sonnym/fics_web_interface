@@ -18,7 +18,8 @@
     "sockjs": "0.3.4",
     "rbytes": "*",
 
-    "q": "*"
+    "q": "*",
+    "underscore": "*"
   },
   "engines": {
     "node": "0.10.x"
