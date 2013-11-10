@@ -1,4 +1,4 @@
-angular.module("fics_client", ["ui.bootstrap", "proxy", "console", "chat", "observe"]);
+angular.module("fics_client", ["ui.bootstrap", "proxy", "user", "console", "chat", "observe"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
@@ -31,7 +31,7 @@ function ObservationCtrl($scope, Observe) {
   };
 }
 
-angular.module("proxy", []).factory("Proxy", function(Console, Chat, Observe) {
+angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Observe) {
   var socket = this.socket = new SockJS("/socket");
   var socket_open = false;
 
@@ -52,8 +52,11 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat, Observe) {
 
     switch(message.operation) {
     case "login":
+      User.set_username(message.data.username);
+
       channel_list();
       game_list();
+
       break;
     case "raw":
       Console.append(message.data);
@@ -97,6 +100,15 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat, Observe) {
   };
 
   return this;
+});
+
+angular.module("user", []).factory("User", function() {
+  var username = "";
+
+  return {
+    get_username: function() { return username },
+    set_username: function(val) { username = val }
+  };
 });
 
 angular.module("console", []).factory("Console", function() {
