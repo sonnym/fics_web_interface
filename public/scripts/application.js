@@ -1,4 +1,4 @@
-angular.module("fics_client", ["ui.bootstrap", "proxy", "console", "chat"]);
+angular.module("fics_client", ["ui.bootstrap", "proxy", "console", "chat", "observe"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
@@ -25,7 +25,13 @@ function GlobalChatCtrl($scope, Chat) {
   };
 }
 
-angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
+function ObservationCtrl($scope, Observe) {
+  $scope.games = function() {
+    return Observe.games();
+  };
+}
+
+angular.module("proxy", []).factory("Proxy", function(Console, Chat, Observe) {
   var socket = this.socket = new SockJS("/socket");
   var socket_open = false;
 
@@ -47,12 +53,16 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
     switch(message.operation) {
     case "login":
       channel_list();
+      game_list();
       break;
     case "raw":
       Console.append(message.data);
       break;
     case "channel_list":
       Chat.set_channels(message.data);
+      break;
+    case "game_list":
+      Observe.set_games(message.data);
       break;
     }
   };
@@ -82,6 +92,10 @@ angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
     send_message("channel_list", {});
   };
 
+  function game_list() {
+    send_message("game_list", {});
+  };
+
   return this;
 });
 
@@ -100,5 +114,14 @@ angular.module("chat", []).factory("Chat", function() {
   return {
     channels: function() { return channels },
     set_channels: function(val) { channels = val }
+  }
+});
+
+angular.module("observe", []).factory("Observe", function() {
+  var games;
+
+  return {
+    games: function() { return games },
+    set_games: function(val) { games = val }
   }
 });
