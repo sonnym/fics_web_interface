@@ -31,8 +31,8 @@
           chat
         </tab-heading>
         <ul>
-          <li ng-repeat="(number, name) in channels()">
-            {{number}} {{name}}
+          <li ng-repeat="channel in channels() | orderBy:parseInt(channel.number, 10)">
+            {{channel.number}} {{channel.name}}
           </li>
         </ul>
       </tab>
