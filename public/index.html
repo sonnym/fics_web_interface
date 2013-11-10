@@ -26,6 +26,17 @@
         </form>
       </tab>
 
+      <tab ng-controller="GlobalChatCtrl">
+        <tab-heading>
+          chat
+        </tab-heading>
+        <ul>
+          <li ng-repeat="(number, name) in channels()">
+            {{number}} {{name}}
+          </li>
+        </ul>
+      </tab>
+
       <tab ng-controller="ConsoleCtrl">
         <tab-heading>
           console

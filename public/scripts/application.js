@@ -1,4 +1,4 @@
-angular.module("fics_client", ["ui.bootstrap", "proxy", "console"]);
+angular.module("fics_client", ["ui.bootstrap", "proxy", "console", "chat"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
@@ -19,7 +19,16 @@ function ConsoleCtrl($scope, Console) {
   })();
 };
 
-angular.module("proxy", []).factory("Proxy", function(Console) {
+function GlobalChatCtrl($scope, Chat) {
+  $scope.channels = {};
+
+  (function updateChannels() {
+    $scope.channels = Chat.channels();
+    setTimeout(updateChannels, 1000);
+  })();
+}
+
+angular.module("proxy", []).factory("Proxy", function(Console, Chat) {
   var socket = this.socket = new SockJS("/socket");
   var socket_open = false;
 
@@ -41,6 +50,10 @@ angular.module("proxy", []).factory("Proxy", function(Console) {
     switch(message.operation) {
     case "raw":
       Console.append(message.data);
+      break;
+    case "channel_list":
+      Chat.set_channels(message.data);
+      break;
     }
   };
 
@@ -75,4 +88,13 @@ angular.module("console", []).factory("Console", function() {
     get: function() { return output },
     append: function(data) { output += data }
   };
+});
+
+angular.module("chat", []).factory("Chat", function() {
+  var channels;
+
+  return {
+    channels: function() { return channels },
+    set_channels: function(val) { channels = val }
+  }
 });
