@@ -1,14 +1,15 @@
 {
-  "name": "nko4-temporary-team-name",
-  "version": "0.0.0",
-  "description": "Temporary Team Name",
+  "name": "fics_web_interface",
+  "version": "0.0.1",
+  "author": "Sonny Michaud <michaud.sonny@gmail.com> (https://github.com/sonnym)",
+  "description": "A web interface for interacting with the Free Internet Chess Server.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:nko4/temporary-team-name.git"
+    "url": "git@github.com:sonnym/fics_web_interface"
   },
   "dependencies": {
     "nko": "*",
