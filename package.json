@@ -19,8 +19,7 @@
     "sockjs": "0.3.4",
     "rbytes": "*",
 
-    "q": "*",
-    "underscore": "*"
+    "fics": "*"
   },
   "engines": {
     "node": "0.10.x"
