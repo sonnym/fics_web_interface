@@ -4,23 +4,29 @@
   "author": "Sonny Michaud <michaud.sonny@gmail.com> (https://github.com/sonnym)",
   "description": "A web interface for interacting with the Free Internet Chess Server.",
   "main": "server.js",
+
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "postinstall": "./node_modules/.bin/bower install"
   },
+
   "repository": {
     "type": "git",
     "url": "git@github.com:sonnym/fics_web_interface"
   },
+
   "dependencies": {
     "nko": "*",
 
     "express": "*",
+    "bower": "*",
 
     "sockjs": "0.3.4",
     "rbytes": "*",
 
     "fics": "*"
   },
+
   "engines": {
     "node": "0.10.x"
   }

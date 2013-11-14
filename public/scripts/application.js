@@ -1,4 +1,4 @@
-angular.module("fics_client", ["ui.bootstrap", "proxy", "user", "console", "chat", "observe"]);
+angular.module("fics_client", ["ui.bootstrap.tabs", "proxy", "user", "console", "chat", "observe"]);
 
 function LoginCtrl($scope, Proxy) {
   $scope.login_as_guest = function() {
