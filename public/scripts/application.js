@@ -17,12 +17,7 @@ function LoginCtrl($scope, Proxy) {
 };
 
 function ConsoleCtrl($scope, Console) {
-  $scope.output = "";
-
-  (function updateOutput() {
-    $scope.output = Console.get();
-    setTimeout(updateOutput, 1000);
-  })();
+  $scope.output = Console.get;
 };
 
 function ChatCtrl($scope, Chat) {
