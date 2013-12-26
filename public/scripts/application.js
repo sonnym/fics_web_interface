@@ -23,6 +23,10 @@ function ChatCtrl($scope, Chat) {
   $scope.channels = function() {
     return Chat.channels();
   };
+
+  $scope.users = function() {
+    return Chat.users();
+  };
 }
 
 function ObservationCtrl($scope, Observe) {
@@ -54,6 +58,7 @@ angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Obser
     case "login":
       User.setUsername(message.data.username);
 
+      userList();
       channelList();
       gameList();
 
@@ -66,6 +71,9 @@ angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Obser
       break;
     case "gameList":
       Observe.setGames(message.data);
+      break;
+    case "userList":
+      Chat.setUsers(message.data);
       break;
     }
   };
@@ -95,6 +103,10 @@ angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Obser
     sendMessage("channelList", {});
   };
 
+  function userList() {
+    sendMessage("userList", {});
+  };
+
   function gameList() {
     sendMessage("gameList", {});
   };
@@ -122,9 +134,13 @@ angular.module("console", []).factory("Console", function() {
 
 angular.module("chat", []).factory("Chat", function() {
   var channels;
+  var users;
 
   return {
+    users: function() { return users },
     channels: function() { return channels },
+
+    setUsers: function(val) { users = val },
     setChannels: function(val) { channels = val }
   }
 });
