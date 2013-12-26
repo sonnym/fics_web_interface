@@ -1,5 +1,11 @@
 var ficsClient = angular.module("ficsClient", ["ui.bootstrap.tabs"]);
 
+ficsClient.run(["$rootScope", "User", function($rootScope, User) {
+  $rootScope.isLoggedIn = function() {
+    return angular.isDefined(User.getUsername());
+  }
+}]);
+
 function LoginCtrl($scope, Proxy) {
   $scope.loginAsGuest = function() {
     Proxy.login({});
@@ -115,7 +121,7 @@ ficsClient.factory("Proxy", function(Console, User, Chat, Observe) {
 });
 
 ficsClient.factory("User", function() {
-  var username = "";
+  var username;
 
   return {
     getUsername: function() { return username },

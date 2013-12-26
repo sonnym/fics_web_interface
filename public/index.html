@@ -9,7 +9,7 @@
   </head>
   <body ng-app="ficsClient">
     <tabset>
-      <tab ng-controller="LoginCtrl">
+      <tab ng-controller="LoginCtrl" ng-hide="isLoggedIn()">
         <tab-heading>
           log in
         </tab-heading>
@@ -26,7 +26,7 @@
         </form>
       </tab>
 
-      <tab ng-controller="ChatCtrl">
+      <tab ng-controller="ChatCtrl" ng-show="isLoggedIn()">
         <tab-heading>
           chat
         </tab-heading>
@@ -54,7 +54,7 @@
         </tabset>
       </tab>
 
-      <tab ng-controller="ObservationCtrl">
+      <tab ng-controller="ObservationCtrl" ng-show="isLoggedIn()">
         <tab-heading>
           watch
         </tab-heading>
