@@ -1,6 +1,3 @@
-// https://github.com/nko4/website/blob/master/module/README.md#nodejs-knockout-deploy-check-ins
-require('nko')('JW34roQoNViCvrXp');
-
 var http = require("http");
 
 var express = require("express");

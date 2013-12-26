@@ -16,8 +16,6 @@
   },
 
   "dependencies": {
-    "nko": "*",
-
     "express": "*",
     "bower": "*",
 
