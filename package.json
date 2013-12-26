@@ -17,6 +17,8 @@
 
   "dependencies": {
     "express": "*",
+    "connect-mincer": "*",
+
     "bower": "*",
 
     "sockjs": "0.3.4",
