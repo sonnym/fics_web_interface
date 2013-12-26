@@ -58,11 +58,18 @@
         <tab-heading>
           watch
         </tab-heading>
-        <ul>
-          <li ng-repeat="game in games()">
-            {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
-          </li>
-        </ul>
+        <tabset>
+          <tab>
+            <tab-heading>
+              games
+            </tab-heading>
+            <ul>
+              <li ng-repeat="game in games()">
+                {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
+              </li>
+            </ul>
+          </tab>
+        </tabset>
       </tab>
 
       <tab ng-controller="ConsoleCtrl">
