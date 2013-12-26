@@ -77,6 +77,7 @@
           <tab ng-repeat="game in observations()">
             <tab-heading>
               {{game.white.name}} v. {{game.black.name}}
+              <a href="#" ng-click="stopWatching(game.number)">x</a>
             </tab-heading>
             This game is being observed.
           </tab>
