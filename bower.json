@@ -11,10 +11,10 @@
   ],
 
   "dependencies": {
-    "angular": "1.2.0",
+    "angular": "1.2.6",
 
-    "bootstrap": "2.3.1",
-    "angular-ui-bootstrap": "9eca35a8de12287b0ec70b01fac4b243936c8d08"
+    "bootstrap": "3.0.3",
+    "angular-ui-bootstrap": "master"
   },
 
   "license": "MIT",
