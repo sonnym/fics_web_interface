@@ -21,19 +21,12 @@ function ConsoleCtrl($scope, Console) {
 };
 
 function ChatCtrl($scope, Chat) {
-  $scope.channels = function() {
-    return Chat.channels();
-  };
-
-  $scope.users = function() {
-    return Chat.users();
-  };
+  $scope.channels = Chat.channels;
+  $scope.users = Chat.users;
 }
 
 function ObservationCtrl($scope, Observe) {
-  $scope.games = function() {
-    return Observe.games();
-  };
+  $scope.games = Observe.games;
 }
 
 ficsClient.factory("Proxy", function(Console, User, Chat, Observe) {
