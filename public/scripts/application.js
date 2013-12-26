@@ -1,12 +1,12 @@
-angular.module("fics_client", ["ui.bootstrap.tabs", "proxy", "user", "console", "chat", "observe"]);
+angular.module("ficsClient", ["ui.bootstrap.tabs", "proxy", "user", "console", "chat", "observe"]);
 
 function LoginCtrl($scope, Proxy) {
-  $scope.login_as_guest = function() {
+  $scope.loginAsGuest = function() {
     Proxy.login({});
   };
 
-  $scope.login_with_credentials = function(user_data) {
-    Proxy.login(user_data);
+  $scope.loginWithCredentials = function(userData) {
+    Proxy.login(userData);
   };
 };
 
@@ -33,14 +33,14 @@ function ObservationCtrl($scope, Observe) {
 
 angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Observe) {
   var socket = this.socket = new SockJS("/socket");
-  var socket_open = false;
+  var socketOpen = false;
 
   socket.onopen = function() {
-    socket_open = true;
+    socketOpen = true;
   };
 
   socket.onclose = function() {
-    socket_open = false;
+    socketOpen = false;
   };
 
   socket.onmessage = function(e) {
@@ -52,51 +52,51 @@ angular.module("proxy", []).factory("Proxy", function(Console, User, Chat, Obser
 
     switch(message.operation) {
     case "login":
-      User.set_username(message.data.username);
+      User.setUsername(message.data.username);
 
-      channel_list();
-      game_list();
+      channelList();
+      gameList();
 
       break;
     case "raw":
       Console.append(message.data);
       break;
-    case "channel_list":
-      Chat.set_channels(message.data);
+    case "channelList":
+      Chat.setChannels(message.data);
       break;
-    case "game_list":
-      Observe.set_games(message.data);
+    case "gameList":
+      Observe.setGames(message.data);
       break;
     }
   };
 
-  this.login = function(user_data) {
-    send_message("login", user_data);
+  this.login = function(userData) {
+    sendMessage("login", userData);
   };
 
-  function send_message(operation, params) {
-    ensure_socket(function() {
+  function sendMessage(operation, params) {
+    ensureSocket(function() {
       socket.send(JSON.stringify({ operation: operation, params: params }));
     });
   }
 
-  function ensure_socket(cb) {
-    wait_for(function() { return socket_open; }, cb)
+  function ensureSocket(cb) {
+    await(function() { return socketOpen; }, cb)
   }
 
-  function wait_for(condition, cb) {
+  function await(condition, cb) {
     (function wait() {
       if (condition()) cb();
       else setTimeout(wait, 50);
     })();
   }
 
-  function channel_list() {
-    send_message("channel_list", {});
+  function channelList() {
+    sendMessage("channelList", {});
   };
 
-  function game_list() {
-    send_message("game_list", {});
+  function gameList() {
+    sendMessage("gameList", {});
   };
 
   return this;
@@ -106,8 +106,8 @@ angular.module("user", []).factory("User", function() {
   var username = "";
 
   return {
-    get_username: function() { return username },
-    set_username: function(val) { username = val }
+    getUsername: function() { return username },
+    setUsername: function(val) { username = val }
   };
 });
 
@@ -125,7 +125,7 @@ angular.module("chat", []).factory("Chat", function() {
 
   return {
     channels: function() { return channels },
-    set_channels: function(val) { channels = val }
+    setChannels: function(val) { channels = val }
   }
 });
 
@@ -134,6 +134,6 @@ angular.module("observe", []).factory("Observe", function() {
 
   return {
     games: function() { return games },
-    set_games: function(val) { games = val }
+    setGames: function(val) { games = val }
   }
 });

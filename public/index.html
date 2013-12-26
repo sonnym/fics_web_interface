@@ -7,20 +7,20 @@
 
     <script src="/scripts/application.js"></script>
   </head>
-  <body ng-app="fics_client">
+  <body ng-app="ficsClient">
     <tabset>
       <tab ng-controller="LoginCtrl">
         <tab-heading>
           log in
         </tab-heading>
-        <input type="button" value="login as guest" ng-click="login_as_guest()" />
+        <input type="button" value="login as guest" ng-click="loginAsGuest()" />
 
         <div>- or -</div>
 
-        <form ng-submit="login_with_credentials(user_data)">
-          <input type="text" ng-model="user_data.login" placeholder="login" />
+        <form ng-submit="loginWithCredentials(userData)">
+          <input type="text" ng-model="userData.login" placeholder="login" />
           <br>
-          <input type="password" ng-model="user_data.password" placeholder="password" />
+          <input type="password" ng-model="userData.password" placeholder="password" />
           <br>
           <input type="submit" value="login with credentials" />
         </form>
