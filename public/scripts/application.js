@@ -27,6 +27,11 @@ function ChatCtrl($scope, Chat) {
 
 function ObservationCtrl($scope, Observe) {
   $scope.games = Observe.games;
+  $scope.observations = Observe.getWatching;
+
+  $scope.watch = function(gameNumber) {
+    Observe.watch(gameNumber);
+  };
 }
 
 ficsClient.factory("Proxy", function(Console, User, Chat, Observe) {
@@ -141,9 +146,17 @@ ficsClient.factory("Chat", function() {
 
 ficsClient.factory("Observe", function() {
   var games;
+  var watching = [];
 
   return {
     games: function() { return games },
-    setGames: function(val) { games = val }
+    setGames: function(val) { games = val },
+
+    watch: function(gameNumber) {
+      if (watching.indexOf(gameNumber) === -1) {
+        watching.push(gameNumber);
+      }
+    },
+    getWatching: function() { return watching }
   }
 });

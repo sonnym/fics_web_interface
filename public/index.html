@@ -65,9 +65,18 @@
             </tab-heading>
             <ul>
               <li ng-repeat="game in games()">
-                {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
+                <a href="#" ng-click="watch(game.number)">
+                  {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
+                </a>
               </li>
             </ul>
+          </tab>
+
+          <tab ng-repeat="game in observations()">
+            <tab-heading>
+              {{game}}
+            </tab-heading>
+            This game is being observed.
           </tab>
         </tabset>
       </tab>
