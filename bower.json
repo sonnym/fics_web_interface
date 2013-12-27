@@ -14,7 +14,9 @@
     "angular": "1.2.6",
 
     "bootstrap": "3.0.3",
-    "angular-ui-bootstrap": "master"
+    "angular-ui-bootstrap": "master",
+
+    "nvd3": "*"
   },
 
   "license": "MIT",
