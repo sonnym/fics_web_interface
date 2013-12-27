@@ -22,6 +22,10 @@ var connectMincer = new ConnectMincer({
   paths: [ "lib/assets/js" ]
 });
 
+app.get("/", function(req, res) {
+  res.render(path.join(__dirname, "lib", "templates", "index.ejs"));
+});
+
 app.use(connectMincer.assets());
 app.use("/assets", connectMincer.createServer());
 
