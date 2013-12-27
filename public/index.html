@@ -79,7 +79,12 @@
               {{game.white.name}} v. {{game.black.name}}
               <a href="#" ng-click="stopWatching(game.number)">x</a>
             </tab-heading>
-            This game is being observed.
+            <div>
+              {{game.metaData.position}}
+            </div>
+            <div>
+              {{game.metaData.currentMove}}
+            </div>
           </tab>
         </tabset>
       </tab>
