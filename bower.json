@@ -1,7 +1,7 @@
 {
   "name": "fics_web_interface",
   "version": "0.0.1",
-  "des cription": "A web interface for interacting with the Free Internet Chess Server.",
+  "description": "A web interface for interacting with the Free Internet Chess Server.",
   "homepage": "https://github.com/sonnym/fics_web_interface",
   "author": "Sonny Michaud <michaud.sonny@gmail.com> (https://github.com/sonnym)",
 
