@@ -28,6 +28,15 @@
         </form>
       </tab>
 
+      <tab ng-controller="PlayCtrl" ng-show="isLoggedIn()">
+        <tab-heading>
+          play
+        </tab-heading>
+        <li ng-repeat="game in sought()">
+          {{game}}
+        </li>
+      </tab>
+
       <tab ng-controller="ChatCtrl" ng-show="isLoggedIn()">
         <tab-heading>
           chat
