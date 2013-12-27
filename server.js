@@ -22,12 +22,12 @@ var connectMincer = new ConnectMincer({
   paths: [ "lib/assets/js" ]
 });
 
+app.use(connectMincer.assets());
+app.use("/assets", connectMincer.createServer());
+
 app.get("/", function(req, res) {
   res.render(path.join(__dirname, "lib", "templates", "index.ejs"));
 });
-
-app.use(connectMincer.assets());
-app.use("/assets", connectMincer.createServer());
 
 var socket = sockjs.createServer(sockjs_opts);
 
