@@ -17,6 +17,7 @@
 
   "dependencies": {
     "express": "*",
+    "ejs": "*",
     "connect-mincer": "*",
 
     "bower": "*",

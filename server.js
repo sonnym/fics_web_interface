@@ -25,6 +25,10 @@ var connectMincer = new ConnectMincer({
 app.use(connectMincer.assets());
 app.use("/assets", connectMincer.createServer());
 
+app.get("/", function(req, res) {
+  res.render(path.join(__dirname, "lib", "templates", "index.ejs"));
+});
+
 var socket = sockjs.createServer(sockjs_opts);
 
 app.use(express.static(__dirname + '/public'));
