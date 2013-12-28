@@ -13,7 +13,7 @@
   "dependencies": {
     "angular": "1.2.6",
 
-    "bootstrap": "3.0.3",
+    "bootstrap": "2.3.2",
     "angular-ui-bootstrap": "master",
 
     "nvd3": "*"
