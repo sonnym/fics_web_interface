@@ -46,6 +46,7 @@
 <div class="name-tag">
   <div class="move-indicator" ng-class="{ on: (move === 'B') }">&nbsp;</div>
   {{black.name}} ({{black.rating}})
+  <timer start="time.black" tick="move === 'B'"></timer>
 </div>
 
 <div ng-repeat="rank in boardState" class="rank">
@@ -60,4 +61,5 @@
 <div class="name-tag">
   <div class="move-indicator" ng-class="{ on: (move === 'W') }">&nbsp;</div>
   {{white.name}} ({{white.rating}})
+  <timer start="time.white" tick="move === 'W'"></timer>
 </div>
