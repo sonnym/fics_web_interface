@@ -5,5 +5,7 @@ ficsClient.run(["$rootScope", "User", function($rootScope, User) {
     $rootScope.isLoggedIn = angular.isDefined(username);
   }, true);
 
-  $rootScope.isGuest = User.isGuest;
+  $rootScope.$watch(User.isGuest, function(isGuest) {
+    $rootScope.isGuest = isGuest;
+  });
 }]);

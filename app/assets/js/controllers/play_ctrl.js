@@ -1,3 +1,5 @@
 ficsClient.controller("PlayCtrl", ["$scope", "Play", function($scope, Play) {
-  $scope.sought = Play.getSought;
+  $scope.$watch(Play.getSought, function(sought) {
+    $scope.sought = sought;
+  });
 }]);

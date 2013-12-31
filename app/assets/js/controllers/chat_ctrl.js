@@ -1,14 +1,21 @@
 ficsClient.controller("ChatCtrl", ["$scope", "Chat", function($scope, Chat) {
-  $scope.users = Chat.users;
+  $scope.$watch(Chat.users, function(users) {
+    $scope.users = users;
+  });
 
-  $scope.channels = Chat.channels;
-  $scope.subscribedChannels = Chat.subscribedChannels;
+  $scope.$watch(Chat.channels, function(channels) {
+    $scope.channels = channels;
+  });
+
+  $scope.$watch(Chat.subscribedChannels, function(channels) {
+    $scope.subscribedChannels = channels;
+  });
 
   $scope.joinChannel = Chat.joinChannel;
   $scope.leaveChannel = Chat.leaveChannel;
 
   $scope.channelName = function(channelNumber) {
-    return _.detect($scope.channels(), function(channel) {
+    return _.detect($scope.channels, function(channel) {
       return channelNumber === channel.number;
     }).name;
   };

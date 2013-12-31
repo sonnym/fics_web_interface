@@ -7,9 +7,9 @@
       <tab-heading>
         games
       </tab-heading>
-      <pagination class="pagination-sm" total-items="games().length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
-      <ul ng-if="games()">
-        <li ng-repeat="game in games() | orderByCombinedRating | paginationSubset:20:currentPage">
+      <pagination class="pagination-sm" total-items="games.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
+      <ul ng-if="games">
+        <li ng-repeat="game in games | orderByCombinedRating | paginationSubset:20:currentPage">
           <a href="#" ng-click="watch(game.number)">
             {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
           </a>
@@ -17,7 +17,7 @@
       </ul>
     </tab>
 
-    <tab ng-repeat="game in observations()">
+    <tab ng-repeat="game in observations">
       <tab-heading>
         {{game.white.name}} v. {{game.black.name}}
         <a href="#" ng-click="stopWatching(game.number)">x</a>
@@ -59,7 +59,7 @@
             <div class="observation-chat">
               <div class="observers">
                 <ul>
-                  <li ng-repeat="observer in game.observers | orderBy:'toString()'">
+                  <li ng-repeat="observer in game.observers | orderBy:'toString'">
                     {{observer}}
                   </li>
                 </ul>
@@ -70,7 +70,7 @@
                   {{message.user}} &gt; {{message.message}}
                 </div>
 
-                <div class="message" ng-if="!isGuest()">
+                <div class="message" ng-if="!isGuest">
                   <textarea ng-model="game.chat.message" ng-keyup="checkForNewline($event, game)" placeholder="type to chat"></textarea>
                   <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
 
