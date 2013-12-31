@@ -19,7 +19,7 @@ var connectMincer = new ConnectMincer({
   production: false,
   mountPoint: "/assets",
   manifestFile: path.join(__dirname, "public/assets/manifest.json"),
-  paths: [ "lib/assets/js" ]
+  paths: [ "lib/assets/css", "lib/assets/js" ]
 });
 
 app.use(connectMincer.assets());
