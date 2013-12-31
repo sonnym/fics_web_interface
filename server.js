@@ -19,14 +19,14 @@ var connectMincer = new ConnectMincer({
   production: false,
   mountPoint: "/assets",
   manifestFile: path.join(__dirname, "public/assets/manifest.json"),
-  paths: [ "lib/assets/css", "lib/assets/js" ]
+  paths: [ "app/assets/css", "app/assets/js" ]
 });
 
 app.use(connectMincer.assets());
 app.use("/assets", connectMincer.createServer());
 
 app.get("/", function(req, res) {
-  res.render(path.join(__dirname, "lib", "templates", "index.ejs"));
+  res.render(path.join(__dirname, "app", "templates", "index.ejs"));
 });
 
 var socket = sockjs.createServer(sockjs_opts);
