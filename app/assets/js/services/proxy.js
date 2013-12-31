@@ -1,4 +1,4 @@
-ficsClient.factory("Proxy", function() {
+ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
   var socket = this.socket = new SockJS("/socket");
   var socketOpen = false;
 
@@ -20,6 +20,7 @@ ficsClient.factory("Proxy", function() {
     var message = JSON.parse(e.data);
 
     messageHandlers[message.operation](message.data);
+    $rootScope.$digest();
   }
 
   function ensureSocket(cb) {
@@ -41,4 +42,4 @@ ficsClient.factory("Proxy", function() {
       });
     }
   };
-});
+}]);
