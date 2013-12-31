@@ -70,7 +70,7 @@
                   {{message.user}} &gt; {{message.message}}
                 </div>
 
-                <div class="message">
+                <div class="message" ng-if="!isGuest()">
                   <textarea ng-model="game.chat.message" ng-keyup="checkForNewline($event, game)" placeholder="type to chat"></textarea>
                   <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
 

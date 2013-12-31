@@ -1,5 +1,5 @@
 ficsClient.factory("User", ["Proxy", function(Proxy) {
-  var username;
+  var username, isGuest;
 
   Proxy.registerMessage("login", function(data) {
     username = data.username;
@@ -15,9 +15,14 @@ ficsClient.factory("User", ["Proxy", function(Proxy) {
 
   return {
     login: function(userData) {
+      if (!(userData.login && userData.password)) {
+        isGuest = true;
+      }
+
       Proxy.sendMessage("login", userData);
     },
 
     getUsername: function() { return username },
+    isGuest: function() { return isGuest }
   };
 }]);
