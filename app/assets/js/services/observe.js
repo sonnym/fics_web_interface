@@ -16,6 +16,8 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
       setGamePosition(game, gameData.update);
     } else if (gameData.update.message) {
       storeGameMessage(game, gameData.update);
+    } else {
+      game.chat = { mode: "whisper" };
     }
   });
 
@@ -41,6 +43,10 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
         watching.push(game);
         Proxy.sendMessage("observe", { number: gameNumber });
       }
+    },
+
+    sendMessage: function(gameNumber, options) {
+      Proxy.sendMessage(options.mode, { number: gameNumber, message: options.message });
     },
 
     unWatch: function(gameNumber) {

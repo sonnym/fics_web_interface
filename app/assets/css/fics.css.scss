@@ -1,0 +1,17 @@
+.observation-chat {
+  .observers {
+    width: 30%;
+    float: left;
+  }
+
+  .messages {
+    width: 70%;
+    float: left;
+
+    .message {
+      textarea {
+        width: 300px;
+      }
+    }
+  }
+}

@@ -55,16 +55,30 @@
             <tab-heading>
               chat
             </tab-heading>
-            <div style="width: 30%; float: left">
-              <ul>
-                <li ng-repeat="observer in game.observers | orderBy:'toString()'">
-                  {{observer}}
-                </li>
-              </ul>
-            </div>
-            <div style="width: 70%; float: left">
-              <div ng-repeat="message in game.messages">
-                {{message.user}} &gt; {{message.message}}
+
+            <div class="observation-chat">
+              <div class="observers">
+                <ul>
+                  <li ng-repeat="observer in game.observers | orderBy:'toString()'">
+                    {{observer}}
+                  </li>
+                </ul>
+              </div>
+
+              <div class="messages">
+                <div ng-repeat="message in game.messages">
+                  {{message.user}} &gt; {{message.message}}
+                </div>
+
+                <div class="message">
+                  <textarea ng-model="game.chat.message" ng-keyup="checkForNewline($event, game)" placeholder="type to chat"></textarea>
+                  <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
+
+                  <div class="btn-group">
+                    <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'whisper'">Whisper</button>
+                    <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'kibitz'">Kibitz</button>
+                  </div>
+                </div>
               </div>
             </div>
           </tab>
