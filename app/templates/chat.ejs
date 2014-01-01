@@ -35,13 +35,13 @@
 
   <div style="width: 65%; float: left">
     <tabset>
-     <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
-       <tab-heading>
-         {{channelNumber}}: {{channelName(channelNumber)}}
-         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
-       </tab-heading>
-       <pre></pre>
-     </tab>
+      <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
+        <tab-heading>
+          {{channelNumber}}: {{channelName(channelNumber)}}
+          <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
+        </tab-heading>
+        <pre></pre>
+      </tab>
     </tabset>
   </div>
 </tab>
