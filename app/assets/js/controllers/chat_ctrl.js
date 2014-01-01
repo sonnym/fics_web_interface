@@ -11,6 +11,10 @@ ficsClient.controller("ChatCtrl", ["$scope", "Chat", function($scope, Chat) {
     $scope.subscribedChannels = channels;
   });
 
+  $scope.$watch(Chat.messages, function(messages) {
+    $scope.messages = messages;
+  });
+
   $scope.joinChannel = Chat.joinChannel;
   $scope.leaveChannel = Chat.leaveChannel;
 

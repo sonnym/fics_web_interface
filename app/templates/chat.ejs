@@ -35,12 +35,24 @@
 
   <div style="width: 65%; float: left">
     <tabset>
+      <tab>
+        <tab-heading>
+          global
+        </tab-heading>
+        <div ng-repeat="message in messages.global">
+          <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
+          <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
+        </div>
+      </tab>
+
       <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
         <tab-heading>
           {{channelNumber}}: {{channelName(channelNumber)}}
           <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
         </tab-heading>
-        <pre></pre>
+        <div ng-if="messages[channelNumber]" ng-repeat="message in messages[channelNumber]">
+          {{message.user}} &gt; {{message.message}}
+        </div>
       </tab>
     </tabset>
   </div>
