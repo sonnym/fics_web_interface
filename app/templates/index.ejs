@@ -9,12 +9,18 @@
     <%- js("application.js") %>
   </head>
   <body ng-app="ficsClient">
-    <tabset>
-      <%- include login.ejs %>
-      <%- include play.ejs %>
-      <%- include chat.ejs %>
-      <%- include observe.ejs %>
-      <%- include console.ejs %>
-    </tabset>
+    <div class="header">
+      <h2>FICS Web Client</h2>
+    </div>
+
+    <div class="content">
+      <tabset>
+        <%- include login.ejs %>
+        <%- include play.ejs %>
+        <%- include chat.ejs %>
+        <%- include observe.ejs %>
+        <%- include console.ejs %>
+      </tabset>
+    </div>
   </body>
 </html>
