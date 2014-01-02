@@ -70,6 +70,10 @@ ficsClient.directive("timer", ["$window", function($window) {
       function startTick() {
         tickInterval = $window.setInterval(function() {
           scope.$apply(function() {
+            if (scope.currentTime === 0) {
+              return;
+            }
+
             scope.currentTime--;
           });
         }, 1000);
