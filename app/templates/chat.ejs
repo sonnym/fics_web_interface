@@ -42,6 +42,7 @@
         <tab-heading>
           global
         </tab-heading>
+
         <div ng-repeat="message in messages.global">
           <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
           <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
