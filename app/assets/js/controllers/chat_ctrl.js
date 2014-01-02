@@ -18,6 +18,9 @@ ficsClient.controller("ChatCtrl", ["$scope", "Chat", function($scope, Chat) {
   $scope.joinChannel = Chat.joinChannel;
   $scope.leaveChannel = Chat.leaveChannel;
 
+  $scope.startPrivateMessage = Chat.startPrivateMessage;
+  $scope.closePrivateMessage = Chat.closePrivateMessage;
+
   $scope.channelName = function(channelNumber) {
     return _.detect($scope.channels, function(channel) {
       return channelNumber === channel.number;

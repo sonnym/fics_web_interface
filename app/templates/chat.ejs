@@ -25,8 +25,11 @@
         </tab-heading>
         <pagination class="pagination-sm" total-items="users.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
         <ul ng-if="users" class="user-list">
-          <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage">
-            {{user.name}} ({{user.rating}})
+          <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown">
+            <a class="dropdown-toggle">{{user.name}} ({{user.rating}})</a>
+            <ul class="dropdown-menu">
+              <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
+            </ul>
           </li>
         </ul>
       </tab>
@@ -51,6 +54,16 @@
           <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
         </tab-heading>
         <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
+          {{message.user}} &gt; {{message.message}}
+        </div>
+      </tab>
+
+      <tab ng-repeat="(username, messages) in messages.user">
+        <tab-heading>
+          {{username}}
+          <a href="#" ng-click="closePrivateMessage(username)">x</a>
+        </tab-heading>
+        <div ng-repeat="message in messages">
           {{message.user}} &gt; {{message.message}}
         </div>
       </tab>

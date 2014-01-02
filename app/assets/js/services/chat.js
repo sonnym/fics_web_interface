@@ -53,6 +53,14 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
     leaveChannel: function(channelNumber) {
       Proxy.sendMessage("leaveChannel", { number: channelNumber });
       subscribedChannels = _.without(subscribedChannels, channelNumber);
+    },
+
+    startPrivateMessage: function(username) {
+      chatMessages.user[username] = chatMessages.user[username] || [];
+    },
+
+    closePrivateMessage: function(username) {
+      delete chatMessages.user[username];
     }
   }
 }]);
