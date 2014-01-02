@@ -53,6 +53,7 @@
           {{channelNumber}}: {{channelName(channelNumber)}}
           <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
         </tab-heading>
+
         <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
           {{message.user}} &gt; {{message.message}}
         </div>
@@ -63,6 +64,7 @@
           {{username}}
           <a href="#" ng-click="closePrivateMessage(username)">x</a>
         </tab-heading>
+
         <div ng-repeat="message in messages">
           {{message.user}} &gt; {{message.message}}
         </div>
