@@ -19,8 +19,9 @@ ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
 
     var message = JSON.parse(e.data);
 
-    messageHandlers[message.operation](message.data);
-    $rootScope.$digest();
+    $rootScope.$apply(function() {
+      messageHandlers[message.operation](message.data);
+    });
   }
 
   function ensureSocket(cb) {
