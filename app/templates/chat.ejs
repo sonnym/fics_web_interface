@@ -47,6 +47,13 @@
           <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
           <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
         </div>
+
+        <div class="message" ng-controller="MessageCtrl">
+          <textarea ng-model="message" placeholder="type to chat"></textarea>
+          <button class="btn btn-primary" ng-model="_" ng-click="shout(message, isIt)">Submit [Enter]</button>
+
+          <button type="button" class="btn btn-primary" ng-model="isIt" btn-checkbox>it</button>
+        </div>
       </tab>
 
       <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">

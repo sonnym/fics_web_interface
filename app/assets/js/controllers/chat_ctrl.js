@@ -21,6 +21,7 @@ ficsClient.controller("ChatCtrl", ["$scope", "Chat", function($scope, Chat) {
   $scope.startPrivateMessage = Chat.startPrivateMessage;
   $scope.closePrivateMessage = Chat.closePrivateMessage;
 
+  $scope.shout = Chat.shout;
   $scope.sendMessage = Chat.sendMessage;
 
   $scope.channelName = function(channelNumber) {

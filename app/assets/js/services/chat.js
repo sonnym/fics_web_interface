@@ -45,6 +45,10 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
 
     messages: function() { return chatMessages },
 
+    shout: function(message, it) {
+      Proxy.sendMessage("shout", { message: message, it: it });
+    },
+
     joinChannel: function(channelNumber) {
       Proxy.sendMessage("joinChannel", { number: channelNumber });
       subscribedChannels = _.union(subscribedChannels, [channelNumber]);
