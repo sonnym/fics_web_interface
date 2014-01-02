@@ -57,6 +57,11 @@
         <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
           {{message.user}} &gt; {{message.message}}
         </div>
+
+        <div class="message" ng-controller="MessageCtrl">
+          <textarea ng-model="message" placeholder="type to chat"></textarea>
+          <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(channelNumber, message)">Submit [Enter]</button>
+        </div>
       </tab>
 
       <tab ng-repeat="(username, messages) in messages.user">
@@ -67,6 +72,11 @@
 
         <div ng-repeat="message in messages">
           {{message.user}} &gt; {{message.message}}
+        </div>
+
+        <div class="message" ng-controller="MessageCtrl">
+          <textarea ng-model="message" placeholder="type to chat"></textarea>
+          <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(username, message)">Submit [Enter]</button>
         </div>
       </tab>
     </tabset>
