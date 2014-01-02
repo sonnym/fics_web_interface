@@ -5,7 +5,7 @@ ficsClient.directive("board", function() {
 
   return {
     restrict: "E",
-    scope: { fen: "=", white: "=", black: "=", move: "=", time: "=" },
+    scope: { fen: "=", white: "=", black: "=", move: "=", time: "=", complete: "=" },
 
     link: function(scope, element, attrs) {
       scope.$watch("fen", function(newVal, oldVal) {

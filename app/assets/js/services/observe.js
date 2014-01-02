@@ -99,5 +99,7 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
     } else {
       game.metaData = { result: result };
     }
+
+    game.isComplete = true;
   }
 }]);
