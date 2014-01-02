@@ -45,7 +45,13 @@ ficsClient.directive("timer", ["$window", function($window) {
     scope: { start: "=", tick: "=" },
 
     link: function(scope, element, attrs) {
-      var timeoutId;
+      var tickInterval;
+
+      scope.currentTime = scope.start;
+
+      if (scope.tick) {
+        startTick();
+      }
 
       scope.$watch("start", function(newVal) {
         scope.currentTime = newVal;
@@ -53,18 +59,24 @@ ficsClient.directive("timer", ["$window", function($window) {
 
       scope.$watch("tick", function(newVal) {
         if (newVal) {
-          timeoutId = $window.setTimeout(function() {
-            scope.currentTime -= 1;
-          }, 1000);
+          startTick();
         } else {
-          clearTimeout();
+          stopTick();
         }
       });
 
-      scope.$on("destroy", clearTimeout);
+      scope.$on("destroy", stopTick);
 
-      function clearTimeout() {
-        $window.clearTimeout(timeoutId);
+      function startTick() {
+        tickInterval = $window.setInterval(function() {
+          scope.$apply(function() {
+            scope.currentTime--;
+          });
+        }, 1000);
+      }
+
+      function stopTick() {
+        $window.clearInterval(tickInterval);
       }
     },
 
