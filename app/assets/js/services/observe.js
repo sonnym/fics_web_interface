@@ -16,6 +16,8 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
       setGamePosition(game, gameData.update);
     } else if (gameData.update.message) {
       storeGameMessage(game, gameData.update);
+    } else if (gameData.update.result) {
+      setGameResult(game, gameData.update.result);
     } else {
       game.chat = { mode: "whisper" };
     }
@@ -30,8 +32,6 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
     var game = findGame(watching, gameData.number);
     game.observers = gameData.observers;
   });
-
-  Proxy.registerMessage("observeEnd", unWatch);
 
   return {
     games: function() { return games },
@@ -64,9 +64,7 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
   }
 
   function unWatch(gameNumber) {
-    watching = _.reject(watching, function(game) {
-      return gameNumber === game.number;
-    });
+    delete watching[gameNumber];
   }
 
   function setGamePosition(game, metaData) {
@@ -92,6 +90,14 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
       game.messages.push(message);
     } else {
       game.messages = [message];
+    }
+  }
+
+  function setGameResult(game, result) {
+    if (game.metaData) {
+      game.metaData.result = result;
+    } else {
+      game.metaData = { result: result };
     }
   }
 }]);
