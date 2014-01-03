@@ -17,6 +17,9 @@
 
   "dependencies": {
     "express": "*",
+
+    "bunyan": "*",
+
     "ejs": "*",
     "node-sass": "*",
     "connect-mincer": "*",
