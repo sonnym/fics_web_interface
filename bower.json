@@ -12,6 +12,7 @@
 
   "dependencies": {
     "angular": "1.2.6",
+    "angular-ui-utils": "*",
 
     "bootstrap": "3.0.3",
     "angular-ui-bootstrap": "0.9.0",
