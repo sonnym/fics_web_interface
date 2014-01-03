@@ -3,33 +3,74 @@
   cursor: pointer;
 }
 
-.header {
+div.header {
   height: 60px;
   width: 100%;
 }
 
-.content {
-  position: fixed;
-
-  top: 60px;
-  left: 0px;
-  right: 0px;
-  bottom: 45px;
+div.tab-container {
+  position: absolute;
+  bottom: 0px;
 }
 
-.observation-chat {
-  .observers {
-    overflow-y: scroll;
+div.tab-container div.tab-container {
+  top: 40px;
+}
 
-    width: 30%;
+div.content {
+  position: absolute;
+
+  top: 60px;
+
+  left: 0px;
+  right: 0px;
+}
+
+div.chat-nav {
+  float: left;
+
+  left: 0px;
+  width: 35%;
+}
+
+div.chat-content {
+  float: left;
+
+  left: 35%;
+  right: 0px;
+}
+
+div.board-container {
+  float: left;
+  width: 400px;
+}
+
+div.observe-moves {
+  float: left;
+  width: 140px;
+
+  overflow-y: scroll;
+}
+
+div.observe-chat {
+  float: left;
+  left: 140px;
+
+  div {
     float: left;
   }
 
-  .messages {
-    width: 70%;
-    float: left;
+  div.observers {
+    width: 200px;
 
-    .message {
+    overflow-y: scroll;
+  }
+
+  div.messages {
+    left: 200px;
+    right: 0px;
+
+    div.message {
       textarea {
         width: 300px;
       }

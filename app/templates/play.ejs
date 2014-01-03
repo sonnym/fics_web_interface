@@ -1,6 +1,3 @@
-<tab ng-controller="PlayCtrl" active="playTabActive" ng-show="isLoggedIn">
-  <tab-heading>
-    play
-  </tab-heading>
+<tab heading="play" ng-controller="PlayCtrl" active="playTabActive" ng-show="isLoggedIn">
   <sought-graph seeks="sought" ng-if="playTabActive"></sought-graph>
 </tab>

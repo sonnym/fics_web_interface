@@ -1,92 +1,76 @@
-<tab ng-controller="ChatCtrl" ng-show="isLoggedIn">
-  <tab-heading>
-    chat
-  </tab-heading>
+<tab heading="chat" ng-controller="ChatCtrl" ng-show="isLoggedIn">
+  <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
+    <tab heading="channels">
+      <pagination class="pagination-sm" total-items="channels.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
 
-  <div style="width: 35%; float: left">
-    <tabset vertical="true" type="'pills'">
-      <tab>
-        <tab-heading>
-          channels
-        </tab-heading>
-        <pagination class="pagination-sm" total-items="channels.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
-        <ul class="channel-list">
-          <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
-            <a href="#" ng-click="joinChannel(channel.number)">
-              {{channel.number}} {{channel.name}}
-            </a>
-          </li>
-        </ul>
-      </tab>
+      <ul class="channel-list">
+        <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
+          <a href="#" ng-click="joinChannel(channel.number)">
+            {{channel.number}} {{channel.name}}
+          </a>
+        </li>
+      </ul>
+    </tab>
 
-      <tab>
-        <tab-heading>
-          users
-        </tab-heading>
-        <pagination class="pagination-sm" total-items="users.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
-        <ul ng-if="users" class="user-list">
-          <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown">
-            <a class="dropdown-toggle">{{user.name}} ({{user.rating}})</a>
-            <ul class="dropdown-menu">
-              <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
-            </ul>
-          </li>
-        </ul>
-      </tab>
-    </tabset>
-  </div>
+    <tab heading="users">
+      <pagination class="pagination-sm" total-items="users.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
 
-  <div style="width: 65%; float: left">
-    <tabset>
-      <tab>
-        <tab-heading>
-          global
-        </tab-heading>
+      <ul ng-if="users" class="user-list">
+        <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown">
+          <a class="dropdown-toggle">{{user.name}} ({{user.rating}})</a>
+          <ul class="dropdown-menu">
+            <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
+          </ul>
+        </li>
+      </ul>
+    </tab>
+  </tabset>
 
-        <div ng-repeat="message in messages.global">
-          <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
-          <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
-        </div>
+  <tabset class="chat-content tab-container">
+    <tab heading="global">
+      <div ng-repeat="message in messages.global">
+        <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
+        <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
+      </div>
 
-        <div class="message" ng-controller="MessageCtrl">
-          <textarea ng-model="message" placeholder="type to chat"></textarea>
-          <button class="btn btn-primary" ng-model="_" ng-click="shout(message, isIt)">Submit [Enter]</button>
+      <div class="message" ng-controller="MessageCtrl">
+        <textarea ng-model="message" placeholder="type to chat"></textarea>
+        <button class="btn btn-primary" ng-model="_" ng-click="shout(message, isIt)">Submit [Enter]</button>
 
-          <button type="button" class="btn btn-primary" ng-model="isIt" btn-checkbox>it</button>
-        </div>
-      </tab>
+        <button type="button" class="btn btn-primary" ng-model="isIt" btn-checkbox>it</button>
+      </div>
+    </tab>
 
-      <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
-        <tab-heading>
-          {{channelNumber}}: {{channelName(channelNumber)}}
-          <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
-        </tab-heading>
+    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
+      <tab-heading>
+        {{channelNumber}}: {{channelName(channelNumber)}}
+        <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
+      </tab-heading>
 
-        <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
-          {{message.user}} &gt; {{message.message}}
-        </div>
+      <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
+        {{message.user}} &gt; {{message.message}}
+      </div>
 
-        <div class="message" ng-controller="MessageCtrl">
-          <textarea ng-model="message" placeholder="type to chat"></textarea>
-          <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(channelNumber, message)">Submit [Enter]</button>
-        </div>
-      </tab>
+      <div class="message" ng-controller="MessageCtrl">
+        <textarea ng-model="message" placeholder="type to chat"></textarea>
+        <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(channelNumber, message)">Submit [Enter]</button>
+      </div>
+    </tab>
 
-      <tab ng-repeat="(username, messages) in messages.user">
-        <tab-heading>
-          {{username}}
-          <a href="#" ng-click="closePrivateMessage(username)">x</a>
-        </tab-heading>
+    <tab ng-repeat="(username, messages) in messages.user">
+      <tab-heading>
+        {{username}}
+        <a href="#" ng-click="closePrivateMessage(username)">x</a>
+      </tab-heading>
 
-        <div ng-repeat="message in messages">
-          {{message.user}} &gt; {{message.message}}
-        </div>
+      <div ng-repeat="message in messages">
+        {{message.user}} &gt; {{message.message}}
+      </div>
 
-        <div class="message" ng-controller="MessageCtrl">
-          <textarea ng-model="message" placeholder="type to chat"></textarea>
-          <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(username, message)">Submit [Enter]</button>
-        </div>
-      </tab>
-    </tabset>
-  </div>
+      <div class="message" ng-controller="MessageCtrl">
+        <textarea ng-model="message" placeholder="type to chat"></textarea>
+        <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(username, message)">Submit [Enter]</button>
+      </div>
+    </tab>
+  </tabset>
 </tab>

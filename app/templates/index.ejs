@@ -13,14 +13,12 @@
       <h2>FICS Web Client</h2>
     </div>
 
-    <div class="content">
-      <tabset>
-        <%- include login.ejs %>
-        <%- include play.ejs %>
-        <%- include chat.ejs %>
-        <%- include observe.ejs %>
-        <%- include console.ejs %>
-      </tabset>
-    </div>
+    <tabset class="content tab-container">
+      <%- include login.ejs %>
+      <%- include play.ejs %>
+      <%- include chat.ejs %>
+      <%- include observe.ejs %>
+      <%- include console.ejs %>
+    </tabset>
   </body>
 </html>
