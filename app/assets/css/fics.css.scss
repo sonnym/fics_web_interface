@@ -46,24 +46,32 @@ div.board-container {
 }
 
 div.observe-moves {
-  float: left;
+  position: absolute;
+
+  top: 40px;
+  left: 400px;
+  bottom: 0px;
+
   width: 140px;
 
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 div.observe-chat {
-  float: left;
-  left: 140px;
+  position: absolute;
+
+  top: 40px;
+  left: 540px;
+  right: 0px;
+  bottom: 0px;
 
   div {
-    float: left;
+    position: absolute;
   }
 
   div.observers {
     width: 200px;
-
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   div.messages {
@@ -80,5 +88,5 @@ div.observe-chat {
 
 .console {
   height: 100%;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
