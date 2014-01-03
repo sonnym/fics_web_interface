@@ -64,7 +64,9 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
   }
 
   function unWatch(gameNumber) {
-    delete watching[gameNumber];
+    watching = _.reject(watching, function(game) {
+      return gameNumber === game.number;
+    });
   }
 
   function setGamePosition(game, metaData) {
