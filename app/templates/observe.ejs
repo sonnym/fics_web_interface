@@ -1,4 +1,4 @@
-<tab heading="watch" ng-controller="ObservationCtrl" ng-show="isLoggedIn">
+<tab heading="watch" ng-controller="ObservationCtrl" ng-if="isLoggedIn" active="isActive('observe')" select="changeTab('observe')">
   <tabset class="tab-container">
     <tab heading="games">
       <pagination class="pagination-sm" total-items="games.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>

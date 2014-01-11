@@ -1,4 +1,4 @@
-<tab ng-controller="LoginCtrl" ng-hide="isLoggedIn">
+<tab ng-controller="LoginCtrl" ng-if="!isLoggedIn" active="isActiveTab('login')" select="changeTab('login')">
   <tab-heading>
     log in
   </tab-heading>
