@@ -1,52 +1,58 @@
-div.observe-wrapper {
+div.observe {
   position: absolute;
 
   left: 0px;
   right: 0px;
   bottom: 0px;
-}
 
-div.board-container {
-  float: left;
-  width: 400px;
-}
-
-div.observe-moves {
-  position: absolute;
-
-  top: 40px;
-  left: 400px;
-  bottom: 0px;
-
-  width: 140px;
-
-  overflow-y: auto;
-}
-
-div.observe-chat {
-  position: absolute;
-
-  top: 40px;
-  left: 540px;
-  right: 0px;
-  bottom: 0px;
-
-  div {
-    position: absolute;
+  div.board-container {
+    float: left;
+    width: 400px;
   }
 
-  div.observers {
-    width: 200px;
+  div.moves {
+    position: absolute;
+
+    top: 40px;
+    left: 400px;
+    bottom: 0px;
+
+    width: 140px;
+
     overflow-y: auto;
   }
 
-  div.messages {
-    left: 200px;
-    right: 0px;
+  div.chat {
+    position: absolute;
 
-    div.message {
-      textarea {
-        width: 300px;
+    top: 40px;
+    left: 540px;
+    right: 0px;
+    bottom: 0px;
+
+    div {
+      position: absolute;
+    }
+
+    div.observers {
+      width: 200px;
+      overflow-y: auto;
+    }
+
+    div.messages {
+      top: 0px;
+      bottom: 45px;
+
+      left: 200px;
+      right: 0px;
+
+      div.message {
+        bottom: 0px;
+        height: 45px;
+
+        textarea {
+          width: 300px;
+        }
       }
     }
   }
