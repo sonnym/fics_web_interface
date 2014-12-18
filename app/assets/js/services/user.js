@@ -1,4 +1,5 @@
 ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Proxy) {
+  var isLoggingIn = false;
   var username, isGuest;
 
   Proxy.registerMessage("login", function(data) {
@@ -14,7 +15,7 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
   });
 
   if ($cookieStore.get("userData")) {
-    Proxy.sendMessage("login", $cookieStore.get("userData"));
+    login($cookieStore.get("userData"));
   }
 
   return {
@@ -29,10 +30,17 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
         $cookieStore.remove("userData");
       }
 
-      Proxy.sendMessage("login", userData);
+      login(userData);
     },
+
+    isLoggingIn: function() { return isLoggingIn },
 
     getUsername: function() { return username },
     isGuest: function() { return isGuest }
   };
+
+  function login(userData) {
+    isLoggingIn = true;
+    Proxy.sendMessage("login", $cookieStore.get("userData"));
+  }
 }]);

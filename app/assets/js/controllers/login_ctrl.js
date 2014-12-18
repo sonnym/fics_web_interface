@@ -1,14 +1,11 @@
 ficsClient.controller("LoginCtrl", ["$scope", "User", function($scope, User) {
-  $scope.isLoggingIn = false;
+  $scope.$watch(User.isLoggingIn, function(val) {
+    $scope.isLoggingIn = val;
+  });
 
   $scope.loginAsGuest = function() {
-    login({});
+    User.login({ });
   };
 
-  $scope.loginWithCredentials = login;
-
-  function login(userData, remember) {
-    $scope.isLoggingIn = true;
-    User.login(userData, remember);
-  }
+  $scope.loginWithCredentials = User.login;
 }]);
