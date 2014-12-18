@@ -17,6 +17,8 @@
     "bootstrap": "*",
     "angular-ui-bootstrap": "*",
 
+    "sockjs-client": "*",
+
     "nvd3": "*",
 
     "angularjs-scroll-glue": "*"
