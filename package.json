@@ -26,6 +26,8 @@
 
     "bower": "*",
 
+    "underscore": "*",
+
     "sockjs": "*",
     "rbytes": "*",
 
