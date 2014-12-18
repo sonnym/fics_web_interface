@@ -28,9 +28,11 @@
 
   <tabset class="chat-content tab-container">
     <tab heading="global">
-      <div ng-repeat="message in messages.global" scroll-glue>
-        <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
-        <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
+      <div class="messages" scroll-glue>
+        <div ng-repeat="message in messages.global">
+          <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
+          <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
+        </div>
       </div>
 
       <div class="message" ng-controller="MessageCtrl">
@@ -47,8 +49,10 @@
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
       </tab-heading>
 
-      <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]" scroll-glue>
-        {{message.user}} &gt; {{message.message}}
+      <div class="messages" scroll-glue>
+        <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
+          {{message.user}} &gt; {{message.message}}
+        </div>
       </div>
 
       <div class="message" ng-controller="MessageCtrl">
@@ -63,8 +67,10 @@
         <a href="#" ng-click="closePrivateMessage(username)">x</a>
       </tab-heading>
 
-      <div ng-repeat="message in messages" scroll-glue>
-        {{message.user}} &gt; {{message.message}}
+      <div class="messages" scroll-glue>
+        <div ng-repeat="message in messages">
+          {{message.user}} &gt; {{message.message}}
+        </div>
       </div>
 
       <div class="message" ng-controller="MessageCtrl">

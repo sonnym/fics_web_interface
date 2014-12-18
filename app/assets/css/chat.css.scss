@@ -12,4 +12,25 @@ div.chat-content {
   left:450px;
   right: 0px;
   bottom: 0px;
+
+  div.messages {
+    position: absolute;
+
+    top: 0px;
+    bottom: 45px;
+
+    left: 200px;
+    right: 0px;
+  }
+
+  div.message {
+    position: absolute;
+
+    bottom: 0px;
+    height: 75px;
+
+    textarea {
+      width: 300px;
+    }
+  }
 }
