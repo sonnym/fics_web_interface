@@ -46,7 +46,7 @@
         </div>
 
         <div class="messages">
-          <div ng-repeat="message in game.messages">
+          <div ng-repeat="message in game.messages" scroll-glue>
             {{message.user}} &gt; {{message.message}}
           </div>
 
