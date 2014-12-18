@@ -23,17 +23,19 @@ div.content {
 }
 
 div.chat-nav {
-  float: left;
+  position: absolute;
 
   left: 0px;
-  width: 35%;
+  bottom: 0px;
+  width: 450px;
 }
 
 div.chat-content {
-  float: left;
+  position: absolute;
 
-  left: 35%;
+  left:450px;
   right: 0px;
+  bottom: 0px;
 }
 
 div.board-container {
