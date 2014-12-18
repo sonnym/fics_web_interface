@@ -18,45 +18,47 @@
         <a href="#" ng-click="stopWatching(game.number)">x</a>
       </tab-heading>
 
-      <div class="board-container">
-        <board fen="game.metaData.position" white="game.white" black="game.black" move="game.metaData.current.color" time="game.metaData.time" complete="game.isComplete"></board>
-      </div>
-
-      <div class="observe-moves">
-        <h4 ng-if="game.metaData.result">{{game.metaData.result}}</h4>
-
-        <table>
-          <tbody>
-            <tr ng-repeat="moves in game.moves" ng-if="game.moves">
-              <th>{{$index + 1}}</th>
-              <td>{{moves[0]}}</td>
-              <td>{{moves[1]}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="observe-chat">
-        <div class="observers">
-          <ul>
-            <li ng-repeat="observer in game.observers | orderBy:'toString'">
-              {{observer}}
-            </li>
-          </ul>
+      <div class="observe-wrapper">
+        <div class="board-container">
+          <board fen="game.metaData.position" white="game.white" black="game.black" move="game.metaData.current.color" time="game.metaData.time" complete="game.isComplete"></board>
         </div>
 
-        <div class="messages">
-          <div ng-repeat="message in game.messages" scroll-glue>
-            {{message.user}} &gt; {{message.message}}
+        <div class="observe-moves">
+          <h4 ng-if="game.metaData.result">{{game.metaData.result}}</h4>
+
+          <table>
+            <tbody>
+              <tr ng-repeat="moves in game.moves" ng-if="game.moves">
+                <th>{{$index + 1}}</th>
+                <td>{{moves[0]}}</td>
+                <td>{{moves[1]}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="observe-chat">
+          <div class="observers">
+            <ul>
+              <li ng-repeat="observer in game.observers | orderBy:'toString'">
+                {{observer}}
+              </li>
+            </ul>
           </div>
 
-          <div class="message" ng-if="!isGuest">
-            <textarea ng-model="game.chat.message" ui-keypress="{ 'enter': 'submitMessage(game.number, game.chat, $event)' }"  placeholder="type to chat"></textarea>
-            <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
+          <div class="messages">
+            <div ng-repeat="message in game.messages" scroll-glue>
+              {{message.user}} &gt; {{message.message}}
+            </div>
 
-            <div class="btn-group">
-              <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'whisper'">Whisper</button>
-              <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'kibitz'">Kibitz</button>
+            <div class="message" ng-if="!isGuest">
+              <textarea ng-model="game.chat.message" ui-keypress="{ 'enter': 'submitMessage(game.number, game.chat, $event)' }"  placeholder="type to chat"></textarea>
+              <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
+
+              <div class="btn-group">
+                <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'whisper'">Whisper</button>
+                <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'kibitz'">Kibitz</button>
+              </div>
             </div>
           </div>
         </div>
