@@ -12,10 +12,18 @@
 
   <div>- or -</div>
 
-  <form ng-submit="loginWithCredentials(userData)">
+  <form ng-submit="loginWithCredentials(userData, remember)">
     <input type="text" ng-model="userData.login" placeholder="login" ng-disabled="isLoggingIn" />
     <br>
     <input type="password" ng-model="userData.password" placeholder="password" ng-disabled="isLoggingIn" />
+
+    <br>
+
+    <label>
+      <input type="checkbox" checked="checked" ng-model="remember">
+      Remember Me
+    </label>
+
     <br>
     <input type="submit" value="login with credentials" ng-disabled="isLoggingIn" />
   </form>

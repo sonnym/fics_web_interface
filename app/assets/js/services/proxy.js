@@ -2,10 +2,15 @@ ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
   var socket = this.socket = new SockJS("/socket");
   var socketOpen = false;
 
+  var queue = [];
   var messageHandlers = {};
 
   socket.onopen = function() {
     socketOpen = true;
+
+    while (queue.length > 0) {
+      queue.shift()();
+    }
   };
 
   socket.onclose = function() {
@@ -24,11 +29,11 @@ ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
     });
   }
 
-  function ensureSocket(cb) {
+  function ensureSocket(callback) {
     if (socketOpen) {
-      cb();
+      callback();
     } else {
-      socket.onopen(cb);
+      queue.push(callback);
     }
   }
 

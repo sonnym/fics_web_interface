@@ -5,12 +5,10 @@ ficsClient.controller("LoginCtrl", ["$scope", "User", function($scope, User) {
     login({});
   };
 
-  $scope.loginWithCredentials = function(userData) {
-    login(userData);
-  };
+  $scope.loginWithCredentials = login;
 
-  function login(userData) {
+  function login(userData, remember) {
     $scope.isLoggingIn = true;
-    User.login(userData);
+    User.login(userData, remember);
   }
 }]);
