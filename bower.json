@@ -14,8 +14,8 @@
     "angular": "1.3.7",
     "angular-ui-utils": "*",
 
-    "bootstrap": "3.0.3",
-    "angular-ui-bootstrap": "git://github.com/sonnym/bootstrap#tab_active_function_fix",
+    "bootstrap": "*",
+    "angular-ui-bootstrap": "*",
 
     "nvd3": "*"
   },

@@ -1,5 +1,4 @@
-var ficsClient = angular.module("ficsClient", ["ui.bootstrap.buttons", "ui.bootstrap.dropdownToggle", "ui.bootstrap.pagination", "ui.bootstrap.tabs",
-                                               "ui.keypress", "ui.scroll"]);
+var ficsClient = angular.module("ficsClient", ["ui.bootstrap.buttons", "ui.bootstrap.pagination", "ui.bootstrap.tabs", "ui.keypress", "ui.scroll"]);
 
 ficsClient.run(["$rootScope", "TabManager", "User", function($rootScope, TabManager, User) {
   TabManager.attach();
