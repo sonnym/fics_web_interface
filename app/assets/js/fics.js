@@ -1,5 +1,6 @@
 var ficsClient = angular.module("ficsClient", [
   "ui.bootstrap.buttons",
+  "ui.bootstrap.dropdown",
   "ui.bootstrap.pagination",
   "ui.bootstrap.tabs",
   "ui.keypress",

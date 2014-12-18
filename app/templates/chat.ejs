@@ -16,8 +16,8 @@
       <pagination class="pagination-sm" total-items="users.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
 
       <ul ng-if="users" class="user-list">
-        <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown">
-          <a class="dropdown-toggle">{{user.name}} ({{user.rating}})</a>
+        <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown" dropdown>
+          <a href="#" class="dropdown-toggle" dropdown-toggle>{{user.name}} ({{user.rating}})</a>
           <ul class="dropdown-menu">
             <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
           </ul>
