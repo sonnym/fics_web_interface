@@ -17,7 +17,9 @@
     "bootstrap": "*",
     "angular-ui-bootstrap": "*",
 
-    "nvd3": "*"
+    "nvd3": "*",
+
+    "angularjs-scroll-glue": "*"
   },
 
   "license": "MIT",

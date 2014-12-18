@@ -3,7 +3,8 @@ var ficsClient = angular.module("ficsClient", [
   "ui.bootstrap.pagination",
   "ui.bootstrap.tabs",
   "ui.keypress",
-  "ui.scroll"
+  "ui.scroll",
+  "luegg.directives"
 ]);
 
 ficsClient.run(["$rootScope", "TabManager", "User", function($rootScope, TabManager, User) {
