@@ -21,7 +21,7 @@
     "bunyan": "*",
 
     "ejs": "*",
-    "node-sass": "*",
+    "node-sass": "1.2.x",
     "connect-mincer": "*",
 
     "bower": "*",
