@@ -1,14 +1,18 @@
 ficsClient.factory("TabManager", ["$rootScope", function($rootScope) {
-  var activeTab = "login";
+  var tabs = { login: true, console: false, chat: false, play: false, watch: false };
 
   return {
     attach: function() {
+      $rootScope.tabs = tabs;
+
       $rootScope.changeTab = function(tab) {
-        activeTab = tab;
+        tabs = _.reduce(tabs, function(obj, active, tab) {
+          return _.extend(obj, { tab: activeTab === tab });
+        }, {});
       };
 
       $rootScope.isActiveTab = function(tab) {
-        return tab === activeTab;
+        return tab === activeTab();
       };
     },
 
@@ -18,4 +22,8 @@ ficsClient.factory("TabManager", ["$rootScope", function($rootScope) {
       }
     }
   };
+
+  function activeTab() {
+    return _.invert(tabs)[true];
+  }
 }]);
