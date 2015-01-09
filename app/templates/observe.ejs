@@ -1,7 +1,7 @@
 <tab heading="watch" ng-controller="ObservationCtrl" ng-if="isLoggedIn" active="tabs.observe" select="changeTab('observe')">
   <tabset class="tab-container">
     <tab heading="games">
-      <pagination class="pagination-sm" total-items="games.length" page="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
+      <pagination class="pagination-sm" total-items="games.length" ng-model="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
 
       <ul ng-if="games">
         <li ng-repeat="game in games | orderByCombinedRating | paginationSubset:20:currentPage">
