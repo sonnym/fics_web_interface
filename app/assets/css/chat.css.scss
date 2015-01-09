@@ -17,7 +17,8 @@ div.chat-content {
     position: absolute;
 
     top: 50px;
-    bottom: 45px;
+    left: 0px;
+    bottom: 80px;
     right: 0px;
   }
 
@@ -25,7 +26,7 @@ div.chat-content {
     position: absolute;
 
     bottom: 0px;
-    height: 80px;
+    height: 75px;
 
     textarea {
       width: 300px;
