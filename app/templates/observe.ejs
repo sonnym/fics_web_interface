@@ -18,7 +18,7 @@
       <ul ng-if="games">
         <li ng-repeat="game in games | orderByCombinedRating | paginationSubset:20:currentPage">
           <a href="#" ng-click="watch(game.number)">
-            {{game.white.name}} ({{game.white.rating}}) vs. {{game.black.name}} ({{game.black.rating}})
+            {{ game.white.name }} ({{ game.white.rating }}) vs. {{ game.black.name }} ({{ game.black.rating }})
           </a>
         </li>
       </ul>
@@ -26,7 +26,7 @@
 
     <tab ng-repeat="game in observations">
       <tab-heading>
-        {{game.white.name}} v. {{game.black.name}}
+        {{ game.white.name }} v. {{ game.black.name }}
         <a href="#" ng-click="stopWatching(game.number)">x</a>
       </tab-heading>
 
@@ -36,14 +36,14 @@
         </div>
 
         <div class="moves">
-          <h4 ng-if="game.metaData.result">{{game.metaData.result}}</h4>
+          <h4 ng-if="game.metaData.result">{{ game.metaData.result }}</h4>
 
           <table>
             <tbody>
               <tr ng-repeat="moves in game.moves" ng-if="game.moves">
-                <th>{{$index + 1}}</th>
-                <td>{{moves[0]}}</td>
-                <td>{{moves[1]}}</td>
+                <th>{{ $index + 1 }}</th>
+                <td>{{ moves[0] }}</td>
+                <td>{{ moves[1] }}</td>
               </tr>
             </tbody>
           </table>
@@ -53,14 +53,14 @@
           <div class="observers">
             <ul>
               <li ng-repeat="observer in game.observers | orderBy:'toString'">
-                {{observer}}
+                {{ observer }}
               </li>
             </ul>
           </div>
 
           <div class="messages">
             <div ng-repeat="message in game.messages" scroll-glue>
-              {{message.user}} &gt; {{message.message}}
+              {{ message.user }} &gt; {{ message.message }}
             </div>
 
             <div class="message" ng-if="!isGuest">

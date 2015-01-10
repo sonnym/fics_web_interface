@@ -18,7 +18,7 @@
       <ul class="channel-list">
         <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
           <a href="#" ng-click="joinChannel(channel.number)">
-            {{channel.number}} {{channel.name}}
+            {{ channel.number }} {{ channel.name }}
           </a>
         </li>
       </ul>
@@ -41,7 +41,7 @@
 
       <ul ng-if="users" class="user-list">
         <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown" dropdown>
-          <a href="#" class="dropdown-toggle" dropdown-toggle>{{user.name}} ({{user.rating}})</a>
+          <a href="#" class="dropdown-toggle" dropdown-toggle>{{ user.name }} ({{ user.rating }})</a>
           <ul class="dropdown-menu">
             <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
           </ul>
@@ -54,8 +54,8 @@
     <tab heading="global">
       <div class="messages" scroll-glue>
         <div ng-repeat="message in messages.global">
-          <span ng-if="message.type === 'it'">--&gt; {{message.user}} {{message.message}}</span>
-          <span ng-if="message.type === 'shout'">{{message.user}} &gt; {{message.message}}</span>
+          <span ng-if="message.type === 'it'">--&gt; {{ message.user }} {{ message.message }}</span>
+          <span ng-if="message.type === 'shout'">{{ message.user }} &gt; {{ message.message }}</span>
         </div>
       </div>
 
@@ -69,13 +69,13 @@
 
     <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
       <tab-heading>
-        {{channelNumber}}: {{channelName(channelNumber)}}
+        {{ channelNumber }}: {{ channelName(channelNumber) }}
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
       </tab-heading>
 
       <div class="messages" scroll-glue>
         <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
-          {{message.user}} &gt; {{message.message}}
+          {{ message.user }} &gt; {{ message.message }}
         </div>
       </div>
 
@@ -87,13 +87,13 @@
 
     <tab ng-repeat="(username, messages) in messages.user">
       <tab-heading>
-        {{username}}
+        {{ username }}
         <a href="#" ng-click="closePrivateMessage(username)">x</a>
       </tab-heading>
 
       <div class="messages" scroll-glue>
         <div ng-repeat="message in messages">
-          {{message.user}} &gt; {{message.message}}
+          {{ message.user }} &gt; {{ message.message }}
         </div>
       </div>
 
