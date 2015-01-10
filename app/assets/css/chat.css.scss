@@ -20,6 +20,8 @@ div.chat-content {
     left: 0px;
     bottom: 80px;
     right: 0px;
+
+    overflow-y: scroll;
   }
 
   div.message {
