@@ -1,7 +1,19 @@
 <tab heading="chat" ng-controller="ChatCtrl" ng-if="isLoggedIn" active="tabs.chat" select="changeTab('chat')">
   <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
     <tab heading="channels">
-      <pagination class="pagination-sm" total-items="channels.length" ng-model="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
+      <pagination
+        class="pagination-sm"
+        previous-text="&lsaquo;"
+        next-text="&rsaquo;"
+        first-text="&laquo;"
+        last-text="&raquo;"
+        total-items="channels.length"
+        ng-model="currentPage"
+        items-per-page="20"
+        boundary-links="true"
+        max-size="5"
+        rotate="false">
+      </pagination>
 
       <ul class="channel-list">
         <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
@@ -13,7 +25,19 @@
     </tab>
 
     <tab heading="users">
-      <pagination class="pagination-sm" total-items="users.length" ng-model="currentPage" items-per-page="20" boundary-links="true" max-size="5" rotate="false"></pagination>
+      <pagination
+        class="pagination-sm"
+        previous-text="&lsaquo;"
+        next-text="&rsaquo;"
+        first-text="&laquo;"
+        last-text="&raquo;"
+        total-items="users.length"
+        ng-model="currentPage"
+        items-per-page="20"
+        boundary-links="true"
+        max-size="5"
+        rotate="false">
+      </pagination>
 
       <ul ng-if="users" class="user-list">
         <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown" dropdown>
