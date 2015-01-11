@@ -1,12 +1,10 @@
 ficsClient.factory("TabManager", ["$rootScope", "$timeout", function($rootScope, $timeout) {
-  var tabs = { login: true, console: false, chat: false, play: false, watch: false };
-
   return {
     attach: function() {
-      $rootScope.tabs = tabs;
+      $rootScope.tabs = { login: true, console: false, chat: false, play: false, watch: false };
 
       $rootScope.changeTab = function(activeTab) {
-        $rootScope.tabs = _.reduce(tabs, function(obj, active, tab) {
+        $rootScope.tabs = _.reduce($rootScope.tabs, function(obj, active, tab) {
           obj[tab] = tab === activeTab;
 
           return obj;
@@ -30,6 +28,6 @@ ficsClient.factory("TabManager", ["$rootScope", "$timeout", function($rootScope,
   };
 
   function activeTab() {
-    return _.invert(tabs)[true];
+    return _.invert($rootScope.tabs)[true];
   }
 }]);
