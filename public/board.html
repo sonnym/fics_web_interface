@@ -1,13 +1,13 @@
 <div class="name-tag">
   <div class="move-indicator" ng-class="{ on: (move === 'B') }">&nbsp;</div>
-  {{black.name}} ({{black.rating}})
+  {{ black.name }} ({{ black.rating }})
   <timer start="time.black" tick="move === 'B' && !complete"></timer>
 </div>
 
 <div ng-repeat="rank in boardState" class="rank">
   <div ng-repeat="piece in rank track by $index" class="square">
     <div class="piece">
-      {{ascii2unicode(piece)}}
+      {{ ascii2unicode(piece) }}
     </div>
   </div>
   <div class="clearfix"></div>
@@ -15,6 +15,6 @@
 
 <div class="name-tag">
   <div class="move-indicator" ng-class="{ on: (move === 'W') }">&nbsp;</div>
-  {{white.name}} ({{white.rating}})
+  {{ white.name }} ({{ white.rating }})
   <timer start="time.white" tick="move === 'W' && !complete"></timer>
 </div>

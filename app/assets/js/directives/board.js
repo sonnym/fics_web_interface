@@ -84,6 +84,6 @@ ficsClient.directive("timer", ["$window", function($window) {
       }
     },
 
-    template: "<h4>{{currentTime | longTime}}</h4>"
+    template: "<h4>{{ currentTime | longTime }}</h4>"
   };
 }]);
