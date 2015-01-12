@@ -31,29 +31,39 @@ div.observe {
     right: 0px;
     bottom: 0px;
 
-    div {
-      position: absolute;
-    }
-
     div.observers {
+      position: absolute;
+
+      top: 0px;
       width: 200px;
-      overflow-y: auto;
+      bottom: 80px;
+
+      overflow-y: scroll;
     }
 
     div.messages {
+      position: absolute;
+
       top: 0px;
-      bottom: 45px;
+      bottom: 80px;
 
       left: 200px;
       right: 0px;
 
-      div.message {
-        bottom: 0px;
-        height: 75px;
+      overflow-y: scroll;
+    }
 
-        textarea {
-          width: 300px;
-        }
+    div.message {
+      position: absolute;
+
+      bottom: 0px;
+      height: 75px;
+
+      left: 200px;
+      right: 0px;
+
+      textarea {
+        width: 300px;
       }
     }
   }
