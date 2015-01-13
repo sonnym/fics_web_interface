@@ -45,8 +45,8 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
 
     messages: function() { return chatMessages },
 
-    shout: function(message, it) {
-      Proxy.sendMessage("shout", { message: message, it: it });
+    shout: function(mode, message) {
+      Proxy.sendMessage("shout", { message: message, it: (mode === "it") });
     },
 
     joinChannel: function(channelNumber) {
@@ -59,8 +59,10 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
       subscribedChannels = _.without(subscribedChannels, channelNumber);
     },
 
-    sendMessage: function(recipient, message) {
-      Proxy.sendMessage("tell", { recipient: recipient, message: message });
+    sendMessage: function(recipient) {
+      return function(message) {
+        Proxy.sendMessage("tell", { recipient: recipient, message: message });
+      };
     },
 
     startPrivateMessage: function(username) {

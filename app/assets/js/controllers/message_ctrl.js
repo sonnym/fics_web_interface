@@ -1,1 +1,0 @@
-ficsClient.controller("MessageCtrl", function() { });

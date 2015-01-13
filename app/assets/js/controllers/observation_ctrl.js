@@ -11,16 +11,10 @@ ficsClient.controller("ObservationCtrl", ["$scope", "Observe", function($scope, 
     Observe.watch(gameNumber);
   };
 
-  $scope.submitMessage = function(gameNumber, chat) {
-    Observe.sendMessage(gameNumber, angular.copy(chat));
-    chat.message = "";
-
-    if ($event) {
-      $event.preventDefault();
-    }
-  };
-
   $scope.stopWatching = function(gameNumber) {
     Observe.unWatch(gameNumber);
   };
+
+  $scope.allowedModes = ["whisper", "kibitz"];
+  $scope.sendMessage = Observe.sendMessage;
 }]);

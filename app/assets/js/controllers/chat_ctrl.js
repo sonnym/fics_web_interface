@@ -21,6 +21,8 @@ ficsClient.controller("ChatCtrl", ["$scope", "Chat", function($scope, Chat) {
   $scope.startPrivateMessage = Chat.startPrivateMessage;
   $scope.closePrivateMessage = Chat.closePrivateMessage;
 
+  $scope.globalModes = ["it"];
+
   $scope.shout = Chat.shout;
   $scope.sendMessage = Chat.sendMessage;
 

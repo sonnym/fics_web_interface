@@ -1,0 +1,25 @@
+div.messages {
+  position: absolute;
+
+  top: 0px;
+  left: 0px;
+  bottom: 80px;
+  right: 0px;
+
+  overflow-y: scroll;
+}
+
+div.message {
+  position: absolute;
+
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+
+  height: 75px;
+
+  textarea {
+    width: 300px;
+  }
+}
+

@@ -40,31 +40,14 @@ div.observe {
 
       overflow-y: scroll;
     }
+  }
 
-    div.messages {
-      position: absolute;
+  div.messagesWrapper {
+    position: absolute;
 
-      top: 0px;
-      bottom: 80px;
-
-      left: 200px;
-      right: 0px;
-
-      overflow-y: scroll;
-    }
-
-    div.message {
-      position: absolute;
-
-      bottom: 0px;
-      height: 75px;
-
-      left: 200px;
-      right: 0px;
-
-      textarea {
-        width: 300px;
-      }
-    }
+    top: 0px;
+    left: 200px;
+    bottom: 0px;
+    right: 0px;
   }
 }

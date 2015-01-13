@@ -45,8 +45,10 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
       }
     },
 
-    sendMessage: function(gameNumber, options) {
-      Proxy.sendMessage(options.mode, { number: gameNumber, message: options.message });
+    sendMessage: function(gameNumber) {
+      return function(mode, message) {
+        Proxy.sendMessage(mode, { number: gameNumber, message: message });
+      }
     },
 
     unWatch: function(gameNumber) {

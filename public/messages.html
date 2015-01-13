@@ -1,0 +1,41 @@
+<div class="messagesWrapper">
+  <div class="messages" scroll-glue>
+    <div ng-repeat="message in messages">
+      <span ng-if="message.type !== 'it'">{{ message.user }} &gt; {{ message.message }}</span>
+      <span ng-if="message.type === 'it'">--&gt; {{ message.user }} {{ message.message }}</span>
+    </div>
+  </div>
+
+  <div class="message">
+    <textarea
+      placeholder="type to chat"
+      ng-model="message"
+      ui-keypress="{ 'enter': 'sendMessage()' }">
+    </textarea>
+
+    <button class="btn btn-primary" ng-click="sendMessage()">Submit [Enter]</button>
+
+    <button
+      type="button"
+      class="btn btn-primary"
+      ng-model="$parent.mode"
+      ng-if="isModeAllowed('it')"
+      btn-checkbox
+      btn-checkbox-true="'it'"
+      btn-checkbox-false="''">it</button>
+
+    <div class="btn-group">
+      <label
+        class="btn btn-primary"
+        ng-model="$parent.mode"
+        ng-if="isModeAllowed('whisper')"
+        btn-radio="'whisper'">Whisper</label>
+
+      <label
+        class="btn btn-primary"
+        ng-model="$parent.mode"
+        ng-if="isModeAllowed('kibitz')"
+        btn-radio="'kibitz'">Kibitz</label>
+    </div>
+  </div>
+</div>

@@ -58,21 +58,8 @@
             </ul>
           </div>
 
-          <div class="messages">
-            <div ng-repeat="message in game.messages" scroll-glue>
-              {{ message.user }} &gt; {{ message.message }}
-            </div>
-          </div>
-
-          <div class="message" ng-if="!isGuest">
-            <textarea ng-model="game.chat.message" ui-keypress="{ 'enter': 'submitMessage(game.number, game.chat, $event)' }"  placeholder="type to chat"></textarea>
-            <button class="btn btn-primary" ng-model="_" ng-click="submitMessage(game.number, game.chat)">Submit [Enter]</button>
-
-            <div class="btn-group">
-              <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'whisper'">Whisper</button>
-              <button class="btn btn-primary" ng-model="game.chat.mode" btn-radio="'kibitz'">Kibitz</button>
-            </div>
-          </div>
+          <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"
+          ></messages>
         </div>
       </div>
     </tab>

@@ -52,19 +52,7 @@
 
   <tabset class="chat-content tab-container">
     <tab heading="global">
-      <div class="messages" scroll-glue>
-        <div ng-repeat="message in messages.global">
-          <span ng-if="message.type === 'it'">--&gt; {{ message.user }} {{ message.message }}</span>
-          <span ng-if="message.type === 'shout'">{{ message.user }} &gt; {{ message.message }}</span>
-        </div>
-      </div>
-
-      <div class="message" ng-controller="MessageCtrl">
-        <textarea ng-model="message" placeholder="type to chat"></textarea>
-        <button class="btn btn-primary" ng-model="_" ng-click="shout(message, isIt)">Submit [Enter]</button>
-
-        <button type="button" class="btn btn-primary" ng-model="isIt" btn-checkbox>it</button>
-      </div>
+      <messages messages="messages.global" send="shout(mode, message)" allowed-modes="globalModes"></messages>
     </tab>
 
     <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
@@ -73,16 +61,7 @@
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
       </tab-heading>
 
-      <div class="messages" scroll-glue>
-        <div ng-if="messages.channel[channelNumber]" ng-repeat="message in messages.channel[channelNumber]">
-          {{ message.user }} &gt; {{ message.message }}
-        </div>
-      </div>
-
-      <div class="message" ng-controller="MessageCtrl">
-        <textarea ng-model="message" placeholder="type to chat"></textarea>
-        <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(channelNumber, message)">Submit [Enter]</button>
-      </div>
+      <messsages messages="messages.channel[channelNumber]" send="sendMessage(channelNumber)(message)"></messages>
     </tab>
 
     <tab ng-repeat="(username, messages) in messages.user">
@@ -91,16 +70,7 @@
         <a href="#" ng-click="closePrivateMessage(username)">x</a>
       </tab-heading>
 
-      <div class="messages" scroll-glue>
-        <div ng-repeat="message in messages">
-          {{ message.user }} &gt; {{ message.message }}
-        </div>
-      </div>
-
-      <div class="message" ng-controller="MessageCtrl">
-        <textarea ng-model="message" placeholder="type to chat"></textarea>
-        <button class="btn btn-primary" ng-model="_" ng-click="sendMessage(username, message)">Submit [Enter]</button>
-      </div>
+      <messages messages="messages" send="sendMessage(username)(message)"></messages>
     </tab>
   </tabset>
 </tab>
