@@ -1,6 +1,6 @@
 ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Proxy) {
   var isLoggingIn = false;
-  var username, isGuest;
+  var username, isGuest, loginFailure;
 
   Proxy.registerMessage("login", function(data) {
     username = data.username;
@@ -14,12 +14,21 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
     Proxy.sendMessage("subscribedChannelList");
   });
 
+  Proxy.registerMessage("loginFailure", function() {
+    isLoggingIn = false;
+    loginFailure = "Invalid password, please try again";
+
+    $cookieStore.remove("userData");
+  });
+
   if ($cookieStore.get("userData")) {
     login($cookieStore.get("userData"));
   }
 
   return {
     login: function(userData, remember) {
+      loginFailure = undefined;
+
       if (!(userData.login && userData.password)) {
         isGuest = true;
       }
@@ -34,6 +43,7 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
     },
 
     isLoggingIn: function() { return isLoggingIn },
+    loginFailure: function() { return loginFailure },
 
     getUsername: function() { return username },
     isGuest: function() { return isGuest }

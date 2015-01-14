@@ -3,6 +3,10 @@ ficsClient.controller("LoginCtrl", ["$scope", "User", function($scope, User) {
     $scope.isLoggingIn = val;
   });
 
+  $scope.$watch(User.loginFailure, function(val) {
+    $scope.loginFailure = val;
+  });
+
   $scope.loginAsGuest = function() {
     User.login({ });
   };

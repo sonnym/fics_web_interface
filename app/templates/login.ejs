@@ -13,6 +13,8 @@
   <div>- or -</div>
 
   <form ng-submit="loginWithCredentials(userData, remember)">
+    <p ng-if="loginFailure">{{ loginFailure }}</p>
+
     <input type="text" ng-model="userData.login" placeholder="login" ng-disabled="isLoggingIn" />
     <br>
     <input type="password" ng-model="userData.password" placeholder="password" ng-disabled="isLoggingIn" />
