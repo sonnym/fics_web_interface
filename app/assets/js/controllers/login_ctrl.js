@@ -4,7 +4,7 @@ ficsClient.controller("LoginCtrl", ["$scope", "User", function($scope, User) {
   });
 
   $scope.$watch(User.loginFailure, function(val) {
-    $scope.loginFailure = val;
+    $scope.loginFailure = val
   });
 
   $scope.loginAsGuest = function() {
