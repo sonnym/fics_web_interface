@@ -41,6 +41,6 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
 
   function login(userData) {
     isLoggingIn = true;
-    Proxy.sendMessage("login", $cookieStore.get("userData"));
+    Proxy.sendMessage("login", userData);
   }
 }]);
