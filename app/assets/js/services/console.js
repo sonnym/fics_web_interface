@@ -1,8 +1,8 @@
-ficsClient.factory("Console", ["Proxy", function(Proxy) {
-  var output = "";
+ficsClient.factory("Console", ["Proxy", "FiniteArray", function(Proxy, FiniteArray) {
+  var output = new FiniteArray(5000);
 
   Proxy.registerMessage("raw", function(data) {
-    output += data;
+    output = output.concat(data.split("\n"));
   });
 
   return {
