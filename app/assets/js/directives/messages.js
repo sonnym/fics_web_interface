@@ -29,8 +29,6 @@ ficsClient.directive("messages", function() {
       scope.isModeAllowed = function(mode) {
         return _.contains(scope.allowedModes, mode);
       }
-
-      console.log(scope);
     },
 
     templateUrl: "/messages.html"
