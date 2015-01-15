@@ -1,4 +1,4 @@
-ficsClient.factory("TabManager", ["$timeout", function($timeout) {
+ficsClient.factory("TabManager", [function() {
   return function(scope, tabs) {
     tabs = _.reduce(tabs, function(memo, data, name) {
       var active = data.active;
@@ -29,14 +29,8 @@ ficsClient.factory("TabManager", ["$timeout", function($timeout) {
       },
     });
 
-    this.checkForAndSwitchTo = function(from, to) {
-      if (isActiveTab(from)) {
-        // next run of the event loop, to allow the in progress
-        // tab changes to complete
-        $timeout(function() {
-          tabs[to].active = true;
-        });
-      }
+    this.isActiveTab = function(tabName) {
+      return tabName === activeTabName();
     };
 
     function activeTabName() {
@@ -46,9 +40,5 @@ ficsClient.factory("TabManager", ["$timeout", function($timeout) {
         return memo;
       }, {}))[true];
     }
-
-    function isActiveTab(tabName) {
-      return tabName === activeTabName();
-    };
   };
 }]);

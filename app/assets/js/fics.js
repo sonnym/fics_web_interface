@@ -23,8 +23,8 @@ ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", f
   $rootScope.$watch(User.getUsername, function(username) {
     $rootScope.isLoggedIn = angular.isDefined(username);
 
-    if ($rootScope.isLoggedIn) {
-      tabManager.checkForAndSwitchTo("login", "chat");
+    if ($rootScope.isLoggedIn && tabManager.isActiveTab("login")) {
+      tabManager.tabs["chat"].active = true;
     }
   }, true);
 
