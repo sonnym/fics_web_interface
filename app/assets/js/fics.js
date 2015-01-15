@@ -24,7 +24,9 @@ ficsClient.run(["$rootScope", "TabManager", "User", "Play", function($rootScope,
   $rootScope.$watch(User.getUsername, function(username) {
     $rootScope.isLoggedIn = angular.isDefined(username);
 
-    tabManager.watchLogin();
+    if ($rootScope.isLoggedIn) {
+      tabManager.checkForAndSwitchTo("login", "chat");
+    }
   }, true);
 
   $rootScope.$watch(User.isGuest, function(isGuest) {

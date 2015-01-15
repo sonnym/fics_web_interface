@@ -17,12 +17,11 @@ ficsClient.factory("TabManager", ["$timeout", function($timeout) {
       }, {});
     };
 
-    var self = this;
-    this.watchLogin = function() {
-      if (scope.isLoggedIn && isActiveTab("login")) {
-        // next run of the event loop, since the changing tabs
-        // cause the last tab to become active by default
-        $timeout(_.partial(_.bindAll(scope, "changeTab").changeTab, "chat"));
+    this.checkForAndSwitchTo = function(from, to) {
+      if (isActiveTab(from)) {
+        // next run of the event loop, to allow the in progress
+        // tab changes to complete
+        $timeout(_.partial(_.bindAll(scope, "changeTab").changeTab, to));
       }
     };
 
