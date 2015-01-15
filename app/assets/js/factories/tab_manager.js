@@ -1,5 +1,23 @@
 ficsClient.factory("TabManager", ["$timeout", function($timeout) {
   return function(scope, tabs) {
+    tabs = _.reduce(tabs, function(memo, data, name) {
+      var active = data.active;
+
+      Object.defineProperty(data, "active", {
+        get: function() {
+          return active;
+        },
+
+        set: function(newVal) {
+          active = newVal;
+        }
+      });
+
+      memo[name] = data;
+
+      return memo;
+    }, {});
+
     Object.defineProperty(this, "tabs", {
       enumerable: true,
       get: function() {
@@ -7,21 +25,13 @@ ficsClient.factory("TabManager", ["$timeout", function($timeout) {
       },
     });
 
-    scope.changeTab = function(activeTab) {
-      tabs = _.reduce(tabs, function(newTabs, tabData, tabName) {
-        newTabs[tabName] = _.extend(tabData, {
-          active: (tabName === activeTab)
-        })
-
-        return newTabs;
-      }, {});
-    };
-
     this.checkForAndSwitchTo = function(from, to) {
       if (isActiveTab(from)) {
         // next run of the event loop, to allow the in progress
         // tab changes to complete
-        $timeout(_.partial(_.bindAll(scope, "changeTab").changeTab, to));
+        $timeout(function() {
+          tabs[to].active = true;
+        });
       }
     };
 
