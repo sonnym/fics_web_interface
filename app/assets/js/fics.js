@@ -9,14 +9,13 @@ var ficsClient = angular.module("ficsClient", [
   "luegg.directives"
 ]);
 
-// only include play as a dependency temporarily to make it register its messages
-ficsClient.run(["$rootScope", "TabManager", "User", "Play", function($rootScope, TabManager, User) {
+ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, TabManager, User, Chat, Observe, Play) {
   var tabManager = new TabManager($rootScope, {
     login: { active: true },
     console: { active: false },
-    chat: { active: false },
-    play: { active: false },
-    watch: { active: false }
+    chat: { active: false, activate: Chat.activate },
+    play: { active: false, activate: Play.activate },
+    observe: { active: false, activate: Observe.activate }
   });
 
   $rootScope.tabs = tabManager.tabs;

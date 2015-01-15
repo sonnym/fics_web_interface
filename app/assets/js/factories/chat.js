@@ -39,6 +39,12 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
   });
 
   return {
+    activate: function() {
+      Proxy.sendMessage("userList");
+      Proxy.sendMessage("channelList");
+      Proxy.sendMessage("subscribedChannelList");
+    },
+
     users: function() { return users },
     channels: function() { return channels },
     subscribedChannels: function() { return subscribedChannels },

@@ -4,14 +4,6 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
 
   Proxy.registerMessage("login", function(data) {
     username = data.username;
-
-    Proxy.sendMessage("gameList");
-    Proxy.sendMessage("soughtList");
-
-    Proxy.sendMessage("userList");
-
-    Proxy.sendMessage("channelList");
-    Proxy.sendMessage("subscribedChannelList");
   });
 
   Proxy.registerMessage("loginFailure", function() {

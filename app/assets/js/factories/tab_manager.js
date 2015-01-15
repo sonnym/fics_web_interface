@@ -9,6 +9,10 @@ ficsClient.factory("TabManager", ["$timeout", function($timeout) {
         },
 
         set: function(newVal) {
+          if (newVal && data.activate) {
+            data.activate();
+          };
+
           active = newVal;
         }
       });
