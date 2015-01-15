@@ -9,8 +9,6 @@ ficsClient.factory("TabManager", ["$rootScope", "$timeout", function($rootScope,
 
           return obj;
         }, {});
-
-        console.log();
       };
 
       $rootScope.isActiveTab = function(tab) {
