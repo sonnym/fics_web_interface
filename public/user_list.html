@@ -1,0 +1,8 @@
+<ul class="user-list">
+  <li ng-repeat="user in displayUsers" class="dropdown" dropdown>
+    <a href="#" class="dropdown-toggle" dropdown-toggle>{{ user.name }} ({{ user.rating }})</a>
+    <ul class="dropdown-menu">
+      <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
+    </ul>
+  </li>
+</ul>

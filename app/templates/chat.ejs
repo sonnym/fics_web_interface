@@ -39,14 +39,7 @@
         rotate="false">
       </pagination>
 
-      <ul ng-if="users" class="user-list">
-        <li ng-repeat="user in users | orderBy:'name' | paginationSubset:20:currentPage" class="dropdown" dropdown>
-          <a href="#" class="dropdown-toggle" dropdown-toggle>{{ user.name }} ({{ user.rating }})</a>
-          <ul class="dropdown-menu">
-            <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
-          </ul>
-        </li>
-      </ul>
+      <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
     </tab>
   </tabset>
 
