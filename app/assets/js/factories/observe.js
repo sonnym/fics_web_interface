@@ -30,7 +30,9 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
 
   Proxy.registerMessage("observerList", function(gameData) {
     var game = findGame(watching, gameData.number);
-    game.observers = gameData.observers;
+    game.observers = _.map(gameData.observers, function(name) {
+      return { name: name };
+    });
   });
 
   return {

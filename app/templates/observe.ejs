@@ -50,13 +50,7 @@
         </div>
 
         <div class="chat">
-          <div class="observers">
-            <ul>
-              <li ng-repeat="observer in game.observers | orderBy:'toString'">
-                {{ observer }}
-              </li>
-            </ul>
-          </div>
+          <user-list users="game.observers | orderBy:'name'"></user-list>
 
           <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
         </div>
