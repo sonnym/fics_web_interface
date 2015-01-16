@@ -54,7 +54,7 @@
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
       </tab-heading>
 
-      <messsages messages="messages.channel[channelNumber]" send="sendMessage(channelNumber)(message)"></messages>
+      <messages messages="messages.channel[channelNumber]" send="sendMessage(channelNumber)(message)"></messages>
     </tab>
 
     <tab ng-repeat="(username, messages) in messages.user">
