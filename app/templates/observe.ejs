@@ -57,7 +57,7 @@
         </div>
 
         <div class="chat">
-          <user-list users="game.observers | orderBy:'name'"></user-list>
+          <user-list class="observers" users="game.observers | orderBy:'name'"></user-list>
 
           <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
         </div>

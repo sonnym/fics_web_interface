@@ -12,6 +12,11 @@ div.tab-container div.tab-container {
   top: 40px;
 }
 
+ul.nav-tabs {
+  height: 40px;
+  overflow: hidden;
+}
+
 div.content {
   position: absolute;
 
