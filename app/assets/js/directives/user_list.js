@@ -12,7 +12,6 @@ ficsClient.directive("userList", ["$parse", "Chat", function($parse, Chat) {
         scope.displayUsers = val;
       }, true);
 
-
       scope.startPrivateMessage = Chat.startPrivateMessage;
     }
   };
