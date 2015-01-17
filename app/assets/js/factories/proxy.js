@@ -1,5 +1,5 @@
 ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
-  var socket = this.socket = new SockJS("/socket");
+  var socket = new SockJS("/socket");
   var socketOpen = false;
 
   var queue = [];
