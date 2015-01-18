@@ -17,7 +17,7 @@ ficsClient.factory("FiniteArray", function() {
         if (_.isArray(result)) {
           return limit.call(fromArray(result));
         } else {
-          return _.tap(result, _.partial(limit.call, array));
+          return fromArray(_.tap(result, _.bind(limit, array)));
         }
       };
     });
