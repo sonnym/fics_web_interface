@@ -1,6 +1,10 @@
-ficsClient.factory("Chat", ["Proxy", function(Proxy) {
+ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, MessageCollection) {
   var users, channels, subscribedChannels;
-  var chatMessages = { global: [], channel: {}, user: {} };
+  var chatMessages = {
+    global: new MessageCollection(),
+    channel: {},
+    user: {}
+  };
 
   var newMessages = true;
 
@@ -21,6 +25,7 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
 
     if (data.type === "shout" || data.type === "it") {
       chatMessages.global.push(data);
+
     } else if (data.type === "tell") {
       if (data.channel) {
         var key = data.channel;
@@ -30,12 +35,12 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
         var container = chatMessages.user;
       }
 
-      var messages = container[key];
+      var messageCollection = container[key];
 
-      if (messages) {
-        messages.push(data);
+      if (messageCollection) {
+        messageCollection.push(data);
       } else {
-        container[key] = [data];
+        container[key] = new MessageCollection(data);
       }
     }
   });
@@ -80,7 +85,7 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
     },
 
     startPrivateMessage: function(username) {
-      chatMessages.user[username] = chatMessages.user[username] || [];
+      chatMessages.user[username] = chatMessages.user[username] || new MessageCollection();
     },
 
     closePrivateMessage: function(username) {
