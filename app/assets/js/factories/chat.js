@@ -47,11 +47,13 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
 
   return {
     activate: function() {
-      newMessages = false;
-
       Proxy.sendMessage("userList");
       Proxy.sendMessage("channelList");
       Proxy.sendMessage("subscribedChannelList");
+    },
+
+    deactivate: function() {
+      newMessages = false;
     },
 
     notify: function() {

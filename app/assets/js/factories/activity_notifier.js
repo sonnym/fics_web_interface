@@ -10,7 +10,9 @@ ficsClient.factory("ActivityNotifier", function() {
       set: function(newVal) {
         if (newVal && data.activate) {
           data.activate();
-        };
+        } else if (!newVal && data.deactivate) {
+          data.deactivate();
+        }
 
         data.active = newVal;
       }
