@@ -1,28 +1,7 @@
-ficsClient.factory("TabManager", [function() {
+ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier) {
   return function(scope, tabs) {
     tabs = _.reduce(tabs, function(memo, data, name) {
-      var notifyCallback = data.notify;
-      var active = data.active;
-
-      Object.defineProperty(data, "active", {
-        get: function() {
-          return active;
-        },
-
-        set: function(newVal) {
-          if (newVal && data.activate) {
-            data.activate();
-          };
-
-          active = newVal;
-        }
-      });
-
-      data.notify = function() {
-        return !active && notifyCallback && notifyCallback();
-      };
-
-      memo[name] = data;
+      memo[name] = ActivityNotifier(data);
 
       return memo;
     }, {});
