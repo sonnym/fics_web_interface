@@ -1,6 +1,7 @@
 ficsClient.factory("TabManager", [function() {
   return function(scope, tabs) {
     tabs = _.reduce(tabs, function(memo, data, name) {
+      var notifyCallback = data.notify;
       var active = data.active;
 
       Object.defineProperty(data, "active", {
@@ -16,6 +17,10 @@ ficsClient.factory("TabManager", [function() {
           active = newVal;
         }
       });
+
+      data.notify = function() {
+        return !active && notifyCallback && notifyCallback();
+      };
 
       memo[name] = data;
 

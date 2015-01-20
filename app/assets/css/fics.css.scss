@@ -15,6 +15,10 @@ div.tab-container div.tab-container {
 ul.nav-tabs {
   height: 40px;
   overflow: hidden;
+
+  span.notify {
+    color: red;
+  }
 }
 
 div.content {

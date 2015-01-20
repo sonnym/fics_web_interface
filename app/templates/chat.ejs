@@ -1,4 +1,9 @@
-<tab heading="chat" ng-controller="ChatCtrl" ng-if="isLoggedIn" active="tabs.chat.active">
+<tab ng-controller="ChatCtrl" ng-if="isLoggedIn" active="tabs.chat.active">
+  <tab-heading ng-class="{ notify: tabs.chat.notify }">
+    chat
+    <span class="notify" ng-if="tabs.chat.notify()">!</span>
+  </tab-heading>
+
   <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
     <tab heading="channels">
       <pagination

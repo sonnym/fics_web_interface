@@ -2,6 +2,8 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
   var users, channels, subscribedChannels;
   var chatMessages = { global: [], channel: {}, user: {} };
 
+  var newMessages = true;
+
   Proxy.registerMessage("channelList", function(data) {
     channels = data;
   });
@@ -17,6 +19,8 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
   });
 
   Proxy.registerMessage("chatMessage", function(data) {
+    newMessages = true;
+
     if (data.type === "shout" || data.type === "it") {
       chatMessages.global.push(data);
     } else if (data.type === "tell") {
@@ -40,9 +44,15 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
 
   return {
     activate: function() {
+      newMessages = false;
+
       Proxy.sendMessage("userList");
       Proxy.sendMessage("channelList");
       Proxy.sendMessage("subscribedChannelList");
+    },
+
+    notify: function() {
+      return newMessages;
     },
 
     users: function() { return users },
