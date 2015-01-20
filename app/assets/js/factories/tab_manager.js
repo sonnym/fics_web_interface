@@ -18,4 +18,4 @@ ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier)
       }, {}))[true];
     }
   };
-}]);
+}])

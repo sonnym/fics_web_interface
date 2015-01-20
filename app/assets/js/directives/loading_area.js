@@ -1,4 +1,4 @@
-ficsClient.directive("loadingArea", function() {
+ficsClient.directive("loadingArea", ["Setter", function(Setter) {
   return {
     restrict: "E",
     transclude: true,
@@ -6,11 +6,9 @@ ficsClient.directive("loadingArea", function() {
     scope: { ensureFn: "&ensure" },
 
     link: function(scope, element, _, _, transcludeFn) {
-      scope.$watch(scope.ensureFn, function(val) {
-        scope.displayContent = val;
-      });
+      scope.$watch(scope.ensureFn, Setter(scope)("displayContent"));
     },
 
     templateUrl: "/loading_area.html"
   };
-});
+}]);

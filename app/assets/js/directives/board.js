@@ -39,7 +39,7 @@ ficsClient.directive("board", function() {
   }
 });
 
-ficsClient.directive("timer", ["$window", function($window) {
+ficsClient.directive("timer", ["$window", "Setter", function($window, Setter) {
   return {
     restrict: "E",
     scope: { start: "=", tick: "=" },
@@ -53,9 +53,7 @@ ficsClient.directive("timer", ["$window", function($window) {
         startTick();
       }
 
-      scope.$watch("start", function(newVal) {
-        scope.currentTime = newVal;
-      });
+      scope.$watch("start", Setter(scope)("currentTime"));
 
       scope.$watch("tick", function(newVal) {
         if (newVal) {

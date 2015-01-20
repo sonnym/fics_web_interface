@@ -1,11 +1,8 @@
-ficsClient.controller("LoginCtrl", ["$scope", "User", function($scope, User) {
-  $scope.$watch(User.isLoggingIn, function(val) {
-    $scope.isLoggingIn = val;
-  });
+ficsClient.controller("LoginCtrl", ["$scope", "Setter", "User", function($scope, Setter, User) {
+  var scopeSetter = Setter($scope);
 
-  $scope.$watch(User.loginFailure, function(val) {
-    $scope.loginFailure = val
-  });
+  $scope.$watch(User.isLoggingIn, scopeSetter("isLoggingIn"));
+  $scope.$watch(User.loginFailure, scopeSetter("loginFailure"));
 
   $scope.loginAsGuest = function() {
     User.login({ });

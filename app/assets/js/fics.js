@@ -9,7 +9,7 @@ var ficsClient = angular.module("ficsClient", [
   "luegg.directives"
 ]);
 
-ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, TabManager, User, Chat, Observe, Play) {
+ficsClient.run(["$rootScope", "Setter", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, Setter, TabManager, User, Chat, Observe, Play) {
   var tabManager = new TabManager({
     login: { active: true },
     chat: { active: false, activate: Chat.activate, notify: Chat.notify },
@@ -27,7 +27,5 @@ ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", f
     }
   });
 
-  $rootScope.$watch(User.isGuest, function(isGuest) {
-    $rootScope.isGuest = isGuest;
-  });
+  $rootScope.$watch(User.isGuest, Setter($rootScope)("isGuest"));
 }]);

@@ -1,11 +1,8 @@
-ficsClient.controller("ObservationCtrl", ["$scope", "Observe", function($scope, Observe) {
-  $scope.$watch(Observe.games, function(games) {
-    $scope.games = games;
-  });
+ficsClient.controller("ObservationCtrl", ["$scope", "Setter", "Observe", function($scope, Setter, Observe) {
+  var scopeSetter = Setter($scope);
 
-  $scope.$watch(Observe.getWatching, function(games) {
-    $scope.observations = games;
-  });
+  $scope.$watch(Observe.games, scopeSetter("games"));
+  $scope.$watch(Observe.getWatching, scopeSetter("observations"));
 
   $scope.watch = function(gameNumber) {
     Observe.watch(gameNumber);
