@@ -4,49 +4,51 @@
     <span class="notify" ng-if="tabs.chat.notify()">!</span>
   </tab-heading>
 
-  <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
-    <tab heading="channels">
-      <pagination
-        class="pagination-sm"
-        previous-text="&lsaquo;"
-        next-text="&rsaquo;"
-        first-text="&laquo;"
-        last-text="&raquo;"
-        total-items="channels.length"
-        ng-model="currentPage"
-        items-per-page="20"
-        boundary-links="true"
-        max-size="5"
-        rotate="false">
-      </pagination>
+  <loading-area ensure="users.length > 0 && channels.length > 0 ">
+    <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
+      <tab heading="channels">
+        <pagination
+          class="pagination-sm"
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;"
+          first-text="&laquo;"
+          last-text="&raquo;"
+          total-items="channels.length"
+          ng-model="currentPage"
+          items-per-page="20"
+          boundary-links="true"
+          max-size="5"
+          rotate="false">
+        </pagination>
 
-      <ul class="channel-list">
-        <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
-          <a href="#" ng-click="joinChannel(channel.number)">
-            {{ channel.number }} {{ channel.name }}
-          </a>
-        </li>
-      </ul>
-    </tab>
+        <ul class="channel-list">
+          <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
+            <a href="#" ng-click="joinChannel(channel.number)">
+              {{ channel.number }} {{ channel.name }}
+            </a>
+          </li>
+        </ul>
+      </tab>
 
-    <tab heading="users">
-      <pagination
-        class="pagination-sm"
-        previous-text="&lsaquo;"
-        next-text="&rsaquo;"
-        first-text="&laquo;"
-        last-text="&raquo;"
-        total-items="users.length"
-        ng-model="currentPage"
-        items-per-page="20"
-        boundary-links="true"
-        max-size="5"
-        rotate="false">
-      </pagination>
+      <tab heading="users">
+        <pagination
+          class="pagination-sm"
+          previous-text="&lsaquo;"
+          next-text="&rsaquo;"
+          first-text="&laquo;"
+          last-text="&raquo;"
+          total-items="users.length"
+          ng-model="currentPage"
+          items-per-page="20"
+          boundary-links="true"
+          max-size="5"
+          rotate="false">
+        </pagination>
 
-      <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
-    </tab>
-  </tabset>
+        <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
+      </tab>
+    </tabset>
+  </loader-area>
 
   <tabset class="chat-content tab-container">
     <tab heading="global">
