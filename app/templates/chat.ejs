@@ -51,26 +51,43 @@
   </loader-area>
 
   <tabset class="chat-content tab-container">
-    <tab heading="global">
-      <messages messages="messages.global" send="shout(mode, message)" allowed-modes="globalModes"></messages>
+    <tab active="messages.global.active">
+      <tab-heading>
+        global
+        <span class="notify" ng-if="messages.global.notify()">!</span>
+      </tab-heading>
+
+      <messages
+        messages="messages.global.messages"
+        send="shout(mode, message)"
+        allowed-modes="globalModes">
+      </messages>
     </tab>
 
     <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString">
       <tab-heading>
         {{ channelNumber }}: {{ channelName(channelNumber) }}
+        <span class="notify" ng-if="messages.channel[channelNumber].notify()">!</span>
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
       </tab-heading>
 
-      <messages messages="messages.channel[channelNumber]" send="sendMessage(channelNumber)(message)"></messages>
+      <messages
+        messages="messages.channel[channelNumber].messages"
+        send="sendMessage(channelNumber)(message)">
+      </messages>
     </tab>
 
-    <tab ng-repeat="(username, messages) in messages.user">
+    <tab ng-repeat="(username, messageCollection) in messages.user">
       <tab-heading>
         {{ username }}
+        <span class="notify" ng-if="messageCollection.notify()">!</span>
         <a href="#" ng-click="closePrivateMessage(username)">x</a>
       </tab-heading>
 
-      <messages messages="messages" send="sendMessage(username)(message)"></messages>
+      <messages
+        messages="messageCollection.messages"
+        send="sendMessage(username)(message)">
+      </messages>
     </tab>
   </tabset>
 </tab>
