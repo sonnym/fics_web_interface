@@ -1,5 +1,5 @@
 ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier) {
-  return function(scope, tabs) {
+  return function(tabs) {
     this.tabs = _.reduce(tabs, function(memo, data, name) {
       memo[name] = new ActivityNotifier(data);
 

@@ -10,7 +10,7 @@ var ficsClient = angular.module("ficsClient", [
 ]);
 
 ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, TabManager, User, Chat, Observe, Play) {
-  var tabManager = new TabManager($rootScope, {
+  var tabManager = new TabManager({
     login: { active: true },
     chat: { active: false, activate: Chat.activate, notify: Chat.notify },
     play: { active: false, activate: Play.activate },
