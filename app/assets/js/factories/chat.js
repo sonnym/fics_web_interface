@@ -57,6 +57,10 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
         newMessages = false;
       },
 
+      update: function() {
+        Proxy.sendMessage("userList");
+      },
+
       notify: function() {
         return newMessages;
       },

@@ -1,7 +1,9 @@
-ficsClient.factory("ActivityNotifier", function() {
+ficsClient.factory("ActivityNotifier", ["$interval", function($interval) {
   return ActivityNotifier;
 
   function ActivityNotifier(data) {
+    var interval;
+
     Object.defineProperty(this, "active", {
       get: function() {
         return data.active;
@@ -10,7 +12,16 @@ ficsClient.factory("ActivityNotifier", function() {
       set: function(newVal) {
         if (newVal && data.activate) {
           data.activate();
+
+          if (data.update) {
+            interval = $interval(data.activate.bind(data), 60000);
+          }
         } else if (!newVal && data.deactivate) {
+          if (_.isDefined(interval)) {
+            $interval.cancel(interval);
+            interval = undefined;
+          }
+
           data.deactivate();
         }
 
@@ -22,4 +33,4 @@ ficsClient.factory("ActivityNotifier", function() {
       return !data.active && data.notify && data.notify();
     };
   };
-});
+}]);
