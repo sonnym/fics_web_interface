@@ -25,7 +25,7 @@ ficsClient.run(["$rootScope", "TabManager", "User", "Chat", "Observe", "Play", f
     if ($rootScope.isLoggedIn && tabManager.isActiveTab("login")) {
       tabManager.tabs["chat"].active = true;
     }
-  }, true);
+  });
 
   $rootScope.$watch(User.isGuest, function(isGuest) {
     $rootScope.isGuest = isGuest;
