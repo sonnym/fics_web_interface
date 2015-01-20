@@ -55,7 +55,7 @@
       <messages messages="messages.global" send="shout(mode, message)" allowed-modes="globalModes"></messages>
     </tab>
 
-    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" ng-if="channels">
+    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString">
       <tab-heading>
         {{ channelNumber }}: {{ channelName(channelNumber) }}
         <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
