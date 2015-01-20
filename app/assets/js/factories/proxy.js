@@ -24,7 +24,7 @@ ficsClient.factory("Proxy", ["$rootScope", function($rootScope) {
 
     var message = JSON.parse(e.data);
 
-    $rootScope.$apply(function() {
+    _.defer($rootScope.$apply.bind($rootScope), function() {
       messageHandlers[message.operation](message.data);
     });
   }
