@@ -6,7 +6,7 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
     user: {}
   };
 
-  var newMessages = true;
+  var newMessages = false;
 
   Proxy.registerMessage("channelList", function(data) {
     channels = data;
