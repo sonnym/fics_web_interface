@@ -64,7 +64,7 @@
       </messages>
     </tab>
 
-    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString">
+    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" active="messages.channel[channelNumber].active">
       <tab-heading>
         {{ channelNumber }}: {{ channelName(channelNumber) }}
         <span class="notify" ng-if="messages.channel[channelNumber].notify()">!</span>
@@ -77,7 +77,7 @@
       </messages>
     </tab>
 
-    <tab ng-repeat="(username, messageCollection) in messages.user">
+    <tab ng-repeat="(username, messageCollection) in messages.user" active="messageCollection.active">
       <tab-heading>
         {{ username }}
         <span class="notify" ng-if="messageCollection.notify()">!</span>
