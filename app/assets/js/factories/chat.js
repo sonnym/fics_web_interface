@@ -14,8 +14,6 @@ ficsClient.factory("Chat", ["Proxy", function(Proxy) {
 
   Proxy.registerMessage("userList", function(data) {
     users = data;
-
-    // setTimeout(function() { Proxy.sendMessage("userList") }, 1000);
   });
 
   Proxy.registerMessage("chatMessage", function(data) {
