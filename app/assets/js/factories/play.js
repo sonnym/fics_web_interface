@@ -6,8 +6,10 @@ ficsClient.factory("Play", ["Proxy", function(Proxy) {
   });
 
   return {
-    activate: function() {
-      Proxy.sendMessage("soughtList");
+    notifier: {
+      activate: function() {
+        Proxy.sendMessage("soughtList");
+      }
     },
 
     getSought: function() { return sought }

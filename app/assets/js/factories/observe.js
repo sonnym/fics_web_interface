@@ -34,8 +34,10 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
   });
 
   return {
-    activate: function() {
-      Proxy.sendMessage("gameList");
+    notifier: {
+      activate: function() {
+        Proxy.sendMessage("gameList");
+      }
     },
 
     games: function() { return games },
