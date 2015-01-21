@@ -5,8 +5,8 @@
   </tab-heading>
 
   <loading-area ensure="users.length > 0 && channels.length > 0 ">
-    <tabset vertical="true" type="'pills'" class="tab-container chat-nav">
-      <tab heading="channels">
+    <accordion class="chat-nav">
+      <accordion-group heading="channels">
         <pagination
           class="pagination-sm"
           previous-text="&lsaquo;"
@@ -28,9 +28,9 @@
             </a>
           </li>
         </ul>
-      </tab>
+      </accordion-group>
 
-      <tab heading="users">
+      <accordion-group heading="users">
         <pagination
           class="pagination-sm"
           previous-text="&lsaquo;"
@@ -46,8 +46,8 @@
         </pagination>
 
         <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
-      </tab>
-    </tabset>
+      </accordion-group>
+    </accordion>
   </loader-area>
 
   <tabset class="chat-content tab-container">

@@ -1,9 +1,11 @@
-div.chat-nav {
+.chat-nav {
   position: absolute;
 
+  top: 40px;
   left: 0px;
   bottom: 0px;
-  width: 360px;
+
+  width: 355px;
 }
 
 div.chat-content {
