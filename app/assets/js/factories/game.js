@@ -3,6 +3,8 @@ ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", fu
     this.updates = false;
     this.messageCollection = new MessageCollection();
 
+    this.messages = this.messageCollection.messages;
+
     _.extend(this, gameData);
 
     var self = this;
@@ -57,10 +59,6 @@ ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", fu
 
   Game.prototype.storeMessage = function(message) {
     this.messageCollection.push(message);
-  };
-
-  Game.prototype.messages = function() {
-    return this.messageCollection.messages;
   };
 
   Game.prototype.setResult = function(result) {
