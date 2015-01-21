@@ -19,8 +19,6 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
   });
 
   Proxy.registerMessage("chatMessage", function(data) {
-    newMessages = true;
-
     if (data.type === "shout" || data.type === "it") {
       chatMessages.global.push(data);
 
