@@ -6,8 +6,6 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
     user: {}
   };
 
-  var newMessages = false;
-
   Proxy.registerMessage("channelList", function(data) {
     channels = data;
   });
@@ -53,16 +51,14 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
         Proxy.sendMessage("subscribedChannelList");
       },
 
-      deactivate: function() {
-        newMessages = false;
-      },
-
       update: function() {
         Proxy.sendMessage("userList");
       },
 
       notify: function() {
-        return newMessages;
+        return chatMessages.global.notify() ||
+          _.any(chatMessages.channel, function(channel) { return channel.notify() }) ||
+          _.any(chatMessages.user, function(user) { return user.notify() });
       },
     },
 
