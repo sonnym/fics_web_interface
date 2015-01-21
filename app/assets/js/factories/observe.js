@@ -1,4 +1,4 @@
-ficsClient.factory("Observe", ["Proxy", function(Proxy) {
+ficsClient.factory("Observe", ["Proxy", "Game", function(Proxy, Game) {
   var games;
   var watching = [];
 
@@ -8,26 +8,18 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
 
   Proxy.registerMessage("observeUpdate", function(gameData) {
     var gameNumber = gameData.number;
-    var game = findGame(watching, gameNumber);
+    var game = findGameByNumber(watching, gameNumber);
 
-    if (gameData.update.position) {
-      setGamePosition(game, gameData.update);
-    } else if (gameData.update.message) {
-      storeGameMessage(game, gameData.update);
-    } else if (gameData.update.result) {
-      setGameResult(game, gameData.update.result);
-    } else {
-      game.chat = { mode: "whisper" };
-    }
+    game.update(gameData);
   });
 
   Proxy.registerMessage("moveList", function(gameData) {
-    var game = findGame(watching, gameData.number);
+    var game = findGameByNumber(watching, gameData.number);
     game.moves = gameData.moves;
   });
 
   Proxy.registerMessage("observerList", function(gameData) {
-    var game = findGame(watching, gameData.number);
+    var game = findGameByNumber(watching, gameData.number);
     game.observers = _.map(gameData.observers, function(name) {
       return { name: name };
     });
@@ -43,10 +35,10 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
     games: function() { return games },
 
     watch: function(gameNumber) {
-      var game = findGame(games, gameNumber);
+      var game = findGameByNumber(games, gameNumber);
 
-      if (!_.include(watching, game)) {
-        watching.push(game);
+      if (_.isUndefined(findGameByNumber(watching, game))) {
+        watching.push(new Game(game));
         Proxy.sendMessage("observe", { number: gameNumber });
       }
     },
@@ -65,7 +57,7 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
     getWatching: function() { return watching }
   }
 
-  function findGame(collection, gameNumber) {
+  function findGameByNumber(collection, gameNumber) {
     return _.detect(collection, function(game) {
       return gameNumber === game.number;
     });
@@ -75,41 +67,5 @@ ficsClient.factory("Observe", ["Proxy", function(Proxy) {
     watching = _.reject(watching, function(game) {
       return gameNumber === game.number;
     });
-  }
-
-  function setGamePosition(game, metaData) {
-    game.metaData = metaData;
-
-    if (game.moves) {
-      if (metaData.current.color === "W") {
-        _.last(game.moves).push(metaData.move.algebraic);
-      } else {
-        game.moves.push([metaData.move.algebraic]);
-      }
-    } else {
-      Proxy.sendMessage("moveList", { number: game.number });
-    }
-
-    if (!game.observers) {
-      Proxy.sendMessage("observerList", { number: game.number });
-    }
-  }
-
-  function storeGameMessage(game, message) {
-    if (game.messages) {
-      game.messages.push(message);
-    } else {
-      game.messages = [message];
-    }
-  }
-
-  function setGameResult(game, result) {
-    if (game.metaData) {
-      game.metaData.result = result;
-    } else {
-      game.metaData = { result: result };
-    }
-
-    game.isComplete = true;
   }
 }]);
