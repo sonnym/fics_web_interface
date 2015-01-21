@@ -11,10 +11,6 @@ ficsClient.factory("MessageCollection", ["FiniteArray", "ActivityNotifier", func
     ActivityNotifier.call(this, {
       active: false,
 
-      activate: function() {
-        self.newMessages = false;
-      },
-
       deactivate: function() {
         self.newMessages = false;
       },
