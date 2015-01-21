@@ -56,7 +56,7 @@ ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", fu
   };
 
   Game.prototype.storeMessage = function(message) {
-    this.messageCollection.push(messages);
+    this.messageCollection.push(message);
   };
 
   Game.prototype.messages = function() {
