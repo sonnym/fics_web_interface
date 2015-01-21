@@ -1,5 +1,6 @@
 var ficsClient = angular.module("ficsClient", [
   "ngCookies",
+  "ui.bootstrap.accordion",
   "ui.bootstrap.buttons",
   "ui.bootstrap.dropdown",
   "ui.bootstrap.pagination",
