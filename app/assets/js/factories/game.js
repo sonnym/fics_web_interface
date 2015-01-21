@@ -1,11 +1,28 @@
-ficsClient.factory("Game", ["MessageCollection", "Proxy", function(MessageCollection, Proxy) {
+ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", function(MessageCollection, ActivityNotifier, Proxy) {
   function Game(gameData) {
+    this.updates = false;
     this.messageCollection = new MessageCollection();
 
     _.extend(this, gameData);
+
+    var self = this;
+    ActivityNotifier.call(this, {
+      active: false,
+
+      deactivate: function() {
+        self.updates = false;
+        self.messageCollection.newMessages = false;
+      },
+
+      notify: function() {
+        return self.updates || self.messageCollection.notify();
+      }
+    });
   }
 
   Game.prototype.update = function(gameData) {
+    this.updates = true;
+
     if (gameData.update.position) {
       this.setPosition(gameData.update);
 
