@@ -16,13 +16,15 @@ ficsClient.factory("ActivityNotifier", ["$interval", function($interval) {
           if (data.update) {
             interval = $interval(data.activate.bind(data), 60000);
           }
-        } else if (!newVal && data.deactivate) {
+        } else if (!newVal) {
           if (!_.isUndefined(interval)) {
             $interval.cancel(interval);
             interval = undefined;
           }
 
-          data.deactivate();
+          if (data.deactivate) {
+            data.deactivate();
+          }
         }
 
         data.active = newVal;
