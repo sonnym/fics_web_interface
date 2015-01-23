@@ -4,6 +4,10 @@
 
     <%- css("application.css") %>
     <%- js("application.js") %>
+
+    <script type="text/javascript">
+      ficsClient.constant("Constants", <%- JSON.stringify(ficsConstants) %>);
+    </script>
   </head>
   <body ng-app="ficsClient">
     <div class="header">

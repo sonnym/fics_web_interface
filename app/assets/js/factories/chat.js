@@ -1,14 +1,15 @@
-ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, MessageCollection) {
-  var users, channels, subscribedChannels;
+ficsClient.factory("Chat", ["Constants", "Proxy", "MessageCollection", function(Constants, Proxy, MessageCollection) {
+  var users, subscribedChannels;
   var chatMessages = {
     global: new MessageCollection(),
     channel: {},
     user: {}
   };
 
-  Proxy.registerMessage("channelList", function(data) {
-    channels = data;
-  });
+  var channels = _.reduce(Constants.channels, function(memo, name, number) {
+    memo.push({ number: number, name: name });
+    return memo;
+  }, []);
 
   Proxy.registerMessage("subscribedChannelList", function(data) {
     subscribedChannels = data;
@@ -45,7 +46,6 @@ ficsClient.factory("Chat", ["Proxy", "MessageCollection", function(Proxy, Messag
     notifier: {
       activate: function() {
         Proxy.sendMessage("userList");
-        Proxy.sendMessage("channelList");
         Proxy.sendMessage("subscribedChannelList");
       },
 
