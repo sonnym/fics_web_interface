@@ -10,8 +10,9 @@ ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier)
       return tabName === activeTabName();
     };
 
+    var self = this;
     function activeTabName() {
-      return _.invert(_.reduce(this.tabs, function(memo, tabData, tabName) {
+      return _.invert(_.reduce(self.tabs, function(memo, tabData, tabName) {
         memo[tabName] = tabData.active;
 
         return memo;
