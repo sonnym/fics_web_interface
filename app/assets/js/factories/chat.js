@@ -13,6 +13,10 @@ ficsClient.factory("Chat", ["Constants", "Proxy", "MessageCollection", function(
 
   Proxy.registerMessage("subscribedChannelList", function(data) {
     subscribedChannels = data;
+
+    _.map(data, function(channelNumber) {
+      chatMessages.channel[channelNumber] = new MessageCollection();
+    });
   });
 
   Proxy.registerMessage("userList", function(data) {
