@@ -4,7 +4,7 @@ ficsClient.directive("infiniteHorizontal", ["$interval", "$window", function($in
     replace: true,
     transclude: true,
 
-    link: function(scope, element, attrs, ctrl, transcludeFn) {
+    link: function(scope, element) {
       var interval;
 
       var scrollContainer = element.find("ul");
