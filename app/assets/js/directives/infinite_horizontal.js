@@ -1,10 +1,12 @@
-ficsClient.directive("infiniteHorizontal", function() {
+ficsClient.directive("infiniteHorizontal", ["$interval", function($interval) {
   return {
     restrict: "E",
     replace: true,
     transclude: true,
 
     link: function(scope, element, attrs, ctrl, transcludeFn) {
+      var interval;
+
       var scrollContainer = element.find("ul");
       var infiniteInner = scrollContainer.parent();
 
@@ -19,13 +21,25 @@ ficsClient.directive("infiniteHorizontal", function() {
         }
       });
 
-      scope.scrollLeft = function() {
-        var newVal = Math.min(0, scrollContainer[0].offsetLeft + 25);
+      scope.startLeftScroll = function() {
+        interval = $interval(scrollLeft, 10)
+      };
+
+      scope.startRightScroll = function() {
+        interval = $interval(scrollRight, 10)
+      };
+
+      scope.stopScrolling = function() {
+        $interval.cancel(interval);
+      };
+
+      function scrollLeft() {
+        var newVal = Math.min(0, scrollContainer[0].offsetLeft + 5);
         scrollContainer.css({ left: newVal + "px" });
       };
 
-      scope.scrollRight = function() {
-        var newVal = Math.max(-widthDifference(), scrollContainer[0].offsetLeft - 25);
+      function scrollRight() {
+        var newVal = Math.max(-widthDifference(), scrollContainer[0].offsetLeft - 5);
         scrollContainer.css({ left: newVal + "px" });
       };
 
@@ -40,4 +54,4 @@ ficsClient.directive("infiniteHorizontal", function() {
 
     templateUrl: "/infinite_horizontal.html"
   };
-});
+}]);

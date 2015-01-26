@@ -1,11 +1,15 @@
 <div class="infinite-outer clearfix">
-  <button class="btn btn-default pull-left" ng-click="scrollLeft()" ng-if="showControls">
-    <strong>&lsaquo;</strong>
-  </button>
+  <button
+    class="btn btn-default pull-left"
+    ng-mousedown="startLeftScroll()"
+    ng-mouseup="stopScrolling()"
+    ng-if="showControls"><strong>&lsaquo;</strong></button>
 
   <div class="infinite-inner pull-left" ng-transclude></div>
 
-  <button class="btn btn-default" ng-click="scrollRight()" ng-if="showControls">
-    <strong>&rsaquo;</strong>
-  </button>
+  <button
+    class="btn btn-default"
+    ng-mousedown="startRightScroll()"
+    ng-mouseup="stopScrolling()"
+    ng-if="showControls"><strong>&rsaquo;</strong></button>
 </div>
