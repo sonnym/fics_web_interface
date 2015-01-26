@@ -12,9 +12,33 @@ div.tab-container div.tab-container {
   top: 40px;
 }
 
+div.infinite-outer {
+  div.infinite-inner {
+    position: relative;
+    max-width: 100%;
+
+    overflow: hidden;
+
+    ul.nav-tabs {
+      position: relative;
+      display: inline-flex;
+
+      width: auto;
+
+      li {
+        white-space: nowrap
+      }
+    }
+  }
+
+  button {
+    z-index: 100;
+    background: #fff;
+  }
+}
+
 ul.nav-tabs {
   height: 40px;
-  overflow: hidden;
 
   span.notify {
     color: red;
