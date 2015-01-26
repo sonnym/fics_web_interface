@@ -1,4 +1,4 @@
-ficsClient.directive("infiniteHorizontal", ["$interval", function($interval) {
+ficsClient.directive("infiniteHorizontal", ["$interval", "$window", function($interval, $window) {
   return {
     restrict: "E",
     replace: true,
@@ -11,15 +11,11 @@ ficsClient.directive("infiniteHorizontal", ["$interval", function($interval) {
       var infiniteInner = scrollContainer.parent();
 
       scope.showControls = false;
-      scope.$watch(isOverflowing, function(val) {
-        scope.showControls = val;
+      scope.$watch(isOverflowing, setupControls);
 
-        if (val) {
-          infiniteInner.css({ width: (element[0].clientWidth - 75) + "px" });
-        } else {
-          infiniteInner.css({ width: "" });
-        }
-      });
+      angular.element($window).on("resize", _.throttle(function() {
+        setupControls(isOverflowing());
+      }, 10));
 
       scope.startLeftScroll = function() {
         interval = $interval(scrollLeft, 10)
@@ -32,6 +28,16 @@ ficsClient.directive("infiniteHorizontal", ["$interval", function($interval) {
       scope.stopScrolling = function() {
         $interval.cancel(interval);
       };
+
+      function setupControls(val) {
+        scope.showControls = val;
+
+        if (val) {
+          infiniteInner.css({ width: (element[0].clientWidth - 75) + "px" });
+        } else {
+          infiniteInner.css({ width: "" });
+        }
+      }
 
       function scrollLeft() {
         var newVal = Math.min(0, scrollContainer[0].offsetLeft + 5);
