@@ -4,8 +4,10 @@
   "author": "Sonny Michaud <michaud.sonny@gmail.com> (https://github.com/sonnym)",
   "description": "A web interface for interacting with the Free Internet Chess Server.",
 
+  "main": "lib/server.js",
+
   "scripts": {
-    "start": "./node_modules/.bin/gulp && node lib/server.js",
+    "start": "./node_modules/.bin/gulp",
     "postinstall": "./node_modules/.bin/bower install"
   },
 
