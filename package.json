@@ -26,7 +26,6 @@
 
     "gulp-sass": "*",
     "node-sass": "1.2.x",
-    "connect-mincer": "*",
 
     "browserify": "*",
 
