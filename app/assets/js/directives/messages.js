@@ -31,6 +31,6 @@ ficsClient.directive("messages", function() {
       }
     },
 
-    templateUrl: "/messages.html"
+    templateUrl: "/template/messages.html"
   };
 });

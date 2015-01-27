@@ -9,6 +9,6 @@ ficsClient.directive("loadingArea", ["Setter", function(Setter) {
       scope.$watch(scope.ensureFn, Setter(scope)("displayContent"));
     },
 
-    templateUrl: "/loading_area.html"
+    templateUrl: "/template/loading_area.html"
   };
 }]);
