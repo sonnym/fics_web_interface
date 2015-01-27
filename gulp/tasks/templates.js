@@ -5,10 +5,11 @@ var browserify = require("browserify");
 var source = require("vinyl-source-stream");
 
 gulp.task("templates", function () {
-  gulp.src("app/assets/templates/**/*.html")
-      .pipe(templateCache("templates.js", {
-        root: "template",
-        standalone: true,
-      }))
-      .pipe(gulp.dest("app/assets/js/"));
+  return gulp
+    .src("app/assets/templates/**/*.html")
+    .pipe(templateCache("templates.js", {
+      root: "template",
+      standalone: true,
+    }))
+    .pipe(gulp.dest("app/assets/js/"));
 });
