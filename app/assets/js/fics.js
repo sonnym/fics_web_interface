@@ -1,4 +1,4 @@
-var ficsClient = angular.module("ficsClient", [
+global.ficsClient = angular.module("ficsClient", [
   "ngCookies",
   "ui.bootstrap.accordion",
   "ui.bootstrap.buttons",

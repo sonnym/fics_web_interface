@@ -5,7 +5,7 @@
   "description": "A web interface for interacting with the Free Internet Chess Server.",
 
   "scripts": {
-    "start": "node lib/server.js",
+    "start": "./node_modules/.bin/gulp && node lib/server.js",
     "postinstall": "./node_modules/.bin/bower install"
   },
 
@@ -19,9 +19,18 @@
 
     "bunyan": "*",
 
-    "ejs": "*",
+    "require-dir": "*",
+
+    "gulp": "*",
+    "vinyl-source-stream": "*",
+
+    "gulp-sass": "*",
     "node-sass": "1.2.x",
     "connect-mincer": "*",
+
+    "browserify": "*",
+
+    "ejs": "*",
 
     "bower": "*",
 
