@@ -7,7 +7,8 @@ global.ficsClient = angular.module("ficsClient", [
   "ui.bootstrap.tabs",
   "ui.keypress",
   "ui.scroll",
-  "luegg.directives"
+  "luegg.directives",
+  "templates"
 ]);
 
 ficsClient.run(["$rootScope", "Setter", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, Setter, TabManager, User, Chat, Observe, Play) {

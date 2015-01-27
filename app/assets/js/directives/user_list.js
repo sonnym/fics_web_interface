@@ -1,7 +1,7 @@
 ficsClient.directive("userList", ["$parse", "Setter", "Chat", function($parse, Setter, Chat) {
   return {
     restict: "E",
-    templateUrl: "/template/user_list.html",
+    templateUrl: "template/user_list.html",
 
     link: function(scope, _, attr) {
       var parsedUsersExpression = $parse(attr.users);

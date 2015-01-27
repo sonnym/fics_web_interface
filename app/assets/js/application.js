@@ -18,6 +18,8 @@ require("./vendor/ui-utils");
 
 require("./vendor/scrollglue");
 
+require("./templates");
+
 require("./fics");
 
 require("./controllers/chat_ctrl");

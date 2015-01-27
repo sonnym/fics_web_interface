@@ -58,6 +58,6 @@ ficsClient.directive("infiniteHorizontal", ["$interval", "$window", function($in
       }
     },
 
-    templateUrl: "/template/infinite_horizontal.html"
+    templateUrl: "template/infinite_horizontal.html"
   };
 }]);

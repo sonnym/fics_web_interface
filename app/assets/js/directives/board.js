@@ -21,7 +21,7 @@ ficsClient.directive("board", function() {
       };
     },
 
-    templateUrl: "/template/board.html"
+    templateUrl: "template/board.html"
   };
 
   function fen2array(fen) {
