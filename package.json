@@ -37,6 +37,8 @@
     "gulp": "*",
     "vinyl-source-stream": "*",
 
+    "gulp-nodemon": "*",
+
     "gulp-sass": "*",
     "node-sass": "1.2.x",
 
