@@ -27,6 +27,8 @@
     "gulp-sass": "*",
     "node-sass": "1.2.x",
 
+    "gulp-angular-templatecache": "*",
+
     "browserify": "*",
 
     "ejs": "*",
