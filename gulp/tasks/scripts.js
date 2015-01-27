@@ -3,7 +3,7 @@ var browserify = require("browserify");
 
 var source = require("vinyl-source-stream");
 
-gulp.task("scripts", function(callback) {
+gulp.task("scripts", ["templates"], function(callback) {
   return browserify({
     entries: ["./app/assets/js/application"],
     debug: true
