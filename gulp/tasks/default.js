@@ -1,3 +1,3 @@
 var gulp = require("gulp");
 
-gulp.task("default", ["templates", "scripts", "stylesheets"]);
+gulp.task("default", ["build", "watch"]);
