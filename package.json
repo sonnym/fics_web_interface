@@ -30,7 +30,7 @@
     "sockjs": "*",
     "rbytes": "*",
 
-    "fics": "*"
+    "fics": "sonnym/fics"
   },
 
   "devDependencies": {
