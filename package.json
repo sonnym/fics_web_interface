@@ -28,7 +28,6 @@
     "underscore": "*",
 
     "sockjs": "*",
-    "rbytes": "*",
 
     "fics": "sonnym/fics"
   },
@@ -40,17 +39,15 @@
     "vinyl-source-stream": "*",
 
     "gulp-nodemon": "*",
-
-    "gulp-sass": "*",
-    "node-sass": "1.2.x",
-
+    "gulp-sass": "dlmanning/gulp-sass",
+    "gulp-sourcemaps": "*",
     "gulp-angular-templatecache": "*",
 
     "browserify": "*"
   },
 
   "engines": {
-    "node": "0.10.x"
+    "node": ">= 0.12.0"
   },
 
   "private": true
