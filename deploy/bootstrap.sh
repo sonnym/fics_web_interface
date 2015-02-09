@@ -48,3 +48,8 @@ if [[ -n /etc/httpd/conf.d/fics.conf ]]
 then
   rm /etc/httpd/conf.d/*.conf
 fi
+
+# configure sshd
+cp /srv/fics/deploy/sshd_config /etc/ssh/sshd_config
+chown root:root /etc/ssh/sshd_config
+systemctl restart sshd
