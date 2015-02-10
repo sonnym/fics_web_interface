@@ -33,7 +33,7 @@ then
 fi
 
 # application
-if ! [ -L /srv/fics ]
+if [ ! -d /srv/fics ]
 then
   # initial setup of directory
   mkdir -p /srv/fics
