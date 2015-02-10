@@ -17,7 +17,7 @@ then
 fi
 
 # manually compiled nodejs
-if [[ ! $(command -v node) ]]
+if [[ ! $(command -v /usr/local/bin/node) ]]
 then
   cd ~
 
