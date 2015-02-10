@@ -3,10 +3,10 @@
 set -e
 
 # system
-if [[ ! $(command -v git) ]]
+if [[ ! $(command -v g++) ]]
 then
   # system dependencies
-  yum install --assumeyes httpd git supervisor
+  yum install --assumeyes httpd git supervisor gcc-c++
 
   # enable services
   systemctl enable httpd supervisord
@@ -32,6 +32,22 @@ then
   chmod 0600 /swapfile
 fi
 
+# manually compiled nodejs
+if [[ ! $(command -v node) ]]
+then
+  cd ~
+
+  git clone --depth 1 --branch v0.12.0 git://github.com/joyent/node.git
+
+  cd node
+
+  ./configure
+  make
+  make install
+
+  export PATH="/usr/local/bin:$PATH"
+fi
+
 # application
 if ! [ -L /srv/fics ]
 then
@@ -40,7 +56,7 @@ then
   git clone --depth 1 https://github.com/sonnym/fics_web_interface.git /srv/fics
 
   cd /srv/fics
-  npm install
+  /usr/local/bin/npm install
 
   chown -R apache:apache /srv/fics
 fi
