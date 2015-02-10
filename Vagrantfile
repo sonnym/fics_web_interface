@@ -1,7 +1,7 @@
 $vm_memory = 512
 
 Vagrant.configure(2) do |config|
-  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder '.', '/vagrant', disabled: true
   config.vm.provision :shell, path: 'deploy/bootstrap.sh'
 
   config.vm.define 'testing', primary: true do |test|
@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
     production.ssh.pty = true
 
     production.vm.box = 'digital_ocean'
-    production.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+    production.vm.box_url = 'https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box'
 
     production.vm.provider :digital_ocean do |provider, _|
       provider.token = File.read(File.expand_path('~/.digitalocean_token'))
