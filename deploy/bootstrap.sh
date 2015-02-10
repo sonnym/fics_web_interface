@@ -6,7 +6,7 @@ set -e
 if [[ ! $(command -v git) ]]
 then
   # system dependencies
-  yum install --assumeyes httpd git supervisord
+  yum install --assumeyes httpd git supervisor
 
   # enable services
   systemctl enable httpd supervisord
