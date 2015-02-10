@@ -16,22 +16,6 @@ then
   firewall-cmd --zone=public --add-service=http --permanent && firewall-cmd --reload
 fi
 
-# swap file for compiling python binaries
-if [[ -n /swapfile ]]
-then
-  dd if=/dev/zero of=/swapfile bs=1024 count=512k
-  mkswap /swapfile
-  swapon /swapfile
-
-  echo '/swapfile none swap sw  0 0' >> /etc/fstab
-
-  echo 10 > /proc/sys/vm/swappiness
-  echo vm.swappiness = 10 >> /etc/sysctl.conf
-
-  chown root:root /swapfile
-  chmod 0600 /swapfile
-fi
-
 # manually compiled nodejs
 if [[ ! $(command -v node) ]]
 then
