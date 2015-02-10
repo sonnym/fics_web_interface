@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # system
 if [[ ! $(command -v git) ]]
 then
