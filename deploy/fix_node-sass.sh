@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+pushd $(pwd) &&
+
 cd node_modules/gulp-sass/node_modules &&
 rm -rf node-sass &&
 
@@ -10,5 +12,4 @@ npm install
 node-gyp rebuild &&
 npm install &&
 
-popd &&
 popd
