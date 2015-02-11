@@ -42,6 +42,9 @@ then
   cd /srv/fics
   /usr/local/bin/npm install
 
+  /usr/local/bin/npm install -g node-gyp
+  ./deploy/fix_node-sass.sh
+
   chown -R apache:apache /srv/fics
 fi
 
