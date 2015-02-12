@@ -10,7 +10,6 @@ then
 
   # enable services
   systemctl enable httpd supervisord
-  systemctl start httpd supervisord
 
   # open port 80
   firewall-cmd --zone=public --add-service=http --permanent && firewall-cmd --reload
@@ -52,9 +51,23 @@ then
 fi
 
 # setup httpd
-if [[ -n /etc/httpd/conf.d/fics.conf ]]
+if [[ -n /etc/httpd/conf.d/fics_web_interface.conf ]]
 then
-  rm /etc/httpd/conf.d/*.conf
+  rm /etc/httpd/conf.d/*
+
+  cp /srv/fics/deploy/httpd.conf /etc/httpd/conf.d/fics_web_interface.ini
+  chown root:root $_
+
+  systemctl restart httpd
+fi
+
+# configure and start application web server
+if [[ -n /etc/supervisord.d/fics_web_interface.ini ]]
+then
+  cp /srv/fics/deploy/supervisord.ini /etc/supervisord.d/fics_web_interface.ini
+  chown root:root $_
+
+  systemctl start supervisord
 fi
 
 # configure sshd
