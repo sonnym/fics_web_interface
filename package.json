@@ -39,7 +39,7 @@
     "vinyl-source-stream": "*",
 
     "gulp-nodemon": "*",
-    "gulp-sass": "dlmanning/gulp-sass",
+    "gulp-sass": "*",
     "gulp-sourcemaps": "*",
     "gulp-angular-templatecache": "*",
 

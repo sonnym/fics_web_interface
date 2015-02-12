@@ -44,9 +44,6 @@ then
   npm install --unsafe-perm
   set -e
 
-  npm install -g node-gyp --unsafe-perm
-  ./deploy/fix_node-sass.sh
-
   chown -R apache:apache /srv/fics
 fi
 
