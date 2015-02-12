@@ -52,7 +52,7 @@ if [[ -n /etc/httpd/conf.d/fics_web_interface.conf ]]
 then
   rm /etc/httpd/conf.d/*
 
-  cp /srv/fics/deploy/httpd.conf /etc/httpd/conf.d/fics_web_interface.ini
+  cp /srv/fics/deploy/httpd.conf /etc/httpd/conf.d/fics_web_interface.conf
   chown root:root $_
 
   systemctl restart httpd
