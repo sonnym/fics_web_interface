@@ -8,7 +8,7 @@
 
   "scripts": {
     "start": "./node_modules/.bin/gulp",
-    "postinstall": "./node_modules/.bin/bower --allow-root --force install"
+    "postinstall": "./node_modules/.bin/bower --allow-root --config.interactive=false install"
   },
 
   "repository": {
