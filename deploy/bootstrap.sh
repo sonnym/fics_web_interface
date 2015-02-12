@@ -28,21 +28,21 @@ then
   ./configure
   make
   make install
-
-  export PATH="/usr/local/bin:$PATH"
 fi
 
 # application
 if [ ! -d /srv/fics ]
 then
+  export PATH="/usr/local/bin:$PATH"
+
   # initial setup of directory
   mkdir -p /srv/fics
   git clone --depth 1 https://github.com/sonnym/fics_web_interface.git /srv/fics
 
   cd /srv/fics
-  /usr/local/bin/npm install --unsafe-perm
+  npm install --unsafe-perm
 
-  /usr/local/bin/npm install -g node-gyp --unsafe-perm
+  npm install -g node-gyp --unsafe-perm
   ./deploy/fix_node-sass.sh
 
   chown -R apache:apache /srv/fics
