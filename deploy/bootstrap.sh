@@ -40,9 +40,7 @@ then
 
   cd /srv/fics
 
-  set +e
-  npm install --unsafe-perm
-  set -e
+  npm install --production --unsafe-perm
 
   chown -R apache:apache /srv/fics
 fi
