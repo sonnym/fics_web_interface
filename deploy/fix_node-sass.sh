@@ -11,9 +11,9 @@ then
   git clone --recursive https://github.com/sass/node-sass.git &&
   cd node-sass &&
 
-  npm install
+  npm install --unsafe-perm
   node-gyp rebuild &&
-  npm install
+  npm install --unsafe-perm
 fi
 
 popd

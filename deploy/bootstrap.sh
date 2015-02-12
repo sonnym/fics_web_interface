@@ -40,9 +40,9 @@ then
   git clone --depth 1 https://github.com/sonnym/fics_web_interface.git /srv/fics
 
   cd /srv/fics
-  /usr/local/bin/npm install
+  /usr/local/bin/npm install --unsafe-perm
 
-  /usr/local/bin/npm install -g node-gyp
+  /usr/local/bin/npm install -g node-gyp --unsafe-perm
   ./deploy/fix_node-sass.sh
 
   chown -R apache:apache /srv/fics
