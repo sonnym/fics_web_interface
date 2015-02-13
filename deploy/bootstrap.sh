@@ -8,7 +8,7 @@ yum --assumeyes update
 if [[ ! $(command -v g++) ]]
 then
   # system dependencies
-  yum install --assumeyes httpd git supervisor gcc-c++
+  yum install --assumeyes httpd git supervisor gcc-c++ yum-plugin-ps
 
   # enable services
   systemctl enable httpd supervisord
@@ -73,4 +73,10 @@ then
   cp /srv/fics/deploy/sshd_config /etc/ssh/sshd_config
   chown root:root /etc/ssh/sshd_config
   systemctl restart sshd
+fi
+
+# reboot as necessary
+if [[ $(yum ps restarts | wc -l) -gt "3" ]]
+then
+  shutdown -r now
 fi
