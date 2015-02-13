@@ -2,6 +2,8 @@
 
 set -e
 
+yum --assumeyes update
+
 # system
 if [[ ! $(command -v g++) ]]
 then
