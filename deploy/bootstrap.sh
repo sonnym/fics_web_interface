@@ -77,7 +77,7 @@ then
   systemctl restart sshd
 fi
 
-# configure sshd
+# configure logwatch
 if [[ -n $(diff /srv/fics/deploy/logwatch.conf /etc/logwatch/conf/logwatch.conf) ]]
 then
   cp /srv/fics/deploy/logwatch.conf /etc/logwatch/conf/logwatch.conf
