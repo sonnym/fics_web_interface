@@ -8,10 +8,11 @@ yum --assumeyes update
 if [[ ! $(command -v g++) ]]
 then
   # system dependencies
-  yum install --assumeyes httpd git supervisor gcc-c++ yum-plugin-ps
+  yum install --assumeyes httpd git supervisor gcc-c++ yum-plugin-ps logwatch postfix
 
   # enable services
-  systemctl enable httpd supervisord
+  systemctl enable httpd supervisord postfix
+  systemctl start postfix
 
   # open port 80
   firewall-cmd --zone=public --add-service=http --permanent && firewall-cmd --reload
@@ -74,6 +75,13 @@ then
   chown root:root $_
 
   systemctl restart sshd
+fi
+
+# configure sshd
+if [[ -n $(diff /srv/fics/deploy/logwatch.conf /etc/logwatch/conf/logwatch.conf) ]]
+then
+  cp /srv/fics/deploy/logwatch.conf /etc/logwatch/conf/logwatch.conf
+  chown root:root $_
 fi
 
 # reboot as necessary
