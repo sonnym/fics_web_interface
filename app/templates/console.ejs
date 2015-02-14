@@ -1,0 +1,5 @@
+<tab heading="console" ng-controller="ConsoleCtrl" active="tabs.console.active">
+  <pre class="console" scroll-glue>
+    <div ng-repeat="line in output track by $index">{{ line }}</div>
+  </pre>
+</tab>

@@ -26,6 +26,7 @@ require("./controllers/chat_ctrl");
 require("./controllers/login_ctrl");
 require("./controllers/observation_ctrl");
 require("./controllers/play_ctrl");
+require("./controllers/console_ctrl");
 
 require("./directives/board");
 require("./directives/infinite_horizontal");
@@ -37,6 +38,7 @@ require("./directives/user_list");
 
 require("./factories/activity_notifier");
 require("./factories/chat");
+require("./factories/console");
 require("./factories/finite_array");
 require("./factories/game");
 require("./factories/message_collection");

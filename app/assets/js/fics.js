@@ -17,6 +17,7 @@ ficsClient.run(["$rootScope", "Setter", "TabManager", "User", "Chat", "Observe",
     chat: _.extend({ active: false }, Chat.notifier),
     play: _.extend({ active: false }, Play.notifier),
     observe: _.extend({active: false }, Observe.notifier),
+    console: { active: false },
     about: { active: false }
   });
 
