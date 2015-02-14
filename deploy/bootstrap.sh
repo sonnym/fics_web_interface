@@ -8,6 +8,7 @@ yum --assumeyes update
 if [[ ! $(command -v g++) ]]
 then
   # system dependencies
+  yum remove ssmtp
   yum install --assumeyes httpd git supervisor gcc-c++ yum-plugin-ps logwatch postfix
 
   # enable services
