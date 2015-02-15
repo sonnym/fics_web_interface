@@ -15,6 +15,10 @@ gulp.task("scripts", ["templates"], function(callback) {
   }).bundle()
     .on("error", function(err) {
       console.error("\nERROR:\n" + err.message);
+
+      if (err.annotated) {
+        console.log(err.annotated + "\n");
+      }
     })
     .pipe(source("application.js"))
     .pipe(ngAnnotate())
