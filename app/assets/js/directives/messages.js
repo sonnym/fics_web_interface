@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("messages", function() {
   return {
     restrict: "E",

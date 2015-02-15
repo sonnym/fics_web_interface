@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Proxy", function($rootScope) {
   var socket = new SockJS("/socket");
   var socketOpen = false;

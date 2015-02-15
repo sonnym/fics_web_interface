@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Game", function(MessageCollection, ActivityNotifier, Proxy) {
   function Game(gameData) {
     this.updates = false;

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.controller("ChatCtrl", function($scope, Setter, Chat) {
   var scopeSetter = Setter($scope);
 

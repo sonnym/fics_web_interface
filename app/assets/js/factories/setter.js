@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Setter", function() {
   return function(object) {
     return function(property) {

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Observe", function(Proxy, Game) {
   var games;
   var watching = [];

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.filter("longTime", function($filter) {
   return function(seconds) {
     seconds = parseInt(seconds, 10);

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("userList", function($parse, Setter, Chat) {
   return {
     restict: "E",

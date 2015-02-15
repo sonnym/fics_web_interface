@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("timer", function($window, Setter) {
   return {
     restrict: "E",

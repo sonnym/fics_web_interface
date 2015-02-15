@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("board", function() {
   var pieces = { "K": "♔", "Q": "♕", "R": "♖", "B": "♗", "N": "♘", "P": "♙"
                , "k": "♚", "q": "♛", "r": "♜", "b": "♝", "n": "♞", "p": "♟"

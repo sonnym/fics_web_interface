@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.controller("ObservationCtrl", function($scope, Setter, Observe) {
   var scopeSetter = Setter($scope);
 

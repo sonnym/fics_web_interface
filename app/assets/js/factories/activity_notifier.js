@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("ActivityNotifier", function($interval) {
   return ActivityNotifier;
 

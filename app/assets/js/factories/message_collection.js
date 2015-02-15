@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("MessageCollection", function(FiniteArray, ActivityNotifier) {
   function MessageCollection(message) {
     this.messages = new FiniteArray();

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("loadingArea", function(Setter) {
   return {
     restrict: "E",

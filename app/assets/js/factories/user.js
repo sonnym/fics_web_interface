@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("User", function($cookieStore, Proxy) {
   var isLoggingIn = false;
   var username, isGuest, loginFailure;

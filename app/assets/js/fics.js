@@ -1,3 +1,5 @@
+"use strict";
+
 global.ficsClient = angular.module("ficsClient", [
   "ngCookies",
   "ui.bootstrap.accordion",

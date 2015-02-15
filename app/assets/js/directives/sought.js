@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("soughtGraph", function() {
   return {
     restrict: "E",

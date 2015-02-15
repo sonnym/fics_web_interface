@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
   var users, subscribedChannels;
   var chatMessages = {

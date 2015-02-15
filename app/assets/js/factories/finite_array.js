@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("FiniteArray", function() {
   return FiniteArray;
 

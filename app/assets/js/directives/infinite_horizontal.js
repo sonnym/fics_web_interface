@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.directive("infiniteHorizontal", function($interval, $timeout, $window) {
   return {
     restrict: "E",

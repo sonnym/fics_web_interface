@@ -1,3 +1,5 @@
+"use strict";
+
 var gulp = require("gulp");
 var browserify = require("browserify");
 var ngAnnotate = require('gulp-ng-annotate');

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Console", function(Proxy, FiniteArray) {
   var output = new FiniteArray(5000);
 

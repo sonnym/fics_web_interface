@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.factory("Play", function(Proxy) {
   var sought = [];
 

@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.filter("paginationSubset", function() {
   return function(items, perPage, currentPage) {
     if (angular.isUndefined(items)) {

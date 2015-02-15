@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.filter("orderByCombinedRating", function($filter) {
   return function(games) {
     return $filter("orderBy")(games, function(game) {

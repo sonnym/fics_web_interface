@@ -1,3 +1,5 @@
+"use strict";
+
 ficsClient.controller("LoginCtrl", function($scope, Setter, User) {
   var scopeSetter = Setter($scope);
 
