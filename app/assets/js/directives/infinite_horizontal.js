@@ -38,6 +38,7 @@ ficsClient.directive("infiniteHorizontal", ["$interval", "$timeout", "$window", 
           infiniteInner.css({ width: (element[0].clientWidth - 75) + "px" });
         } else {
           infiniteInner.css({ width: "" });
+          scrollContainer.css({ left: "0px" });
         }
       }
 
