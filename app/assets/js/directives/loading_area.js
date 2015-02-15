@@ -7,7 +7,7 @@ ficsClient.directive("loadingArea", function(Setter) {
     replace: true,
     scope: { ensureFn: "&ensure" },
 
-    link: function(scope, element, _, _, transcludeFn) {
+    link: function(scope) {
       scope.$watch(scope.ensureFn, Setter(scope)("displayContent"));
     },
 
