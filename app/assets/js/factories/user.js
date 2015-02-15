@@ -1,4 +1,4 @@
-ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Proxy) {
+ficsClient.factory("User", function($cookieStore, Proxy) {
   var isLoggingIn = false;
   var username, isGuest, loginFailure;
 
@@ -45,4 +45,4 @@ ficsClient.factory("User", ["$cookieStore", "Proxy", function($cookieStore, Prox
     isLoggingIn = true;
     Proxy.sendMessage("login", userData);
   }
-}]);
+});

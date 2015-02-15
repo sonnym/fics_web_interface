@@ -1,4 +1,4 @@
-ficsClient.directive("loadingArea", ["Setter", function(Setter) {
+ficsClient.directive("loadingArea", function(Setter) {
   return {
     restrict: "E",
     transclude: true,
@@ -11,4 +11,4 @@ ficsClient.directive("loadingArea", ["Setter", function(Setter) {
 
     templateUrl: "template/loading_area.html"
   };
-}]);
+});

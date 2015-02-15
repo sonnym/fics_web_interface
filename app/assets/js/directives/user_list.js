@@ -1,4 +1,4 @@
-ficsClient.directive("userList", ["$parse", "Setter", "Chat", function($parse, Setter, Chat) {
+ficsClient.directive("userList", function($parse, Setter, Chat) {
   return {
     restict: "E",
     templateUrl: "template/user_list.html",
@@ -13,4 +13,4 @@ ficsClient.directive("userList", ["$parse", "Setter", "Chat", function($parse, S
       scope.startPrivateMessage = Chat.startPrivateMessage;
     }
   };
-}]);
+});

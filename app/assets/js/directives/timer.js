@@ -1,4 +1,4 @@
-ficsClient.directive("timer", ["$window", "Setter", function($window, Setter) {
+ficsClient.directive("timer", function($window, Setter) {
   return {
     restrict: "E",
     scope: { start: "=", tick: "=" },
@@ -43,4 +43,4 @@ ficsClient.directive("timer", ["$window", "Setter", function($window, Setter) {
 
     template: "<h4>{{ currentTime | longTime }}</h4>"
   };
-}]);
+});

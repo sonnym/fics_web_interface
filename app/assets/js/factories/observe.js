@@ -1,4 +1,4 @@
-ficsClient.factory("Observe", ["Proxy", "Game", function(Proxy, Game) {
+ficsClient.factory("Observe", function(Proxy, Game) {
   var games;
   var watching = [];
 
@@ -74,4 +74,4 @@ ficsClient.factory("Observe", ["Proxy", "Game", function(Proxy, Game) {
       return gameNumber === game.number;
     });
   }
-}]);
+});

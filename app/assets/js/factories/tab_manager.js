@@ -1,4 +1,4 @@
-ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier) {
+ficsClient.factory("TabManager", function(ActivityNotifier) {
   return function(tabs) {
     this.tabs = _.reduce(tabs, function(memo, data, name) {
       memo[name] = new ActivityNotifier(data);
@@ -19,4 +19,4 @@ ficsClient.factory("TabManager", ["ActivityNotifier", function(ActivityNotifier)
       }, {}))[true];
     }
   };
-}])
+})

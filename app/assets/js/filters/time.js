@@ -1,4 +1,4 @@
-ficsClient.filter("longTime", ["$filter", function($filter) {
+ficsClient.filter("longTime", function($filter) {
   return function(seconds) {
     seconds = parseInt(seconds, 10);
 
@@ -26,4 +26,4 @@ ficsClient.filter("longTime", ["$filter", function($filter) {
       return unit;
     }).join(":");
   };
-}]);
+});

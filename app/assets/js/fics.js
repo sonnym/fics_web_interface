@@ -11,7 +11,7 @@ global.ficsClient = angular.module("ficsClient", [
   "templates"
 ]);
 
-ficsClient.run(["$rootScope", "Setter", "TabManager", "User", "Chat", "Observe", "Play", function($rootScope, Setter, TabManager, User, Chat, Observe, Play) {
+ficsClient.run(function($rootScope, Setter, TabManager, User, Chat, Observe, Play) {
   var tabManager = new TabManager({
     login: { active: true },
     chat: _.extend({ active: false }, Chat.notifier),
@@ -32,4 +32,4 @@ ficsClient.run(["$rootScope", "Setter", "TabManager", "User", "Chat", "Observe",
   });
 
   $rootScope.$watch(User.isGuest, Setter($rootScope)("isGuest"));
-}]);
+});

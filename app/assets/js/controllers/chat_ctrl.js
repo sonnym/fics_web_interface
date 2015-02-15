@@ -1,4 +1,4 @@
-ficsClient.controller("ChatCtrl", ["$scope", "Setter", "Chat", function($scope, Setter, Chat) {
+ficsClient.controller("ChatCtrl", function($scope, Setter, Chat) {
   var scopeSetter = Setter($scope);
 
   $scope.$watch(Chat.users, scopeSetter("users"));
@@ -21,4 +21,4 @@ ficsClient.controller("ChatCtrl", ["$scope", "Setter", "Chat", function($scope, 
       return channelNumber === channel.number;
     }).name;
   };
-}]);
+});

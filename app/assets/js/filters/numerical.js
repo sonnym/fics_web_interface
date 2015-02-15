@@ -1,4 +1,4 @@
-ficsClient.filter("orderByCombinedRating", ["$filter", function($filter) {
+ficsClient.filter("orderByCombinedRating", function($filter) {
   return function(games) {
     return $filter("orderBy")(games, function(game) {
       var whiteRating = parseInt(game.white.rating, 10);
@@ -13,9 +13,9 @@ ficsClient.filter("orderByCombinedRating", ["$filter", function($filter) {
       }
     }, true);
   };
-}]);
+});
 
-ficsClient.filter("orderByNumberString", ["$filter", function($filter) {
+ficsClient.filter("orderByNumberString", function($filter) {
   return function(objects, property) {
     if (property) {
       var orderFn = function(object) {
@@ -29,4 +29,4 @@ ficsClient.filter("orderByNumberString", ["$filter", function($filter) {
 
     return $filter("orderBy")(objects, orderFn);
   };
-}]);
+});

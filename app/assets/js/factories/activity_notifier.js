@@ -1,4 +1,4 @@
-ficsClient.factory("ActivityNotifier", ["$interval", function($interval) {
+ficsClient.factory("ActivityNotifier", function($interval) {
   return ActivityNotifier;
 
   function ActivityNotifier(data) {
@@ -35,4 +35,4 @@ ficsClient.factory("ActivityNotifier", ["$interval", function($interval) {
       return !data.active && data.notify && data.notify();
     };
   };
-}]);
+});

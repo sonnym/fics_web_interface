@@ -1,4 +1,4 @@
-ficsClient.directive("infiniteHorizontal", ["$interval", "$timeout", "$window", function($interval, $timeout, $window) {
+ficsClient.directive("infiniteHorizontal", function($interval, $timeout, $window) {
   return {
     restrict: "E",
     replace: true,
@@ -63,4 +63,4 @@ ficsClient.directive("infiniteHorizontal", ["$interval", "$timeout", "$window", 
 
     templateUrl: "template/infinite_horizontal.html"
   };
-}]);
+});

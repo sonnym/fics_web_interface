@@ -1,4 +1,4 @@
-ficsClient.factory("MessageCollection", ["FiniteArray", "ActivityNotifier", function(FiniteArray, ActivityNotifier) {
+ficsClient.factory("MessageCollection", function(FiniteArray, ActivityNotifier) {
   function MessageCollection(message) {
     this.messages = new FiniteArray();
     this.newMessages = false;
@@ -27,4 +27,4 @@ ficsClient.factory("MessageCollection", ["FiniteArray", "ActivityNotifier", func
   };
 
   return MessageCollection;
-}]);
+});

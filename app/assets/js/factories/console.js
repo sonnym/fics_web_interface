@@ -1,4 +1,4 @@
-ficsClient.factory("Console", ["Proxy", "FiniteArray", function(Proxy, FiniteArray) {
+ficsClient.factory("Console", function(Proxy, FiniteArray) {
   var output = new FiniteArray(5000);
 
   Proxy.registerMessage("raw", output.push.bind(output));
@@ -6,4 +6,4 @@ ficsClient.factory("Console", ["Proxy", "FiniteArray", function(Proxy, FiniteArr
   return {
     get: function() { return output }
   };
-}]);
+});

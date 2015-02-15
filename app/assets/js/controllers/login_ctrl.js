@@ -1,4 +1,4 @@
-ficsClient.controller("LoginCtrl", ["$scope", "Setter", "User", function($scope, Setter, User) {
+ficsClient.controller("LoginCtrl", function($scope, Setter, User) {
   var scopeSetter = Setter($scope);
 
   $scope.$watch(User.isLoggingIn, scopeSetter("isLoggingIn"));
@@ -9,4 +9,4 @@ ficsClient.controller("LoginCtrl", ["$scope", "Setter", "User", function($scope,
   };
 
   $scope.loginWithCredentials = User.login;
-}]);
+});

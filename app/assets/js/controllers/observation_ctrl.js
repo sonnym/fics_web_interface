@@ -1,4 +1,4 @@
-ficsClient.controller("ObservationCtrl", ["$scope", "Setter", "Observe", function($scope, Setter, Observe) {
+ficsClient.controller("ObservationCtrl", function($scope, Setter, Observe) {
   var scopeSetter = Setter($scope);
 
   $scope.$watch(Observe.games, scopeSetter("games"));
@@ -14,4 +14,4 @@ ficsClient.controller("ObservationCtrl", ["$scope", "Setter", "Observe", functio
 
   $scope.allowedModes = ["whisper", "kibitz"];
   $scope.sendMessage = Observe.sendMessage;
-}]);
+});

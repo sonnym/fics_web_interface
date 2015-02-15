@@ -1,4 +1,4 @@
-ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", function(MessageCollection, ActivityNotifier, Proxy) {
+ficsClient.factory("Game", function(MessageCollection, ActivityNotifier, Proxy) {
   function Game(gameData) {
     this.updates = false;
     this.messageCollection = new MessageCollection();
@@ -72,4 +72,4 @@ ficsClient.factory("Game", ["MessageCollection", "ActivityNotifier", "Proxy", fu
   };
 
   return Game;
-}]);
+});

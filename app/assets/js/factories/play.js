@@ -1,4 +1,4 @@
-ficsClient.factory("Play", ["Proxy", function(Proxy) {
+ficsClient.factory("Play", function(Proxy) {
   var sought = [];
 
   Proxy.registerMessage("soughtList", function(data) {
@@ -14,4 +14,4 @@ ficsClient.factory("Play", ["Proxy", function(Proxy) {
 
     getSought: function() { return sought }
   };
-}]);
+});

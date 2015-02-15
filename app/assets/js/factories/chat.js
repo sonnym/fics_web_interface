@@ -1,4 +1,4 @@
-ficsClient.factory("Chat", ["Constants", "Proxy", "MessageCollection", function(Constants, Proxy, MessageCollection) {
+ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
   var users, subscribedChannels;
   var chatMessages = {
     global: new MessageCollection(),
@@ -98,4 +98,4 @@ ficsClient.factory("Chat", ["Constants", "Proxy", "MessageCollection", function(
       delete chatMessages.user[username];
     }
   }
-}]);
+});
