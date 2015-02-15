@@ -1,4 +1,4 @@
-ficsClient.directive("infiniteHorizontal", ["$interval", "$window", function($interval, $window) {
+ficsClient.directive("infiniteHorizontal", ["$interval", "$timeout", "$window", function($interval, $timeout, $window) {
   return {
     restrict: "E",
     replace: true,
@@ -13,9 +13,11 @@ ficsClient.directive("infiniteHorizontal", ["$interval", "$window", function($in
       scope.showControls = false;
       scope.$watch(isOverflowing, setupControls);
 
-      angular.element($window).on("resize", _.throttle(function() {
-        setupControls(isOverflowing());
-      }, 10));
+      angular.element($window).on("resize", _.debounce(function() {
+        $timeout(function() {
+          setupControls(isOverflowing());
+        });
+      }, 100));
 
       scope.startLeftScroll = function() {
         interval = $interval(scrollLeft, 10)
