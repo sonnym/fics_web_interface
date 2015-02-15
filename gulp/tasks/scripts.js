@@ -8,6 +8,9 @@ gulp.task("scripts", ["templates"], function(callback) {
     entries: ["./app/assets/js/application"],
     debug: true
   }).bundle()
+    .on("error", function(err) {
+      console.error("\nERROR:\n" + err.message);
+    })
     .pipe(source("application.js"))
     .pipe(gulp.dest("public/assets"));
 });
