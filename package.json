@@ -40,6 +40,7 @@
     "gulp-nodemon": "*",
     "gulp-sass": "*",
     "gulp-sourcemaps": "*",
+    "gulp-ng-annotate": "*",
     "gulp-angular-templatecache": "*",
 
     "browserify": "*"
