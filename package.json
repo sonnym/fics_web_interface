@@ -35,10 +35,12 @@
     "bower": "*",
 
     "gulp": "*",
+    "vinyl-buffer": "*",
     "vinyl-source-stream": "*",
 
     "gulp-nodemon": "*",
     "gulp-sass": "*",
+    "gulp-uglify": "*",
     "gulp-sourcemaps": "*",
     "gulp-ng-annotate": "*",
     "gulp-angular-templatecache": "*",
