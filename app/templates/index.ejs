@@ -19,7 +19,9 @@
         <%- include login.ejs %>
         <%- include chat.ejs %>
         <%- include observe.ejs %>
-        <%- include console.ejs %>
+        <% if (debug) { %>
+          <%- include console.ejs %>
+        <% } %>
         <%- include about.ejs %>
       </tabset>
     </div>
