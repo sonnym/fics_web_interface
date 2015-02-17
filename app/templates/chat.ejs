@@ -4,90 +4,98 @@
     <span class="notify" ng-if="tabs.chat.notify()">!</span>
   </tab-heading>
 
-  <loading-area ensure="users.length > 0 && channels.length > 0 ">
-    <accordion class="chat-nav">
-      <accordion-group heading="channels">
-        <pagination
-          class="pagination-sm"
-          previous-text="&lsaquo;"
-          next-text="&rsaquo;"
-          first-text="&laquo;"
-          last-text="&raquo;"
-          total-items="channels.length"
-          ng-model="currentPage"
-          items-per-page="20"
-          boundary-links="true"
-          max-size="5"
-          rotate="false">
-        </pagination>
+  <div class="container-fluid">
+    <div class="row chat-wrapper">
+      <div class="col-md-5">
+        <loading-area ensure="users.length > 0 && channels.length > 0 ">
+          <accordion>
+            <accordion-group heading="channels">
+              <pagination
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                total-items="channels.length"
+                ng-model="currentPage"
+                items-per-page="20"
+                boundary-links="true"
+                max-size="5"
+                rotate="false">
+              </pagination>
 
-        <ul class="channel-list">
-          <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
-            <a href="#" ng-click="joinChannel(channel.number)">
-              {{ channel.number }} {{ channel.name }}
-            </a>
-          </li>
-        </ul>
-      </accordion-group>
+              <ul class="channel-list">
+                <li ng-repeat="channel in channels | orderByNumberString:'number' | paginationSubset:20:currentPage">
+                  <a href="#" ng-click="joinChannel(channel.number)">
+                    {{ channel.number }} {{ channel.name }}
+                  </a>
+                </li>
+              </ul>
+            </accordion-group>
 
-      <accordion-group heading="users">
-        <pagination
-          class="pagination-sm"
-          previous-text="&lsaquo;"
-          next-text="&rsaquo;"
-          first-text="&laquo;"
-          last-text="&raquo;"
-          total-items="users.length"
-          ng-model="currentPage"
-          items-per-page="20"
-          boundary-links="true"
-          max-size="5"
-          rotate="false">
-        </pagination>
+            <accordion-group heading="users">
+              <pagination
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                total-items="users.length"
+                ng-model="currentPage"
+                items-per-page="20"
+                boundary-links="true"
+                max-size="5"
+                rotate="false">
+              </pagination>
 
-        <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
-      </accordion-group>
-    </accordion>
-  </loader-area>
+              <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
+            </accordion-group>
+          </accordion>
+        </loader-area>
+      </div>
 
-  <tabset class="chat-content tab-container">
-    <tab active="messages.global.active">
-      <tab-heading>
-        global
-        <span class="notify" ng-if="messages.global.notify()">!</span>
-      </tab-heading>
+      <div class="col-md-7 chat-content">
+        <tabset>
+          <tab active="messages.global.active">
+            <tab-heading>
+              global
+              <span class="notify" ng-if="messages.global.notify()">!</span>
+            </tab-heading>
 
-      <messages
-        messages="messages.global.messages"
-        send="shout(mode, message)"
-        allowed-modes="globalModes">
-      </messages>
-    </tab>
+            <messages
+              messages="messages.global.messages"
+              send="shout(mode, message)"
+              allowed-modes="globalModes">
+            </messages>
+          </tab>
 
-    <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" active="messages.channel[channelNumber].active">
-      <tab-heading>
-        {{ channelNumber }}: {{ channelName(channelNumber) }}
-        <span class="notify" ng-if="messages.channel[channelNumber].notify()">!</span>
-        <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
-      </tab-heading>
+          <tab ng-repeat="channelNumber in subscribedChannels | orderByNumberString" active="messages.channel[channelNumber].active">
+            <tab-heading>
+              {{ channelNumber }}: {{ channelName(channelNumber) }}
+              <span class="notify" ng-if="messages.channel[channelNumber].notify()">!</span>
+              <a href="#" ng-click="leaveChannel(channelNumber)">x</a>
+            </tab-heading>
 
-      <messages
-        messages="messages.channel[channelNumber].messages"
-        send="sendMessage(channelNumber)(message)">
-      </messages>
-    </tab>
+            <messages
+              messages="messages.channel[channelNumber].messages"
+              send="sendMessage(channelNumber)(message)">
+            </messages>
+          </tab>
 
-    <tab ng-repeat="(username, messageCollection) in messages.user" active="messageCollection.active">
-      <tab-heading>
-        {{ username }}
-        <span class="notify" ng-if="messageCollection.notify()">!</span>
-        <a href="#" ng-click="closePrivateMessage(username)">x</a>
-      </tab-heading>
+          <tab ng-repeat="(username, messageCollection) in messages.user" active="messageCollection.active">
+            <tab-heading>
+              {{ username }}
+              <span class="notify" ng-if="messageCollection.notify()">!</span>
+              <a href="#" ng-click="closePrivateMessage(username)">x</a>
+            </tab-heading>
 
-      <messages
-        messages="messageCollection.messages"
-        send="sendMessage(username)(message)">
-      </messages>
-    </tab>
-  </tabset>
+            <messages
+              messages="messageCollection.messages"
+              send="sendMessage(username)(message)">
+            </messages>
+          </tab>
+        </tabset>
+      </div>
+    </div>
+  </div>
 </tab>

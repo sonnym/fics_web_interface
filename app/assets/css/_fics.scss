@@ -11,4 +11,13 @@ div.content {
 
   left: 0px;
   right: 0px;
+
+  div.tab-container > div.tab-content > div.tab-pane {
+    position: absolute;
+
+    top: 45px;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+  }
 }

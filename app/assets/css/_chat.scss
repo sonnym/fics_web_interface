@@ -1,26 +1,19 @@
-.chat-nav {
+div.chat-wrapper {
   position: absolute;
 
-  top: 40px;
-  left: 0px;
+  top: 5px;
   bottom: 0px;
+  right: 30px; /* bootstrap */
+  left: 30px;  /* gutters */
 
-  width: 355px;
-}
+  div.chat-content {
+    height: 100%;
 
-div.chat-content {
-  position: absolute;
+    div.messages {
+      top: 45px;
 
-  left: 360px;
-  right: 0px;
-  bottom: 0px;
-
-  div.messagesWrapper {
-    position: absolute;
-
-    top: 50px;
-    left: 0px;
-    bottom: 0px;
-    right: 0px;
+      left: 30px;
+      right: 30px;
+    }
   }
 }
