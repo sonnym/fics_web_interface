@@ -25,7 +25,8 @@ gulp.task("scripts", ["templates"], function(callback) {
     .pipe(source("application.js"))
     .pipe(ngAnnotate())
     .pipe(buffer())
-    .pipe(sourcemaps.init())
+    .pipe(sourcemaps.init({ loadMaps: true }))
     .pipe(uglify())
+    .pipe(sourcemaps.write("./"))
     .pipe(gulp.dest("public/assets"));
 });
