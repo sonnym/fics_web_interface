@@ -3,30 +3,36 @@
     log in
   </tab-heading>
 
-  <p>
-    This web interface for the Free Internet Chess Server is a third party project.
-    Please register at the <a href="http://www.freechess.org/Register/index.html" target="_blank">official website</a>
-  </p>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          This web interface for the Free Internet Chess Server is a third party project.
+          Please register at the <a href="http://www.freechess.org/Register/index.html" target="_blank">official website</a>
+        </p>
 
-  <input type="button" value="login as guest" ng-click="loginAsGuest()" ng-disabled="isLoggingIn" />
+        <input type="button" value="login as guest" ng-click="loginAsGuest()" ng-disabled="isLoggingIn" />
 
-  <div>- or -</div>
+        <div>- or -</div>
 
-  <form ng-submit="loginWithCredentials(userData, remember)">
-    <p ng-if="loginFailure">{{ loginFailure }}</p>
+        <form ng-submit="loginWithCredentials(userData, remember)">
+          <p ng-if="loginFailure">{{ loginFailure }}</p>
 
-    <input type="text" ng-model="userData.login" placeholder="login" ng-disabled="isLoggingIn" />
-    <br>
-    <input type="password" ng-model="userData.password" placeholder="password" ng-disabled="isLoggingIn" />
+          <input type="text" ng-model="userData.login" placeholder="login" ng-disabled="isLoggingIn" />
+          <br>
+          <input type="password" ng-model="userData.password" placeholder="password" ng-disabled="isLoggingIn" />
 
-    <br>
+          <br>
 
-    <label>
-      <input type="checkbox" checked="checked" ng-model="remember">
-      Remember Me
-    </label>
+          <label>
+            <input type="checkbox" checked="checked" ng-model="remember">
+            Remember Me
+          </label>
 
-    <br>
-    <input type="submit" value="login with credentials" ng-disabled="isLoggingIn" />
-  </form>
+          <br>
+          <input type="submit" value="login with credentials" ng-disabled="isLoggingIn" />
+        </form>
+      </div>
+    </div>
+  </div>
 </tab>
