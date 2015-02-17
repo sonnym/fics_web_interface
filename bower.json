@@ -4,28 +4,23 @@
   "description": "A web interface for interacting with the Free Internet Chess Server.",
   "homepage": "https://github.com/sonnym/fics_web_interface",
   "author": "Sonny Michaud <michaud.sonny@gmail.com> (https://github.com/sonnym)",
-
   "keywords": [
     "chess",
     "fics"
   ],
-
   "dependencies": {
-    "angular": "*",
+    "angular": "1.4.0-beta.4",
     "angular-cookies": "*",
     "angular-ui-utils": "*",
-
     "bootstrap": "*",
     "angular-ui-bootstrap": "*",
-
     "sockjs-client": "*",
-
     "nvd3": "*",
-
     "angularjs-scroll-glue": "*"
   },
-
   "license": "MIT",
-
-  "private": true
+  "private": true,
+  "resolutions": {
+    "angular": "1.4.0-beta.4"
+  }
 }
