@@ -1,4 +1,4 @@
-<tab heading="about" active="tabs.about.active">
+<tab ng-controller="AboutCtrl" heading="about" active="tabs.about.active">
   <p>
     This interface for the Free Internet Chess Server is written an maintained
     by <a href="https://sonnym.github.io/" target="_blank">Sonny Michaud</a>. It
@@ -11,5 +11,9 @@
     <a href="https://github.com/sonnym/fics_web_interface/issues" target="_blank">
       the issue tracker
     </a>.
+  </p>
+
+  <p>
+    There are currently {{ serverData.userCount || 0 }} people connected to FICS via this interface.
   </p>
 </tab>

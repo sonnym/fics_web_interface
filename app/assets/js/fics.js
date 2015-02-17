@@ -13,14 +13,14 @@ global.ficsClient = angular.module("ficsClient", [
   "templates"
 ]);
 
-ficsClient.run(function($rootScope, Setter, TabManager, User, Chat, Observe, Play) {
+ficsClient.run(function($rootScope, Setter, TabManager, User, Chat, Observe, Play, About) {
   var tabManager = new TabManager({
     login: { active: true },
     chat: _.extend({ active: false }, Chat.notifier),
     play: _.extend({ active: false }, Play.notifier),
     observe: _.extend({ active: false }, Observe.notifier),
     console: { active: false },
-    about: { active: false }
+    about: _.extend({ active: false }, About.notifier)
   });
 
   $rootScope.tabs = tabManager.tabs;
