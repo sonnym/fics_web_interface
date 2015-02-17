@@ -4,7 +4,7 @@
     <span class="notify" ng-if="tabs.observe.notify()">!</span>
   </tab-heading>
 
-  <tabset class="tab-container">
+  <tabset>
     <tab heading="games">
       <loading-area ensure="games.length > 0">
         <pagination
@@ -38,36 +38,45 @@
         <a href="#" ng-click="stopWatching(game.number)">x</a>
       </tab-heading>
 
-      <div class="observe">
-        <div class="board-container">
-          <board
-            fen="game.metaData.position"
-            white="game.white"
-            black="game.black"
-            move="game.metaData.current.color"
-            time="game.metaData.time"
-            complete="game.isComplete">
-          </board>
-        </div>
+      <div class="observe container-fluid">
+        <div class="row">
 
-        <div class="moves">
-          <h4 ng-if="game.metaData.result">{{ game.metaData.result }}</h4>
+          <div class="col-sm-6 col-md-4">
+            <div class="board-container">
+              <board
+                fen="game.metaData.position"
+                white="game.white"
+                black="game.black"
+                move="game.metaData.current.color"
+                time="game.metaData.time"
+                complete="game.isComplete">
+              </board>
+            </div>
+          </div>
 
-          <table>
-            <tbody>
-              <tr ng-repeat="moves in game.moves" ng-if="game.moves">
-                <th>{{ $index + 1 }}</th>
-                <td>{{ moves[0] }}</td>
-                <td>{{ moves[1] }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <div class="col-sm-6 col-md-2">
+            <div class="moves">
+              <h4 ng-if="game.metaData.result">{{ game.metaData.result }}</h4>
 
-        <div class="chat">
-          <user-list class="observers" users="game.observers | orderBy:'name'"></user-list>
+              <table>
+                <tbody>
+                  <tr ng-repeat="moves in game.moves" ng-if="game.moves">
+                    <th>{{ $index + 1 }}</th>
+                    <td>{{ moves[0] }}</td>
+                    <td>{{ moves[1] }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
 
-          <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
+          <div class="col-sm-6 col-md-2">
+            <user-list class="observers" users="game.observers | orderBy:'name'"></user-list>
+          </div>
+
+          <div class="col-sm-6 col-md-4 chat">
+            <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
+          </div>
         </div>
       </div>
     </tab>

@@ -1,7 +1,7 @@
 div.observe {
   position: absolute;
 
-  top: 5px;
+  top: 45px;
   left: 0px;
   right: 0px;
   bottom: 0px;
@@ -11,43 +11,12 @@ div.observe {
     width: 400px;
   }
 
-  div.moves {
-    position: absolute;
-
-    top: 40px;
-    left: 400px;
-    bottom: 0px;
-
-    width: 140px;
-
+  div.moves, div.observers {
     overflow-y: auto;
+    height: 100%;
   }
 
   div.chat {
-    position: absolute;
-
-    top: 40px;
-    left: 540px;
-    right: 0px;
-    bottom: 0px;
-
-    .observers {
-      position: absolute;
-
-      top: 0px;
-      width: 200px;
-      bottom: 80px;
-
-      overflow-y: scroll;
-    }
-  }
-
-  div.messagesWrapper {
-    position: absolute;
-
-    top: 0px;
-    left: 200px;
-    bottom: 0px;
-    right: 0px;
+    height: 100%;
   }
 }
