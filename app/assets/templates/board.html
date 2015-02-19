@@ -4,13 +4,15 @@
   <timer start="time.black" tick="move === 'B' && !complete"></timer>
 </div>
 
-<div ng-repeat="rank in boardState" class="rank">
-  <div ng-repeat="piece in rank track by $index" class="square">
-    <div class="piece">
-      {{ ascii2unicode(piece) }}
+<div class="container">
+  <div ng-repeat="rank in boardState" class="row rank">
+    <div ng-repeat="piece in rank track by $index" class="col-md-1 square">
+      <div class="piece">
+        {{ ascii2unicode(piece) }}
+      </div>
     </div>
+    <div class="clearfix"></div>
   </div>
-  <div class="clearfix"></div>
 </div>
 
 <div class="name-tag">
