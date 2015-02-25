@@ -9,7 +9,7 @@ if [[ ! $(command -v g++) ]]
 then
   # system dependencies
   yum remove ssmtp
-  yum install --assumeyes make httpd git supervisor gcc-c++ yum-plugin-ps logwatch postfix
+  yum install --assumeyes make httpd mod_ssl git supervisor gcc-c++ yum-plugin-ps logwatch postfix
 
   # enable services
   systemctl enable httpd supervisord postfix
