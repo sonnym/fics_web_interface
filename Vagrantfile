@@ -2,6 +2,10 @@ $vm_memory = 512
 
 Vagrant.configure(2) do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
+
+  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.cert' '/etc/ssl/certs/fics.bughou.se.cert'
+  config.vm.provision :file, source: '~/.secrets/projects/fics/intermediate.cert' '/etc/ssl/certs/intermediate.cert'
+  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.key' '/etc/ssl/keys/fics.bughou.se.key'
   config.vm.provision :shell, path: 'deploy/bootstrap.sh'
 
   config.vm.define 'testing', primary: true do |test|
