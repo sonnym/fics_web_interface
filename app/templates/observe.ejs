@@ -38,45 +38,42 @@
         <a href="#" ng-click="stopWatching(game.number)">x</a>
       </tab-heading>
 
-      <div class="observe container-fluid">
-        <div class="row">
-
-          <div class="col-sm-6 col-md-5 col-lg-4">
-            <div class="board-container">
-              <board
-                fen="game.metaData.position"
-                white="game.white"
-                black="game.black"
-                move="game.metaData.current.color"
-                time="game.metaData.time"
-                complete="game.isComplete">
-              </board>
-            </div>
+      <div class="row">
+        <div class="col-sm-6 col-md-5 col-lg-4">
+          <div class="board-container">
+            <board
+              fen="game.metaData.position"
+              white="game.white"
+              black="game.black"
+              move="game.metaData.current.color"
+              time="game.metaData.time"
+              complete="game.isComplete">
+            </board>
           </div>
+        </div>
 
-          <div class="col-sm-6 col-md-2 col-lg-2">
-            <div class="moves">
-              <h4 ng-if="game.metaData.result">{{ game.metaData.result }}</h4>
+        <div class="col-sm-6 col-md-2 col-lg-2">
+          <div class="moves">
+            <h4 ng-if="game.metaData.result">{{ game.metaData.result }}</h4>
 
-              <table>
-                <tbody>
-                  <tr ng-repeat="moves in game.moves" ng-if="game.moves">
-                    <th>{{ $index + 1 }}</th>
-                    <td>{{ moves[0] }}</td>
-                    <td>{{ moves[1] }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <table>
+              <tbody>
+                <tr ng-repeat="moves in game.moves" ng-if="game.moves">
+                  <th>{{ $index + 1 }}</th>
+                  <td>{{ moves[0] }}</td>
+                  <td>{{ moves[1] }}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
+        </div>
 
-          <div class="col-sm-6 col-md-2 col-lg-2">
-            <user-list class="observers" users="game.observers | orderBy:'name'"></user-list>
-          </div>
+        <div class="col-sm-6 col-md-2 col-lg-2">
+          <user-list class="observers" users="game.observers | orderBy:'name'"></user-list>
+        </div>
 
-          <div class="col-sm-6 col-md-3 col-lg-4 chat">
-            <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
-          </div>
+        <div class="col-sm-6 col-md-3 col-lg-4 chat">
+          <messages messages="game.messages" send="sendMessage(game.number)(mode, message)" allowed-modes="allowedModes"></messages>
         </div>
       </div>
     </tab>
