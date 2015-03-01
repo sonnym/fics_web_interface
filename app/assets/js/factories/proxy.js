@@ -1,35 +1,13 @@
 "use strict";
 
 ficsClient.factory("Proxy", function($rootScope) {
-  var socket = new SockJS("/socket");
+  var socket;
   var socketOpen = false;
 
   var queue = [];
   var messageHandlers = {};
 
-  socket.onopen = function() {
-    socketOpen = true;
-
-    while (queue.length > 0) {
-      queue.shift()();
-    }
-  };
-
-  socket.onclose = function() {
-    socketOpen = false;
-  };
-
-  socket.onmessage = function(e) {
-    if (e.type !== "message") {
-      return;
-    }
-
-    var message = JSON.parse(e.data);
-
-    $rootScope.$applyAsync(function() {
-      messageHandlers[message.operation](message.data);
-    });
-  }
+  connect();
 
   return {
     registerMessage: function(operation, callback) {
@@ -42,6 +20,34 @@ ficsClient.factory("Proxy", function($rootScope) {
       });
     }
   };
+
+  function connect() {
+    socket = new SockJS("/socket");
+
+    socket.onopen = function() {
+      socketOpen = true;
+
+      while (queue.length > 0) {
+        queue.shift()();
+      }
+    };
+
+    socket.onclose = function() {
+      socketOpen = false;
+    };
+
+    socket.onmessage = function(e) {
+      if (e.type !== "message") {
+        return;
+      }
+
+      var message = JSON.parse(e.data);
+
+      $rootScope.$applyAsync(function() {
+        messageHandlers[message.operation](message.data);
+      });
+    }
+  }
 
   function ensureSocket(callback) {
     if (socketOpen) {
