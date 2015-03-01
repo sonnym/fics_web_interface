@@ -1,18 +1,22 @@
-<div>
-  <div class="messages" scroll-glue>
+<div class="row messages">
+  <div class="col-md-12" scroll-glue>
     <div ng-repeat="message in messages">
       <span ng-if="message.type !== 'it'">{{ message.user }} &gt; {{ message.message }}</span>
       <span ng-if="message.type === 'it'">--&gt; {{ message.user }} {{ message.message }}</span>
     </div>
   </div>
+</div>
 
-  <div class="message">
+<div class="row message">
+  <div class="col-md-9">
     <textarea
       placeholder="type to chat"
       ng-model="message"
       ui-keypress="{ 'enter': 'sendMessage()' }">
     </textarea>
+  </div>
 
+  <div class="col-md-3">
     <button class="btn btn-primary" ng-click="sendMessage()">Submit [Enter]</button>
 
     <button
