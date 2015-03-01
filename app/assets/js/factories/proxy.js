@@ -31,14 +31,6 @@ ficsClient.factory("Proxy", function($rootScope) {
     });
   }
 
-  function ensureSocket(callback) {
-    if (socketOpen) {
-      callback();
-    } else {
-      queue.push(callback);
-    }
-  }
-
   return {
     registerMessage: function(operation, callback) {
       messageHandlers[operation] = callback;
@@ -50,4 +42,12 @@ ficsClient.factory("Proxy", function($rootScope) {
       });
     }
   };
+
+  function ensureSocket(callback) {
+    if (socketOpen) {
+      callback();
+    } else {
+      queue.push(callback);
+    }
+  }
 });
