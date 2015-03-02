@@ -17,26 +17,31 @@ div.move-indicator.on {
   background-color: #b80000;
 }
 
-div.rank:nth-child(odd) div.square:nth-child(even),
-div.rank:nth-child(even) div.square:nth-child(odd) {
-  background: #3D945B;
-}
+div.board {
+  width: 100%;
 
-div.square {
-  float: left;
-  height: 50px;
-  width: 50px
-}
+  div.rank:nth-child(odd) div.square:nth-child(even),
+  div.rank:nth-child(even) div.square:nth-child(odd) {
+    background: #3D945B;
+  }
 
-div.piece {
-  width: 35px;
-  height: 50px;
+  div.square {
+    float: left;
 
-  line-height: 50px;
-  vertical-align: middle;
-  margin: auto auto;
+    width: 4.5vw;
+    height: 4.5vw;
 
-  font-size: 36px;
+    div.piece {
+      width: 35px;
+      height: 50px;
 
-  color: #000000;
+      line-height: 50px;
+      vertical-align: middle;
+      margin: auto auto;
+
+      font-size: 36px;
+
+      color: #000000;
+    }
+  }
 }
