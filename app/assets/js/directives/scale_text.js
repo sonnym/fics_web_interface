@@ -7,6 +7,7 @@ ficsClient.directive("scaleText", function($window) {
     link: function(scope, element) {
       scaleText();
 
+      scope.$watch(function() { return element[0].clientHeight }, scaleText);
       angular.element($window).on("resize", _.debounce(scaleText, 100));
 
       function scaleText() {
