@@ -2,21 +2,18 @@ div.messages {
   position: absolute;
 
   top: 0px;
-  left: 0px;
   bottom: 80px;
-  right: 0px;
+  width: 100%;
 
   overflow-y: scroll;
 }
 
 div.message {
   position: absolute;
-
   bottom: 0px;
-  left: 0px;
-  right: 0px;
 
   height: 75px;
+  width: 100%;
 
   textarea {
     width: 100%;
