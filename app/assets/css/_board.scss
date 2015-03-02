@@ -30,5 +30,13 @@ div.board {
 
     width: 3.5vw;
     height: 3.5vw;
+
+    padding: 0;
+
+    line-height: 1;
+
+    div {
+      padding: 5.5% 0 0 7.5%;
+    }
   }
 }
