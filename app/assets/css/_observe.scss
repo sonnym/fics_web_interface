@@ -1,22 +1,10 @@
 div.observe {
-  position: absolute;
-
-  top: 5px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-
-  div.board-container {
-    float: left;
-    width: 400px;
-  }
-
-  div.moves, div.observers {
-    overflow-y: auto;
-    height: 100%;
-  }
-
   div.chat {
     height: 100%;
+
+    div.messages {
+      left: 30px;
+      right: 30px;
+    }
   }
 }
