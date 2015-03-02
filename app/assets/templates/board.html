@@ -6,7 +6,7 @@
 
 <div class="board">
   <div ng-repeat="rank in boardState" class="rank">
-    <div ng-repeat="piece in rank track by $index" class="square">
+    <div ng-repeat="piece in rank track by $index" class="square" scale-text>
       {{ ascii2unicode(piece) }}
     </div>
 

@@ -33,6 +33,7 @@ require("./directives/board");
 require("./directives/infinite_horizontal");
 require("./directives/loading_area");
 require("./directives/messages");
+require("./directives/scale_text");
 require("./directives/sought");
 require("./directives/timer");
 require("./directives/user_list");
