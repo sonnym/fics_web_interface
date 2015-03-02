@@ -8,6 +8,11 @@ gulp.task("stylesheets", function () {
   gulp.src("app/assets/css/application.scss")
     .pipe(sourcemaps.init())
     .pipe(sass())
+    .on("error", function(err) {
+      console.error("\nERROR:\n" + err.message);
+      console.log(err);
+      console.log();
+    })
     .pipe(sourcemaps.write())
     .pipe(gulp.dest("public/assets"));
 });
