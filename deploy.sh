@@ -35,6 +35,7 @@ ssh $SSH_OPTS "cd /srv/fics && sudo git fetch && sudo git reset --hard origin/ma
 ssh $SSH_OPTS "sudo chown -R $USER /srv/fics"
 
 scp $SCP_OPTS public "$USER@$HOST:/srv/fics/"
+ssh $SSH_OPTS "cd /srv/fics && sudo npm install --production --unsafe-perm"
 
 ssh $SSH_OPTS "sudo chown -R apache:apache /srv"
 ssh $SSH_OPTS "sudo supervisorctl restart all"
