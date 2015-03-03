@@ -42,7 +42,7 @@ ficsClient.factory("Observe", function(Proxy, Game) {
 
     games: function() { return games },
 
-    watch: function(gameNumber) {
+    observe: function(gameNumber) {
       var game = findGameByNumber(games, gameNumber);
 
       if (_.isUndefined(findGameByNumber(watching, game))) {

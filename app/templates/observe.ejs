@@ -23,7 +23,7 @@
 
         <ul>
           <li ng-repeat="game in games | orderByCombinedRating | paginationSubset:20:currentPage">
-            <a href="#" ng-click="watch(game.number)">
+            <a href="#" ng-click="observe(game.number)">
               {{ game.white.name }} ({{ game.white.rating }}) vs. {{ game.black.name }} ({{ game.black.rating }})
             </a>
           </li>
