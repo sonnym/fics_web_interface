@@ -36,5 +36,5 @@ ssh $SSH_OPTS "sudo chown -R $USER /srv/fics"
 
 scp $SCP_OPTS public "$USER@$HOST:/srv/fics/"
 
-ssh $SSH_OPTS "sudo chown -R apache:apache /srv/fics/public"
+ssh $SSH_OPTS "sudo chown -R apache:apache /srv"
 ssh $SSH_OPTS "sudo supervisorctl restart all"

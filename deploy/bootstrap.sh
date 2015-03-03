@@ -48,7 +48,8 @@ then
 
   setsebool -P httpd_can_network_connect 1
 
-  chown -R apache:apache /srv/fics
+  chown -R apache:apache /srv
+  chcon -R --type=httpd_sys_rw_content_t /srv
 fi
 
 # setup httpd
