@@ -6,9 +6,7 @@ ficsClient.controller("ObservationCtrl", function($scope, Setter, Observe) {
   $scope.$watch(Observe.games, scopeSetter("games"));
   $scope.$watch(Observe.getWatching, scopeSetter("observations"));
 
-  $scope.watch = function(gameNumber) {
-    Observe.watch(gameNumber);
-  };
+  $scope.watch = Observe.watch;
 
   $scope.stopWatching = function(gameNumber) {
     Observe.unWatch(gameNumber);
