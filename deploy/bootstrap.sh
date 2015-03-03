@@ -72,6 +72,12 @@ then
   systemctl start supervisord
 fi
 
+# ssl directory
+if [ ! -d /srv/ssl/private ]
+then
+  mkdir -p /srv/ssl/{certs,private}
+fi
+
 # configure sshd
 if [[ -n $(diff /srv/fics/deploy/sshd_config /etc/ssh/sshd_config) ]]
 then

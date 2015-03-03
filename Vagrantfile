@@ -3,10 +3,11 @@ $vm_memory = 512
 Vagrant.configure(2) do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
 
-  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.cert' '/etc/ssl/certs/fics.bughou.se.cert'
-  config.vm.provision :file, source: '~/.secrets/projects/fics/intermediate.cert' '/etc/ssl/certs/intermediate.cert'
-  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.key' '/etc/ssl/keys/fics.bughou.se.key'
   config.vm.provision :shell, path: 'deploy/bootstrap.sh'
+
+  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.crt', destination: '/etc/ssl/certs/fics.bughou.se.crt'
+  config.vm.provision :file, source: '~/.secrets/projects/fics/intermediate.crt', destination: '/etc/ssl/certs/intermediate.crt'
+  config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.key', destination: '/etc/ssl/private/fics.bughou.se.key'
 
   config.vm.define 'testing', primary: true do |test|
     test.vm.box = 'hansode/fedora-21-server-x86_64'
