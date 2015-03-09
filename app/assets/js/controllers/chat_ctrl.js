@@ -4,6 +4,7 @@ ficsClient.controller("ChatCtrl", function($scope, Setter, Chat) {
   var scopeSetter = Setter($scope);
 
   $scope.$watch(Chat.users, scopeSetter("users"));
+  $scope.$watch(Chat.admins, scopeSetter("admins"));
   $scope.$watch(Chat.channels, scopeSetter("channels"));
   $scope.$watch(Chat.subscribedChannels, scopeSetter("subscribedChannels"));
   $scope.$watch(Chat.messages, scopeSetter("messages"));

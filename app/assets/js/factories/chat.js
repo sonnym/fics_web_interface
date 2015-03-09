@@ -1,7 +1,7 @@
 "use strict";
 
 ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
-  var users, subscribedChannels;
+  var users, admins, subscribedChannels;
   var chatMessages = {
     global: new MessageCollection(),
     channel: {},
@@ -23,6 +23,10 @@ ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
 
   Proxy.registerMessage("userList", function(data) {
     users = data;
+  });
+
+  Proxy.registerMessage("adminList", function(data) {
+    admins = data;
   });
 
   Proxy.registerMessage("chatMessage", function(data) {
@@ -52,11 +56,13 @@ ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
     notifier: {
       activate: function() {
         Proxy.sendMessage("userList");
+        Proxy.sendMessage("adminList");
         Proxy.sendMessage("subscribedChannelList");
       },
 
       update: function() {
         Proxy.sendMessage("userList");
+        Proxy.sendMessage("adminList");
       },
 
       notify: function() {
@@ -67,6 +73,7 @@ ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
     },
 
     users: function() { return users },
+    admins: function() { return admins },
     channels: function() { return channels },
     subscribedChannels: function() { return subscribedChannels },
 

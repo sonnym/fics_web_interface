@@ -49,6 +49,10 @@
 
             <user-list users="users | orderBy:'name' | paginationSubset:20:currentPage"></user-list>
           </accordion-group>
+
+          <accordion-group heading="admins">
+            <user-list users="admins | orderBy:'name'"></user-list>
+          </accordion-group>
         </accordion>
       </loader-area>
     </div>
