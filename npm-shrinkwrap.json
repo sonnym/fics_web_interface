@@ -14,7 +14,7 @@
           "dependencies": {
             "nan": {
               "version": "1.5.3",
-              "from": "nan@>=1.5.1 <1.6.0",
+              "from": "nan@1.5.3",
               "resolved": "https://registry.npmjs.org/nan/-/nan-1.5.3.tgz"
             }
           }
@@ -38,12 +38,12 @@
             },
             "ncp": {
               "version": "0.6.0",
-              "from": "ncp@>=0.6.0 <0.7.0",
+              "from": "ncp@0.6.0",
               "resolved": "https://registry.npmjs.org/ncp/-/ncp-0.6.0.tgz"
             },
             "rimraf": {
               "version": "2.2.8",
-              "from": "rimraf@>=2.2.8 <2.3.0",
+              "from": "rimraf@2.2.8",
               "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
             }
           }
@@ -72,7 +72,7 @@
           "dependencies": {
             "mime-types": {
               "version": "2.0.9",
-              "from": "mime-types@>=2.0.9 <2.1.0",
+              "from": "mime-types@>=2.0.4 <2.1.0",
               "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.0.9.tgz",
               "dependencies": {
                 "mime-db": {
@@ -236,7 +236,7 @@
           "dependencies": {
             "mime-types": {
               "version": "2.0.9",
-              "from": "mime-types@>=2.0.9 <2.1.0",
+              "from": "mime-types@>=2.0.4 <2.1.0",
               "resolved": "https://registry.npmjs.org/mime-types/-/mime-types-2.0.9.tgz",
               "dependencies": {
                 "mime-db": {
@@ -272,25 +272,25 @@
     },
     "fics": {
       "version": "0.6.1",
-      "from": "../../../../tmp/npm-4727-d0172317/git-cache-f15b5d09091b/0fb9d52fc14bf8a90b53f3de41bb37dbb2286aab",
-      "resolved": "git+https://github.com/sonnym/fics#0fb9d52fc14bf8a90b53f3de41bb37dbb2286aab",
+      "from": "../../../../tmp/npm-31035-b76eeef3/git-cache-6849be2a654f/7981adc77a35cb9697ac906afb61e27e27289f2b",
+      "resolved": "git+https://github.com/sonnym/fics#7981adc77a35cb9697ac906afb61e27e27289f2b",
       "dependencies": {
         "q": {
-          "version": "1.1.2",
-          "from": "https://registry.npmjs.org/q/-/q-1.1.2.tgz",
-          "resolved": "https://registry.npmjs.org/q/-/q-1.1.2.tgz"
+          "version": "1.2.0",
+          "from": "https://registry.npmjs.org/q/-/q-1.2.0.tgz",
+          "resolved": "https://registry.npmjs.org/q/-/q-1.2.0.tgz"
         }
       }
     },
     "sockjs": {
-      "version": "0.3.13",
-      "from": "sockjs@0.3.13",
-      "resolved": "https://registry.npmjs.org/sockjs/-/sockjs-0.3.13.tgz",
+      "version": "0.3.14",
+      "from": "sockjs@0.3.14",
+      "resolved": "https://registry.npmjs.org/sockjs/-/sockjs-0.3.14.tgz",
       "dependencies": {
         "faye-websocket": {
-          "version": "0.9.3",
+          "version": "0.9.4",
           "from": "faye-websocket@>=0.9.3 <0.10.0",
-          "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.9.3.tgz",
+          "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.9.4.tgz",
           "dependencies": {
             "websocket-driver": {
               "version": "0.5.3",
@@ -307,9 +307,9 @@
           }
         },
         "node-uuid": {
-          "version": "1.4.2",
+          "version": "1.4.3",
           "from": "node-uuid@>=1.4.1 <2.0.0",
-          "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.2.tgz"
+          "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
         }
       }
     },
