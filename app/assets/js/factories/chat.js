@@ -26,7 +26,13 @@ ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
   });
 
   Proxy.registerMessage("adminList", function(data) {
-    admins = data;
+    admins = _.map(data, function(user) {
+      return {
+        name: user.name,
+        status: user.status.replace(/_/g, " "),
+        idle: user.idle
+      };
+    });
   });
 
   Proxy.registerMessage("chatMessage", function(data) {

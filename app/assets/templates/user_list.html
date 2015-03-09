@@ -1,8 +1,13 @@
 <ul class="user-list">
   <li ng-repeat="user in displayUsers" class="dropdown" dropdown>
     <a href="#" class="dropdown-toggle" dropdown-toggle>{{ user.name }}<span ng-if="user.rating"> ({{ user.rating }})</span></a>
+
     <ul class="dropdown-menu">
       <li><a href="#" ng-click="startPrivateMessage(user.name)">private message</a></li>
     </ul>
+
+    <span ng-repeat="attr in extraAttributes">
+      - {{ user[attr] }}
+    </span>
   </li>
 </ul>
