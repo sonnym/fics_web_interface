@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
   config.vm.provision :file, source: '~/.secrets/projects/fics/fics.bughou.se.key', destination: '/etc/ssl/private/fics.bughou.se.key'
 
   config.vm.define 'testing', primary: true do |test|
-    test.vm.box = 'hansode/fedora-21-server-x86_64'
+    test.vm.box = 'chef/fedora-21'
     test.vm.network :forwarded_port, host: 4567, guest: 80
 
     test.vm.provider :virtualbox do |vb|
