@@ -1,6 +1,6 @@
 "use strict";
 
-ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
+ficsClient.factory("Chat", function(Constants, Proxy, User, MessageCollection) {
   var users, admins, subscribedChannels;
   var chatMessages = {
     global: new MessageCollection(),
@@ -101,6 +101,13 @@ ficsClient.factory("Chat", function(Constants, Proxy, MessageCollection) {
 
     sendMessage: function(recipient) {
       return function(message) {
+        if (chatMessages.user[recipient]) {
+          chatMessages.user[recipient].push({
+            user: User.getUsername(),
+            message: message
+          });
+        }
+
         Proxy.sendMessage("tell", { recipient: recipient, message: message });
       };
     },
