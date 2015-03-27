@@ -45,7 +45,8 @@
     "gulp-ng-annotate": "*",
     "gulp-angular-templatecache": "*",
 
-    "browserify": "*"
+    "browserify": "*",
+    "watchify": "*"
   },
 
   "engines": {
