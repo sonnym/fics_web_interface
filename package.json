@@ -46,7 +46,9 @@
     "gulp-angular-templatecache": "*",
 
     "browserify": "*",
-    "watchify": "*"
+    "watchify": "*",
+
+    "protractor": "*"
   },
 
   "engines": {
