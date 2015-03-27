@@ -25,7 +25,7 @@ gulp.task("scripts", ["templates"], function(callback) {
   return bundle();
 
   function bundle() {
-    return bundler
+    var bundle = bundler
       .bundle()
       .on("error", function(err) {
         console.error("\nERROR:\n" + err.message);
@@ -35,11 +35,16 @@ gulp.task("scripts", ["templates"], function(callback) {
         }
       })
       .pipe(source("application.js"))
-      .pipe(ngAnnotate())
+      .pipe(ngAnnotate());
+
+    if (!global.watch) {
+      bundle = bundle
       .pipe(buffer())
       .pipe(sourcemaps.init({ loadMaps: true }))
       .pipe(uglify())
       .pipe(sourcemaps.write("./"))
-      .pipe(gulp.dest("public/assets"));
+    };
+
+    return bundle.pipe(gulp.dest("public/assets"));
   }
 });
