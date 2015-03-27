@@ -25,7 +25,7 @@ then
 fi
 
 SSH_OPTS="$USER@$HOST $OPTS -p $PORT "
-SCP_OPTS="-r $OPTS -P $PORT"
+RSYNC_OPTS="$OPTS --port $PORT --progress --recursive --delete "
 
 ./node_modules/.bin/gulp build
 
@@ -34,7 +34,7 @@ echo
 ssh $SSH_OPTS "cd /srv/fics && sudo git fetch && sudo git reset --hard origin/master"
 ssh $SSH_OPTS "sudo chown -R $USER /srv/fics"
 
-scp $SCP_OPTS public "$USER@$HOST:/srv/fics/"
+rsync $RSYNC_OPTS public "$USER@$HOST:/srv/fics/"
 ssh $SSH_OPTS "cd /srv/fics && sudo env 'PATH=/usr/local/bin:/usr/bin:/bin' npm install --production --unsafe-perm"
 
 ssh $SSH_OPTS "sudo chown -R apache:apache /srv"
