@@ -13,11 +13,14 @@ var buffer = require("vinyl-buffer");
 var source = require("vinyl-source-stream");
 
 gulp.task("scripts", ["templates"], function(callback) {
-  var bundler = watchify(browserify(watchify.args));
+  var bundler = browserify(watchify.args);
 
   bundler.add("./app/assets/js/application.js");
 
-  bundler.on("update", bundle);
+  if (global.watch) {
+    bundler = watchify(bundler);
+    bundler.on("update", bundle);
+  }
 
   return bundle();
 
