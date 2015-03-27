@@ -13,6 +13,10 @@ global.ficsClient = angular.module("ficsClient", [
   "templates"
 ]);
 
+ficsClient.config(function($compileProvider, env) {
+  $compileProvider.debugInfoEnabled(env !== "production");
+});
+
 ficsClient.run(function($rootScope, Setter, TabManager, User, Chat, Observe, Play, About) {
   var tabManager = new TabManager({
     login: { active: true },
