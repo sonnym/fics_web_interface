@@ -272,7 +272,7 @@
     },
     "fics": {
       "version": "0.6.1",
-      "from": "git://github.com/sonnym/fics.git",
+      "from": "git://github.com/sonnym/fics.git#fbbbf64ba6b10be5d0807a37ec904c7a50c8c88c",
       "resolved": "git://github.com/sonnym/fics.git#fbbbf64ba6b10be5d0807a37ec904c7a50c8c88c",
       "dependencies": {
         "q": {
@@ -284,22 +284,22 @@
     },
     "sockjs": {
       "version": "0.3.15",
-      "from": "sockjs@0.3.15",
+      "from": "https://registry.npmjs.org/sockjs/-/sockjs-0.3.15.tgz",
       "resolved": "https://registry.npmjs.org/sockjs/-/sockjs-0.3.15.tgz",
       "dependencies": {
         "faye-websocket": {
           "version": "0.9.4",
-          "from": "faye-websocket@>=0.9.3 <0.10.0",
+          "from": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.9.4.tgz",
           "resolved": "https://registry.npmjs.org/faye-websocket/-/faye-websocket-0.9.4.tgz",
           "dependencies": {
             "websocket-driver": {
               "version": "0.5.4",
-              "from": "websocket-driver@>=0.5.1",
+              "from": "https://registry.npmjs.org/websocket-driver/-/websocket-driver-0.5.4.tgz",
               "resolved": "https://registry.npmjs.org/websocket-driver/-/websocket-driver-0.5.4.tgz",
               "dependencies": {
                 "websocket-extensions": {
                   "version": "0.1.1",
-                  "from": "websocket-extensions@>=0.1.1",
+                  "from": "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.1.tgz",
                   "resolved": "https://registry.npmjs.org/websocket-extensions/-/websocket-extensions-0.1.1.tgz"
                 }
               }
@@ -308,14 +308,14 @@
         },
         "node-uuid": {
           "version": "1.4.3",
-          "from": "node-uuid@>=1.4.1 <2.0.0",
+          "from": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz",
           "resolved": "https://registry.npmjs.org/node-uuid/-/node-uuid-1.4.3.tgz"
         }
       }
     },
     "underscore": {
       "version": "1.8.3",
-      "from": "underscore@1.8.3",
+      "from": "https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz",
       "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.8.3.tgz"
     }
   }
