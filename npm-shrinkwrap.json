@@ -3,55 +3,55 @@
   "version": "0.0.1",
   "dependencies": {
     "bunyan": {
-      "version": "1.3.4",
-      "from": "https://registry.npmjs.org/bunyan/-/bunyan-1.3.4.tgz",
-      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.3.4.tgz",
+      "version": "1.3.5",
+      "from": "bunyan@1.3.5",
+      "resolved": "https://registry.npmjs.org/bunyan/-/bunyan-1.3.5.tgz",
       "dependencies": {
         "dtrace-provider": {
           "version": "0.4.0",
-          "from": "https://registry.npmjs.org/dtrace-provider/-/dtrace-provider-0.4.0.tgz",
+          "from": "dtrace-provider@>=0.4.0 <0.5.0",
           "resolved": "https://registry.npmjs.org/dtrace-provider/-/dtrace-provider-0.4.0.tgz",
           "dependencies": {
             "nan": {
               "version": "1.5.3",
-              "from": "https://registry.npmjs.org/nan/-/nan-1.5.3.tgz",
+              "from": "nan@>=1.5.1 <1.6.0",
               "resolved": "https://registry.npmjs.org/nan/-/nan-1.5.3.tgz"
             }
           }
         },
         "mv": {
           "version": "2.0.3",
-          "from": "https://registry.npmjs.org/mv/-/mv-2.0.3.tgz",
+          "from": "mv@>=2.0.0 <3.0.0",
           "resolved": "https://registry.npmjs.org/mv/-/mv-2.0.3.tgz",
           "dependencies": {
             "mkdirp": {
               "version": "0.5.0",
-              "from": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz",
+              "from": "mkdirp@>=0.5.0 <0.6.0",
               "resolved": "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.0.tgz",
               "dependencies": {
                 "minimist": {
                   "version": "0.0.8",
-                  "from": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz",
+                  "from": "minimist@0.0.8",
                   "resolved": "https://registry.npmjs.org/minimist/-/minimist-0.0.8.tgz"
                 }
               }
             },
             "ncp": {
               "version": "0.6.0",
-              "from": "https://registry.npmjs.org/ncp/-/ncp-0.6.0.tgz",
+              "from": "ncp@>=0.6.0 <0.7.0",
               "resolved": "https://registry.npmjs.org/ncp/-/ncp-0.6.0.tgz"
             },
             "rimraf": {
               "version": "2.2.8",
-              "from": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz",
+              "from": "rimraf@>=2.2.8 <2.3.0",
               "resolved": "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"
             }
           }
         },
         "safe-json-stringify": {
-          "version": "1.0.1",
-          "from": "https://registry.npmjs.org/safe-json-stringify/-/safe-json-stringify-1.0.1.tgz",
-          "resolved": "https://registry.npmjs.org/safe-json-stringify/-/safe-json-stringify-1.0.1.tgz"
+          "version": "1.0.3",
+          "from": "safe-json-stringify@>=1.0.0 <2.0.0",
+          "resolved": "https://registry.npmjs.org/safe-json-stringify/-/safe-json-stringify-1.0.3.tgz"
         }
       }
     },
@@ -272,13 +272,18 @@
     },
     "fics": {
       "version": "0.6.1",
-      "from": "git://github.com/sonnym/fics.git#fbbbf64ba6b10be5d0807a37ec904c7a50c8c88c",
+      "from": "git://github.com/sonnym/fics.git",
       "resolved": "git://github.com/sonnym/fics.git#fbbbf64ba6b10be5d0807a37ec904c7a50c8c88c",
       "dependencies": {
         "q": {
           "version": "1.2.0",
           "from": "https://registry.npmjs.org/q/-/q-1.2.0.tgz",
           "resolved": "https://registry.npmjs.org/q/-/q-1.2.0.tgz"
+        },
+        "underscore": {
+          "version": "1.8.2",
+          "from": "https://registry.npmjs.org/underscore/-/underscore-1.8.2.tgz",
+          "resolved": "https://registry.npmjs.org/underscore/-/underscore-1.8.2.tgz"
         }
       }
     },
